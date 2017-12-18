@@ -1,0 +1,8 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{\"speech\":\"When you add 8 and 6, the result is 14.\",\"displayText\":\"When you add 8 and 6, the result is 14.\",\"data\":\"data\",\"contextOut\":[],\"source\":\"source\"}",
+  "isBase64Encoded": false
+}

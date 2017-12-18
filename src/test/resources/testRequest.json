@@ -1,0 +1,35 @@
+{
+    "resource": "/",
+    "path": "/",
+    "httpMethod": "POST",
+    "headers": null,
+    "queryStringParameters": null,
+    "pathParameters": null,
+    "stageVariables": null,
+    "requestContext": {
+        "path": "/",
+        "accountId": "143607649268",
+        "resourceId": "bytqgihi33",
+        "stage": "test-invoke-stage",
+        "requestId": "test-invoke-request",
+        "identity": {
+            "cognitoIdentityPoolId": null,
+            "accountId": "143607649268",
+            "cognitoIdentityId": null,
+            "caller": "AIDAIQFMYG2RDFET3TCEO",
+            "apiKey": "test-invoke-api-key",
+            "sourceIp": "test-invoke-source-ip",
+            "accessKey": "ASIAJPGRJ2PWUG3VAIHQ",
+            "cognitoAuthenticationType": null,
+            "cognitoAuthenticationProvider": null,
+            "userArn": "arn:aws:iam::143607649268:user/bouken",
+            "userAgent": "Apache-HttpClient/4.5.x (Java/1.8.0_144)",
+            "user": "AIDAIQFMYG2RDFET3TCEO"
+        },
+        "resourcePath": "/",
+        "httpMethod": "POST",
+        "apiId": "4v9rfk9iqa"
+    },
+    "body": "{\r\n    \"id\": \"4c248082-1969-4e32-b213-7f389dd81ca3\",\r\n    \"timestamp\": \"2017-12-10T19:23:59.034Z\",\r\n    \"lang\": \"en\",\r\n    \"result\": {\r\n        \"source\": \"agent\",\r\n        \"resolvedQuery\": \"6\",\r\n        \"speech\": \"\",\r\n        \"action\": \"\",\r\n        \"actionIncomplete\": false,\r\n        \"parameters\": {\r\n            \"number1\": 8,\r\n            \"number2\": 6\r\n        },\r\n        \"contexts\": [],\r\n        \"metadata\": {\r\n            \"intentId\": \"db8fcb19-cd4f-422e-93d5-f011f3d93a7b\",\r\n            \"webhookUsed\": \"true\",\r\n            \"webhookForSlotFillingUsed\": \"false\",\r\n            \"intentName\": \"AdditionIntent\"\r\n        },\r\n        \"fulfillment\": {\r\n            \"speech\": \"\",\r\n            \"messages\": []\r\n        },\r\n        \"score\": 1\r\n    },\r\n    \"status\": {\r\n        \"code\": 200,\r\n        \"errorType\": \"success\",\r\n        \"webhookTimedOut\": false\r\n    },\r\n    \"sessionId\": \"49206870-6cb4-41a2-aa69-5dee1df3cf55\"\r\n}",
+    "isBase64Encoded": false
+}
