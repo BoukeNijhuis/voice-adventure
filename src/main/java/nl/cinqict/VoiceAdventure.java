@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 
-public class GoogleHomeDemo implements RequestStreamHandler {
+public class VoiceAdventure implements RequestStreamHandler {
 
     public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context)
             throws IOException {
@@ -20,18 +20,15 @@ public class GoogleHomeDemo implements RequestStreamHandler {
             final String request = readInputStream(inputStream);
 
             // get the request as a JsonObject
-            JsonObject jsonObject = LambaProxyUtil.getBodyJsonObject(request);
+        JsonObject jsonObject = JsonUtil.getJsonObject(request);
 
-            final JsonObject result = jsonObject.getAsJsonObject("result");
-            final JsonObject parameters = result.getAsJsonObject("parameters");
-
-            int value1 = parameters.get("number1").getAsInt();
-            int value2 = parameters.get("number2").getAsInt();
+        // get the resolvedQuery
+        JsonObject result = jsonObject.getAsJsonObject("result");
+        String resolvedQuery = result.get("resolvedQuery").getAsString();
 
             // write the reply on the output stream
-            final String reply = createReply(value1, value2);
-            final String lambdaProxyReply = LambaProxyUtil.createLambdaProxyReply(reply);
-            outputStream.write(lambdaProxyReply.getBytes());
+        final String reply = createReply(resolvedQuery);
+        outputStream.write(reply.getBytes());
     }
 
     /**
@@ -54,10 +51,9 @@ public class GoogleHomeDemo implements RequestStreamHandler {
         return stringBuilder.toString();
     }
 
-    private String createReply(int value1, int value2) {
+    private String createReply(String input) {
         JsonObject reply = new JsonObject();
-        int sum = value1 + value2;
-        String answer = String.format("When you add %d and %d, the result is %d.", value1, value2, sum);
+        String answer = String.format("You said: %s", input);
         reply.addProperty("speech", answer);
         reply.addProperty("displayText", answer);
         reply.addProperty("data", "data");

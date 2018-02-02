@@ -15,7 +15,7 @@ import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GoogleHomeDemoTest {
+public class VoiceAdventureTest {
 
     @Test
     public void test() throws IOException, URISyntaxException {
@@ -27,21 +27,21 @@ public class GoogleHomeDemoTest {
         final Context context = Mockito.mock(Context.class);
 
         // handle the request
-        final GoogleHomeDemo googleHomeDemo = new GoogleHomeDemo();
-        googleHomeDemo.handleRequest(inputStream, outputStream, context);
+        final VoiceAdventure voiceAdventure = new VoiceAdventure();
+        voiceAdventure.handleRequest(inputStream, outputStream, context);
 
         // fetch the reply
         final String actualReply = new String(outputStream.toByteArray());
         final String expectedReply = readFile("expectedReply.json");
 
-        final JsonObject actualResultReply =  LambaProxyUtil.getBodyJsonObject(actualReply);
-        final JsonObject expectedResultReply = LambaProxyUtil.getBodyJsonObject(expectedReply);
+        final JsonObject actualResultReply = JsonUtil.getJsonObject(actualReply);
+        final JsonObject expectedResultReply = JsonUtil.getJsonObject(expectedReply);
         assertEquals(expectedResultReply, actualResultReply);
     }
 
     /**
      * Simple method to read a file.
-     * @return the contents of the filee
+     * @return the contents of the file
      * @throws IOException when the file cannot be read
      */
     private String readFile(String fileName) throws IOException, URISyntaxException {
