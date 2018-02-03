@@ -3,7 +3,11 @@ package nl.cinqict;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import nl.cinqict.handler.DefaultHandler;
+import nl.cinqict.handler.Handler;
+import nl.cinqict.handler.LookHandler;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,19 +20,41 @@ public class VoiceAdventure implements RequestStreamHandler {
     public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context)
             throws IOException {
 
-            // get the request from the input stream
-            final String request = readInputStream(inputStream);
+        // get the request from the input stream
+        final String request = readInputStream(inputStream);
 
-            // get the request as a JsonObject
+        // get the request as a JsonObject
         JsonObject jsonObject = JsonUtil.getJsonObject(request);
 
-        // get the resolvedQuery
+        // get the intentName
         JsonObject result = jsonObject.getAsJsonObject("result");
-        String resolvedQuery = result.get("resolvedQuery").getAsString();
+        JsonObject metadata = result.getAsJsonObject("metadata");
+        String intentName = metadata.get("intentName").getAsString();
 
-            // write the reply on the output stream
-        final String reply = createReply(resolvedQuery);
+        JsonArray contexts = result.getAsJsonArray("contexts");
+        JsonObject context0 = contexts.get(0).getAsJsonObject();
+        JsonObject parameters = context0.getAsJsonObject("parameters");
+        String posx = parameters.get("posx").getAsString();
+        parameters.addProperty("posx", posx + "x");
+
+
+        Handler handler = getHandler(intentName);
+
+        // write the reply on the output stream
+        final String reply = createReply(handler.getReply(), context0);
         outputStream.write(reply.getBytes());
+    }
+
+    private Handler getHandler(String command) {
+
+        switch (command) {
+            case "LookIntent":
+                return new LookHandler();
+            case "MoveIntent":
+                //return new MoveHandler();
+            default:
+                return new DefaultHandler();
+        }
     }
 
     /**
@@ -51,13 +77,16 @@ public class VoiceAdventure implements RequestStreamHandler {
         return stringBuilder.toString();
     }
 
-    private String createReply(String input) {
+    private String createReply(String input, JsonObject context) {
         JsonObject reply = new JsonObject();
         String answer = String.format("You said: %s", input);
         reply.addProperty("speech", answer);
         reply.addProperty("displayText", answer);
         reply.addProperty("data", "data");
-        reply.add("contextOut", new JsonArray());
+
+        JsonArray contextOut = new JsonArray();
+        contextOut.add(context);
+        reply.add("contextOut", contextOut);
         reply.addProperty("source", "source");
         return reply.toString();
     }

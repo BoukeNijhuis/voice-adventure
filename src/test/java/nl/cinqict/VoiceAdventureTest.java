@@ -26,7 +26,7 @@ public class VoiceAdventureTest {
         final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         final Context context = Mockito.mock(Context.class);
 
-        // handle the request
+        // getReply the request
         final VoiceAdventure voiceAdventure = new VoiceAdventure();
         voiceAdventure.handleRequest(inputStream, outputStream, context);
 

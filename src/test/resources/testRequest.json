@@ -1,6 +1,6 @@
 {
-    "id": "420a278f-6509-412e-b8c4-e6fa0a2f5d95",
-    "timestamp": "2018-02-02T18:49:05.776Z",
+    "id": "e223f347-b831-4ffc-9d8b-aba87a4456ea",
+    "timestamp": "2018-02-02T20:36:32.257Z",
     "lang": "en",
     "result": {
         "source": "agent",
@@ -8,8 +8,19 @@
         "speech": "",
         "action": "",
         "actionIncomplete": false,
-        "parameters": {},
-        "contexts": [],
+        "parameters": {
+            "posx": ""
+        },
+        "contexts": [
+            {
+                "name": "state",
+                "parameters": {
+                    "posx": "",
+                    "posx.original": ""
+                },
+                "lifespan": 5
+            }
+        ],
         "metadata": {
             "intentId": "f76c505e-c495-417f-9178-2e7481460112",
             "webhookUsed": "true",
