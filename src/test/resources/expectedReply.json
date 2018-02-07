@@ -1,7 +1,16 @@
 {
-  "speech": "You said: Look",
-  "displayText": "You said: Look",
+  "speech": "You are in a forest",
+  "displayText": "You are in a forest",
   "data": "data",
-  "contextOut": [],
+  "contextOut": [
+    {
+      "name": "state",
+      "parameters": {
+        "posx": "x",
+        "posy": "y"
+      },
+      "lifespan": 5
+    }
+  ],
   "source": "source"
 }

@@ -15,8 +15,6 @@
             {
                 "name": "state",
                 "parameters": {
-                    "posx": "",
-                    "posx.original": ""
                 },
                 "lifespan": 5
             }
