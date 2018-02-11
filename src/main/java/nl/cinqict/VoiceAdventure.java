@@ -7,6 +7,7 @@ import com.google.gson.JsonObject;
 import nl.cinqict.handler.DefaultHandler;
 import nl.cinqict.handler.Handler;
 import nl.cinqict.handler.LookHandler;
+import nl.cinqict.handler.WelcomeHandler;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,6 +22,8 @@ public class VoiceAdventure implements RequestStreamHandler {
 
         // get the requestString from the input stream
         final String requestString = readInputStream(inputStream);
+
+        System.out.print(requestString);
 
         // create request object
         final Request request = new Request(requestString);
@@ -43,6 +46,8 @@ public class VoiceAdventure implements RequestStreamHandler {
     private Handler getHandler(String command) {
 
         switch (command) {
+            case "Default Welcome Intent":
+                return new WelcomeHandler();
             case "LookIntent":
                 return new LookHandler();
             case "MoveIntent":

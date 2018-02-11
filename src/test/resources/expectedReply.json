@@ -1,13 +1,13 @@
 {
-  "speech": "You are in a forest",
-  "displayText": "You are in a forest",
+  "speech": "Hi! Welcome to Voice Adventure. You can directly start with issuing commands or ask for help about commands.",
+  "displayText": "Hi! Welcome to Voice Adventure. You can directly start with issuing commands or ask for help about commands.",
   "data": "data",
   "contextOut": [
     {
       "name": "state",
       "parameters": {
-        "posx": "x",
-        "posy": "y"
+        "posx": 0,
+        "posy": 0
       },
       "lifespan": 5
     }

@@ -1,45 +1,107 @@
 {
-    "id": "e223f347-b831-4ffc-9d8b-aba87a4456ea",
-    "timestamp": "2018-02-02T20:36:32.257Z",
-    "lang": "en",
-    "result": {
-        "source": "agent",
-        "resolvedQuery": "Look",
-        "speech": "",
-        "action": "",
-        "actionIncomplete": false,
-        "parameters": {
-            "posx": ""
-        },
-        "contexts": [
+  "originalRequest": {
+    "source": "google",
+    "version": "2",
+    "data": {
+      "isInSandbox": true,
+      "surface": {
+        "capabilities": [
+          {
+            "name": "actions.capability.AUDIO_OUTPUT"
+          },
+          {
+            "name": "actions.capability.MEDIA_RESPONSE_AUDIO"
+          }
+        ]
+      },
+      "inputs": [
+        {
+          "rawInputs": [
             {
-                "name": "state",
-                "parameters": {
-                },
-                "lifespan": 5
+              "query": "Talk to Voice Adventure",
+              "inputType": "VOICE"
             }
-        ],
-        "metadata": {
-            "intentId": "f76c505e-c495-417f-9178-2e7481460112",
-            "webhookUsed": "true",
-            "webhookForSlotFillingUsed": "false",
-            "intentName": "LookIntent"
-        },
-        "fulfillment": {
-            "speech": "",
-            "messages": [
-                {
-                    "type": 0,
-                    "speech": ""
-                }
-            ]
-        },
-        "score": 1
+          ],
+          "intent": "actions.intent.MAIN"
+        }
+      ],
+      "user": {
+        "lastSeen": "2018-02-11T09:51:23Z",
+        "locale": "en-US",
+        "userId": "ABwppHGdUPW3PGBZT4-Hf0Xkk180oFz1u5_wlBqqE-zeUnX726y8i-ckoIhjpZdv0Gt38-Rn7h7s1oG_zGi4iUTz6q8"
+      },
+      "conversation": {
+        "conversationId": "1518342719716",
+        "type": "NEW"
+      },
+      "availableSurfaces": [
+        {
+          "capabilities": [
+            {
+              "name": "actions.capability.AUDIO_OUTPUT"
+            },
+            {
+              "name": "actions.capability.SCREEN_OUTPUT"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "id": "134c0fe2-ef8e-4521-b440-f3adbf097ada",
+  "timestamp": "2018-02-11T09:51:59.963Z",
+  "lang": "en-us",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "GOOGLE_ASSISTANT_WELCOME",
+    "speech": "",
+    "action": "input.welcome",
+    "actionIncomplete": false,
+    "parameters": {},
+    "contexts": [
+      {
+        "name": "google_assistant_welcome",
+        "parameters": {},
+        "lifespan": 0
+      },
+      {
+        "name": "actions_capability_audio_output",
+        "parameters": {},
+        "lifespan": 0
+      },
+      {
+        "name": "google_assistant_input_type_voice",
+        "parameters": {},
+        "lifespan": 0
+      },
+      {
+        "name": "actions_capability_media_response_audio",
+        "parameters": {},
+        "lifespan": 0
+      }
+    ],
+    "metadata": {
+      "intentId": "af782936-4ea2-4c51-99f9-8da4d974f35f",
+      "webhookUsed": "true",
+      "webhookForSlotFillingUsed": "false",
+      "nluResponseTime": 0,
+      "intentName": "Default Welcome Intent"
     },
-    "status": {
-        "code": 200,
-        "errorType": "success",
-        "webhookTimedOut": false
+    "fulfillment": {
+      "speech": "",
+      "messages": [
+        {
+          "type": 0,
+          "speech": ""
+        }
+      ]
     },
-    "sessionId": "2f07e6d6-b579-4034-ab2c-d9905a3731b2"
+    "score": 1
+  },
+  "status": {
+    "code": 200,
+    "errorType": "success",
+    "webhookTimedOut": false
+  },
+  "sessionId": "1518342719716"
 }

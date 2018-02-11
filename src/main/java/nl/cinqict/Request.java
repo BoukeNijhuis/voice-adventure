@@ -26,6 +26,17 @@ public class Request {
             if ("state".equals(name.getAsString()))
                 stateContext = o.getAsJsonObject();
         }
+
+        // create stateContext (when not found)
+        stateContext = new JsonObject();
+        stateContext.addProperty("name", "state");
+        stateContext.add("parameters", new JsonObject());
+        stateContext.addProperty("lifespan", 5);
+
+
+        contexts.add(stateContext);
+
+
     }
 
     public String getIntentName() {
