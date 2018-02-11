@@ -4,10 +4,7 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import nl.cinqict.handler.DefaultHandler;
-import nl.cinqict.handler.Handler;
-import nl.cinqict.handler.LookHandler;
-import nl.cinqict.handler.WelcomeHandler;
+import nl.cinqict.handler.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,7 +32,7 @@ public class VoiceAdventure implements RequestStreamHandler {
         //final JsonObject stateParameters = request.getStateParameters();
 
         Handler handler = getHandler(intentName);
-        handler.updateState(request.getState());
+        handler.updateState(request);
 
         // write the reply on the output stream
         final String reply = createReply(handler.getReply(), request.getStateContext());
@@ -51,7 +48,7 @@ public class VoiceAdventure implements RequestStreamHandler {
             case "LookIntent":
                 return new LookHandler();
             case "MoveIntent":
-                //return new MoveHandler(stateParameters);
+                return new MoveHandler();
             default:
                 return new DefaultHandler();
         }

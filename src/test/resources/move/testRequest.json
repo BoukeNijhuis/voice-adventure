@@ -1,0 +1,46 @@
+{
+  "id": "f1012ed0-4fb8-4a76-8ba4-17c4e2dd41c5",
+  "timestamp": "2018-02-11T13:01:58.384Z",
+  "lang": "en",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "walk north",
+    "action": "",
+    "actionIncomplete": false,
+    "parameters": {
+      "direction": "N"
+    },
+    "contexts": [
+      {
+        "name": "state",
+        "parameters": {
+          "posx": 0,
+          "posy": 0
+        },
+        "lifespan": 4
+      }
+    ],
+    "metadata": {
+      "intentId": "59a0f5c4-d155-4655-847f-8d52fe03651c",
+      "webhookUsed": "false",
+      "webhookForSlotFillingUsed": "false",
+      "intentName": "MoveIntent"
+    },
+    "fulfillment": {
+      "speech": "",
+      "messages": [
+        {
+          "type": 0,
+          "speech": ""
+        }
+      ]
+    },
+    "score": 1
+  },
+  "status": {
+    "code": 200,
+    "errorType": "success",
+    "webhookTimedOut": false
+  },
+  "sessionId": "10cb4830-b03a-426a-8ab8-c6da7c683a31"
+}

@@ -1,0 +1,16 @@
+{
+  "speech": "You moved.",
+  "displayText": "You moved.",
+  "data": "data",
+  "contextOut": [
+    {
+      "name": "state",
+      "parameters": {
+        "posx": 0,
+        "posy": 1
+      },
+      "lifespan": 5
+    }
+  ],
+  "source": "source"
+}

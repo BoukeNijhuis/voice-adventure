@@ -7,6 +7,7 @@ import com.google.gson.JsonObject;
 public class Request {
 
     private JsonObject result;
+    private JsonObject parameters;
     private State state;
 
     public Request(String request) {
@@ -16,6 +17,9 @@ public class Request {
 
         // get the intentName
         result = jsonObject.getAsJsonObject("result");
+
+        // get the parameters
+        parameters = result.getAsJsonObject("parameters");
 
         JsonArray contexts = result.getAsJsonArray("contexts");
 
@@ -47,5 +51,9 @@ public class Request {
 
     public State getState() {
         return state;
+    }
+
+    public JsonObject getParameters() {
+        return parameters;
     }
 }

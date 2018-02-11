@@ -18,8 +18,8 @@ public class State {
 
     public JsonObject toJsonObject() {
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("posx", 0);
-        jsonObject.addProperty("posy", 0);
+        jsonObject.addProperty("posx", posx);
+        jsonObject.addProperty("posy", posy);
         return jsonObject;
     }
 

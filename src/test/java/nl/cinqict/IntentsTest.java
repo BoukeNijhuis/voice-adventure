@@ -15,17 +15,26 @@ import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class VoiceAdventureTest {
+public class IntentsTest {
 
 
     @Test
-    public void testWelcome() {
-        test("welcome/testRequest.json", "welcome/expectedReply.json");
+    public void welcome() {
+        test("welcome");
     }
 
     @Test
-    public void testLook() {
-        test("look/testRequest.json", "look/expectedReply.json");
+    public void look() {
+        test("look");
+    }
+
+    @Test
+    public void move() {
+        test("move");
+    }
+
+    private void test(String folderName) {
+        test(folderName + "/testRequest.json", folderName + "/expectedReply.json");
     }
 
 
