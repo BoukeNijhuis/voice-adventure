@@ -6,37 +6,29 @@ import com.google.gson.JsonObject;
 
 public class Request {
 
-    private JsonObject jsonObject;
     private JsonObject result;
-    private JsonObject stateContext;
+    private State state;
 
     public Request(String request) {
 
         // get the request as a JsonObject
-        jsonObject = JsonUtil.getJsonObject(request);
+        JsonObject jsonObject = JsonUtil.getJsonObject(request);
 
         // get the intentName
         result = jsonObject.getAsJsonObject("result");
 
-        // get the stateContext
         JsonArray contexts = result.getAsJsonArray("contexts");
 
+        // get the stateContext
         for (JsonElement o : contexts) {
-            final JsonElement name = o.getAsJsonObject().get("name");
+            final JsonObject context = o.getAsJsonObject();
+            final JsonElement name = context.get("name");
             if ("state".equals(name.getAsString()))
-                stateContext = o.getAsJsonObject();
+                state = new State(context.get("parameters").getAsJsonObject());
         }
 
-        // create stateContext (when not found)
-        stateContext = new JsonObject();
-        stateContext.addProperty("name", "state");
-        stateContext.add("parameters", new JsonObject());
-        stateContext.addProperty("lifespan", 5);
-
-
-        contexts.add(stateContext);
-
-
+        // the first time there will be no state, so initialize it
+        if (state == null) state = new State();
     }
 
     public String getIntentName() {
@@ -44,11 +36,16 @@ public class Request {
         return metadata.get("intentName").getAsString();
     }
 
-    public JsonObject getStateParameters() {
-        return stateContext.getAsJsonObject("parameters");
+    public JsonObject getStateContext() {
+        JsonObject stateContext = new JsonObject();
+        stateContext.addProperty("name", "state");
+        stateContext.add("parameters", state.toJsonObject());
+        stateContext.addProperty("lifespan", 5);
+
+        return stateContext;
     }
 
-    public JsonObject getStateContext() {
-        return stateContext;
+    public State getState() {
+        return state;
     }
 }

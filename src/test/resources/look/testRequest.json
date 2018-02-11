@@ -1,0 +1,118 @@
+{
+  "originalRequest": {
+    "source": "google",
+    "version": "2",
+    "data": {
+      "isInSandbox": true,
+      "surface": {
+        "capabilities": [
+          {
+            "name": "actions.capability.MEDIA_RESPONSE_AUDIO"
+          },
+          {
+            "name": "actions.capability.AUDIO_OUTPUT"
+          }
+        ]
+      },
+      "inputs": [
+        {
+          "rawInputs": [
+            {
+              "query": "Look",
+              "inputType": "VOICE"
+            }
+          ],
+          "arguments": [
+            {
+              "rawText": "Look",
+              "textValue": "Look",
+              "name": "text"
+            }
+          ],
+          "intent": "actions.intent.TEXT"
+        }
+      ],
+      "user": {
+        "lastSeen": "2018-02-11T10:40:47Z",
+        "locale": "en-US",
+        "userId": "ABwppHGdUPW3PGBZT4-Hf0Xkk180oFz1u5_wlBqqE-zeUnX726y8i-ckoIhjpZdv0Gt38-Rn7h7s1oG_zGi4iUTz6q8"
+      },
+      "conversation": {
+        "conversationId": "1518346626208",
+        "type": "ACTIVE",
+        "conversationToken": "[\"state\"]"
+      },
+      "availableSurfaces": [
+        {
+          "capabilities": [
+            {
+              "name": "actions.capability.SCREEN_OUTPUT"
+            },
+            {
+              "name": "actions.capability.AUDIO_OUTPUT"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "id": "a9a5f22a-2c88-489f-9775-7b87d5e57ae3",
+  "timestamp": "2018-02-11T10:57:14.799Z",
+  "lang": "en-us",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "Look",
+    "speech": "",
+    "action": "",
+    "actionIncomplete": false,
+    "parameters": {},
+    "contexts": [
+      {
+        "name": "google_assistant_input_type_voice",
+        "parameters": {},
+        "lifespan": 0
+      },
+      {
+        "name": "actions_capability_audio_output",
+        "parameters": {},
+        "lifespan": 0
+      },
+      {
+        "name": "state",
+        "parameters": {
+          "posx": 0,
+          "posy": 0
+        },
+        "lifespan": 4
+      },
+      {
+        "name": "actions_capability_media_response_audio",
+        "parameters": {},
+        "lifespan": 0
+      }
+    ],
+    "metadata": {
+      "intentId": "f76c505e-c495-417f-9178-2e7481460112",
+      "webhookUsed": "true",
+      "webhookForSlotFillingUsed": "false",
+      "nluResponseTime": 5,
+      "intentName": "LookIntent"
+    },
+    "fulfillment": {
+      "speech": "",
+      "messages": [
+        {
+          "type": 0,
+          "speech": ""
+        }
+      ]
+    },
+    "score": 1
+  },
+  "status": {
+    "code": 200,
+    "errorType": "success",
+    "webhookTimedOut": false
+  },
+  "sessionId": "1518346626208"
+}

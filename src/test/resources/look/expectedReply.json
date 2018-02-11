@@ -1,0 +1,16 @@
+{
+  "speech": "You are in a forest",
+  "displayText": "You are in a forest",
+  "data": "data",
+  "contextOut": [
+    {
+      "name": "state",
+      "parameters": {
+        "posx": 0,
+        "posy": 0
+      },
+      "lifespan": 5
+    }
+  ],
+  "source": "source"
+}

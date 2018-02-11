@@ -32,10 +32,10 @@ public class VoiceAdventure implements RequestStreamHandler {
         final String intentName = request.getIntentName();
 
         // get the parameter object
-        final JsonObject stateParameters = request.getStateParameters();
+        //final JsonObject stateParameters = request.getStateParameters();
 
         Handler handler = getHandler(intentName);
-        handler.updateState(stateParameters);
+        handler.updateState(request.getState());
 
         // write the reply on the output stream
         final String reply = createReply(handler.getReply(), request.getStateContext());

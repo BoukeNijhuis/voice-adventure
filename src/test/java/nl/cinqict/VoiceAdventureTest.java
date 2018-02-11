@@ -17,30 +17,45 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class VoiceAdventureTest {
 
+
     @Test
-    public void test() throws IOException, URISyntaxException {
+    public void testWelcome() {
+        test("welcome/testRequest.json", "welcome/expectedReply.json");
+    }
 
-        // read the request from a file
-        final String request = readFile("testRequest.json");
-        final InputStream inputStream = new ByteArrayInputStream( request.getBytes() );
-        final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        final Context context = Mockito.mock(Context.class);
+    @Test
+    public void testLook() {
+        test("look/testRequest.json", "look/expectedReply.json");
+    }
 
-        // getReply the request
-        final VoiceAdventure voiceAdventure = new VoiceAdventure();
-        voiceAdventure.handleRequest(inputStream, outputStream, context);
 
-        // fetch the reply
-        final String actualReply = new String(outputStream.toByteArray());
-        final String expectedReply = readFile("expectedReply.json");
+    private void test(String requestFileName, String expectedReplyFileName) {
+        try {
+            // read the request from a file
+            final String request = readFile(requestFileName);
+            final InputStream inputStream = new ByteArrayInputStream(request.getBytes());
+            final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            final Context context = Mockito.mock(Context.class);
 
-        final JsonObject actualResultReply = JsonUtil.getJsonObject(actualReply);
-        final JsonObject expectedResultReply = JsonUtil.getJsonObject(expectedReply);
-        assertEquals(expectedResultReply, actualResultReply);
+            // getReply the request
+            final VoiceAdventure voiceAdventure = new VoiceAdventure();
+            voiceAdventure.handleRequest(inputStream, outputStream, context);
+
+            // fetch the reply
+            final String actualReply = new String(outputStream.toByteArray());
+            final String expectedReply = readFile(expectedReplyFileName);
+
+            final JsonObject actualResultReply = JsonUtil.getJsonObject(actualReply);
+            final JsonObject expectedResultReply = JsonUtil.getJsonObject(expectedReply);
+            assertEquals(expectedResultReply, actualResultReply);
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
      * Simple method to read a file.
+     *
      * @return the contents of the file
      * @throws IOException when the file cannot be read
      */
