@@ -1,23 +1,37 @@
 package nl.cinqict.handler;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import nl.cinqict.Request;
 import nl.cinqict.State;
+import nl.cinqict.WorldMap;
 
 import java.awt.*;
 
 public class MoveHandler extends Handler {
 
+    private String reply;
+
     @Override
     public void updateState(Request request) {
-
         State state = request.getState();
         String direction = request.getParameters().get("direction").getAsString();
         Point delta = directionToPoint(direction);
 
-        state.setPosx(state.getPosx() + delta.x);
-        state.setPosy(state.getPosy() + delta.y);
+        // check if the move is possible
+        final int newX = state.getPosx() + delta.x;
+        final int newY = state.getPosy() + delta.y;
+
+        int absCoordinateSum = Math.abs(newX) + Math.abs(newY);
+        // the sum of the absolute of x and y should never be higher than 1
+        if (absCoordinateSum > 1) {
+            // this move is not valid
+            reply = "You cannot move there.";
+            // do not change the location
+        } else {
+            reply = WorldMap.getDescription(newX, newY);
+            // change the location
+            state.setPosx(newX);
+            state.setPosy(newY);
+        }
     }
 
     private Point directionToPoint(String direction) {
@@ -37,6 +51,6 @@ public class MoveHandler extends Handler {
 
     @Override
     public String getReply() {
-        return "You moved.";
+        return reply;
     }
 }

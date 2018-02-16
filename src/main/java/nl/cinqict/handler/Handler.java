@@ -10,7 +10,5 @@ public abstract class Handler {
         // do nothing
     }
 
-    ;
-
     public abstract String getReply();
 }

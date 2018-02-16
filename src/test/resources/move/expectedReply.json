@@ -1,6 +1,6 @@
 {
-  "speech": "You moved.",
-  "displayText": "You moved.",
+  "speech": "You are North.",
+  "displayText": "You are North.",
   "data": "data",
   "contextOut": [
     {
