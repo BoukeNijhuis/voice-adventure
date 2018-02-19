@@ -6,16 +6,9 @@ import nl.cinqict.WorldMap;
 
 public class LookHandler extends Handler {
 
-    private String reply;
-
     @Override
     public void updateState(Request request) {
         State state = request.getState();
-        reply = WorldMap.getDescription(state.getPosx(), state.getPosy());
-    }
-
-    @Override
-    public String getReply() {
-        return reply;
+        reply = WorldMap.getDescription(state.getPosition());
     }
 }

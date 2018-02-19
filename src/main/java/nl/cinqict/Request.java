@@ -4,11 +4,13 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import static nl.cinqict.DialogflowConstants.*;
+
 public class Request {
 
     private JsonObject result;
-    private JsonObject parameters;
     private State state;
+    private Parameters parameters;
 
     public Request(String request) {
 
@@ -16,35 +18,37 @@ public class Request {
         JsonObject jsonObject = JsonUtil.getJsonObject(request);
 
         // get the intentName
-        result = jsonObject.getAsJsonObject("result");
+        result = jsonObject.getAsJsonObject(RESULT);
 
         // get the parameters
-        parameters = result.getAsJsonObject("parameters");
+        JsonObject parameters = result.getAsJsonObject(PARAMETERS);
 
-        JsonArray contexts = result.getAsJsonArray("contexts");
+        JsonArray contexts = result.getAsJsonArray(CONTEXTS);
 
         // get the stateContext
         for (JsonElement o : contexts) {
             final JsonObject context = o.getAsJsonObject();
-            final JsonElement name = context.get("name");
-            if ("state".equals(name.getAsString()))
-                state = new State(context.get("parameters").getAsJsonObject());
+            final JsonElement name = context.get(NAME);
+            if (STATE.equals(name.getAsString()))
+                state = new State(context.get(PARAMETERS).getAsJsonObject());
         }
 
         // the first time there will be no state, so initialize it
         if (state == null) state = new State();
+
+        this.parameters = new Parameters(parameters);
     }
 
     public String getIntentName() {
-        JsonObject metadata = result.getAsJsonObject("metadata");
-        return metadata.get("intentName").getAsString();
+        JsonObject metadata = result.getAsJsonObject(METADATA);
+        return metadata.get(INTENT_NAME).getAsString();
     }
 
     public JsonObject getStateContext() {
         JsonObject stateContext = new JsonObject();
-        stateContext.addProperty("name", "state");
-        stateContext.add("parameters", state.toJsonObject());
-        stateContext.addProperty("lifespan", 5);
+        stateContext.addProperty(NAME, STATE);
+        stateContext.add(PARAMETERS, state.toJsonObject());
+        stateContext.addProperty(LIFESPAN, 5);
 
         return stateContext;
     }
@@ -53,7 +57,7 @@ public class Request {
         return state;
     }
 
-    public JsonObject getParameters() {
+    public Parameters getParameters() {
         return parameters;
     }
 }

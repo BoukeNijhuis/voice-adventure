@@ -6,9 +6,13 @@ import nl.cinqict.State;
 
 public abstract class Handler {
 
+    protected String reply;
+
     public void updateState(Request request) {
         // do nothing
     }
 
-    public abstract String getReply();
+    public String getReply() {
+        return reply;
+    }
 }

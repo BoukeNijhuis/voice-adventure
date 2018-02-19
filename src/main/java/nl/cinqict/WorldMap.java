@@ -19,7 +19,7 @@ public class WorldMap {
         map.put(new Point(x, y), description);
     }
 
-    public static String getDescription(int x, int y) {
-        return map.get(new Point(x, y));
+    public static String getDescription(Point point) {
+        return map.get(point);
     }
 }

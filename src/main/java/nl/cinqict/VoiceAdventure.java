@@ -12,6 +12,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 
+import static nl.cinqict.DialogflowConstants.*;
+
 public class VoiceAdventure implements RequestStreamHandler {
 
     public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context)
@@ -80,14 +82,14 @@ public class VoiceAdventure implements RequestStreamHandler {
     private String createReply(String input, JsonObject context0) {
         JsonObject reply = new JsonObject();
 
-        reply.addProperty("speech", input);
-        reply.addProperty("displayText", input);
-        reply.addProperty("data", "data");
+        reply.addProperty(SPEECH, input);
+        reply.addProperty(DISPLAY_TEXT, input);
+        reply.addProperty(DATA, "data");
 
         JsonArray contextOut = new JsonArray();
         contextOut.add(context0);
-        reply.add("contextOut", contextOut);
-        reply.addProperty("source", "source");
+        reply.add(CONTEXT_OUT, contextOut);
+        reply.addProperty(SOURCE, "source");
         return reply.toString();
     }
 }

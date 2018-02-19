@@ -1,0 +1,36 @@
+package nl.cinqict;
+
+import com.google.gson.JsonObject;
+
+import java.awt.*;
+
+import static nl.cinqict.DialogflowConstants.*;
+
+public class Parameters {
+
+    private final JsonObject parameters;
+
+    public Parameters(JsonObject parameters) {
+        this.parameters = parameters;
+    }
+
+    public Point getDirection() {
+        String direction = parameters.get(DIRECTION).getAsString();
+        return directionToPoint(direction);
+    }
+
+    private Point directionToPoint(String direction) {
+        switch (direction) {
+            case NORTH:
+                return new Point(0, 1);
+            case EAST:
+                return new Point(1, 0);
+            case SOUTH:
+                return new Point(0, -1);
+            case WEST:
+                return new Point(-1, 0);
+            default:
+                return new Point(0, 0);
+        }
+    }
+}

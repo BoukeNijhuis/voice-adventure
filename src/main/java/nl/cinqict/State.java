@@ -3,6 +3,11 @@ package nl.cinqict;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import java.awt.*;
+
+import static nl.cinqict.DialogflowConstants.POSX;
+import static nl.cinqict.DialogflowConstants.POSY;
+
 public class State {
 
     private int posx = 0;
@@ -12,30 +17,23 @@ public class State {
     }
 
     public State(JsonObject stateParameters) {
-        posx = stateParameters.get("posx").getAsInt();
-        posy = stateParameters.get("posy").getAsInt();
+        posx = stateParameters.get(POSX).getAsInt();
+        posy = stateParameters.get(POSY).getAsInt();
     }
 
     public JsonObject toJsonObject() {
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("posx", posx);
-        jsonObject.addProperty("posy", posy);
+        jsonObject.addProperty(POSX, posx);
+        jsonObject.addProperty(POSY, posy);
         return jsonObject;
     }
 
-    public int getPosx() {
-        return posx;
+    public Point getPosition() {
+        return new Point(this.posx, this.posy);
     }
 
-    public void setPosx(int posx) {
-        this.posx = posx;
-    }
-
-    public int getPosy() {
-        return posy;
-    }
-
-    public void setPosy(int posy) {
-        this.posy = posy;
+    public void setPosition(Point point) {
+        this.posx = point.x;
+        this.posy = point.y;
     }
 }
