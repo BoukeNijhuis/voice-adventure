@@ -15,7 +15,7 @@ public class Parameters {
     }
 
     public Point getDirection() {
-        String direction = parameters.get(DIRECTION).getAsString();
+        String direction = getValue(DIRECTION);
         return directionToPoint(direction);
     }
 
@@ -31,6 +31,18 @@ public class Parameters {
                 return new Point(-1, 0);
             default:
                 return new Point(0, 0);
+        }
+    }
+
+    public String getObject() {
+        return getValue(OBJECT);
+    }
+
+    private String getValue(String name) {
+        if (parameters != null && parameters.get(name) != null) {
+            return parameters.get(name).getAsString();
+        } else {
+            return "";
         }
     }
 }

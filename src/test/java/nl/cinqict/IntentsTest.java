@@ -25,7 +25,8 @@ public class IntentsTest {
 
     @Test
     public void look() {
-        test("look");
+        test("look-location");
+        test("look-object");
     }
 
     @Test

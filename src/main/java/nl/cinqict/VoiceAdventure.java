@@ -22,7 +22,7 @@ public class VoiceAdventure implements RequestStreamHandler {
         // get the requestString from the input stream
         final String requestString = readInputStream(inputStream);
 
-        System.out.print("REQUEST: " + requestString);
+        //System.out.print("REQUEST: " + requestString);
 
         // create request object
         final Request request = new Request(requestString);
@@ -39,7 +39,7 @@ public class VoiceAdventure implements RequestStreamHandler {
         // write the reply on the output stream
         final String reply = createReply(handler.getReply(), request.getStateContext());
 
-        System.out.println("REPLY: " + reply);
+        //System.out.println("REPLY: " + reply);
 
         outputStream.write(reply.getBytes());
     }

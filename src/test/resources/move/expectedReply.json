@@ -1,6 +1,6 @@
 {
-  "speech": "You are North.",
-  "displayText": "You are North.",
+  "speech": "You are standing in front of a big castle. There is a door, but it is locked.",
+  "displayText": "You are standing in front of a big castle. There is a door, but it is locked.",
   "data": "data",
   "contextOut": [
     {
