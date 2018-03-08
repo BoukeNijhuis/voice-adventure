@@ -6,8 +6,9 @@
     {
       "name": "state",
       "parameters": {
-        "posx": 0,
-        "posy": 0
+        "posx": -1,
+        "posy": 0,
+        "inventory": []
       },
       "lifespan": 5
     }

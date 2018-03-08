@@ -1,9 +1,9 @@
 package nl.cinqict.handler;
 
-import nl.cinqict.Parameters;
-import nl.cinqict.Request;
-import nl.cinqict.State;
-import nl.cinqict.WorldMap;
+import nl.cinqict.message.Parameters;
+import nl.cinqict.message.Request;
+import nl.cinqict.message.State;
+import nl.cinqict.world.Location;
 
 import java.awt.*;
 
@@ -19,7 +19,7 @@ public class MoveHandler extends Handler {
 
         // check if the move is possible
         if (isValidPosition(newPosition)) {
-            reply = WorldMap.getDescription(newPosition);
+            reply = Location.valueOf(newPosition).getDescription();
             // change the location
             state.setPosition(newPosition);
         } else {

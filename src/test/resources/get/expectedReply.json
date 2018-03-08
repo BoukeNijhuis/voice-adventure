@@ -1,0 +1,19 @@
+{
+  "speech": "Added the handle to the inventory",
+  "displayText": "Added the handle to the inventory",
+  "data": "data",
+  "contextOut": [
+    {
+      "name": "state",
+      "parameters": {
+        "posx": 1,
+        "posy": 0,
+        "inventory": [
+          "HANDLE"
+        ]
+      },
+      "lifespan": 5
+    }
+  ],
+  "source": "source"
+}

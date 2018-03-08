@@ -87,15 +87,6 @@
       "nluResponseTime": 0,
       "intentName": "Default Welcome Intent"
     },
-    "fulfillment": {
-      "speech": "",
-      "messages": [
-        {
-          "type": 0,
-          "speech": ""
-        }
-      ]
-    },
     "score": 1
   },
   "status": {

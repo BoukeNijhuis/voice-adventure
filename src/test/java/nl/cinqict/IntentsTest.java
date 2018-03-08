@@ -18,20 +18,31 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class IntentsTest {
 
 
+    // TODO: unittest for error paths (such as looking at object that is not there)
+
     @Test
     public void welcome() {
         test("welcome");
     }
 
     @Test
-    public void look() {
+    public void lookLocation() {
         test("look-location");
+    }
+
+    @Test
+    public void lookObject() {
         test("look-object");
     }
 
     @Test
     public void move() {
         test("move");
+    }
+
+    @Test
+    public void get() {
+        test("get");
     }
 
     private void test(String folderName) {

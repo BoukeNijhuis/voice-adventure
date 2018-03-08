@@ -1,8 +1,9 @@
-package nl.cinqict;
+package nl.cinqict.message;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import nl.cinqict.JsonUtil;
 
 import static nl.cinqict.DialogflowConstants.*;
 
@@ -29,8 +30,9 @@ public class Request {
         for (JsonElement o : contexts) {
             final JsonObject context = o.getAsJsonObject();
             final JsonElement name = context.get(NAME);
-            if (STATE.equals(name.getAsString()))
+            if (STATE.equals(name.getAsString())) {
                 state = new State(context.get(PARAMETERS).getAsJsonObject());
+            }
         }
 
         // the first time there will be no state, so initialize it

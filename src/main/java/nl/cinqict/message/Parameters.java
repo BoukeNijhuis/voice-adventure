@@ -1,4 +1,4 @@
-package nl.cinqict;
+package nl.cinqict.message;
 
 import com.google.gson.JsonObject;
 
@@ -10,7 +10,7 @@ public class Parameters {
 
     private final JsonObject parameters;
 
-    public Parameters(JsonObject parameters) {
+    Parameters(JsonObject parameters) {
         this.parameters = parameters;
     }
 
@@ -42,7 +42,7 @@ public class Parameters {
         if (parameters != null && parameters.get(name) != null) {
             return parameters.get(name).getAsString();
         } else {
-            return "";
+            return null;
         }
     }
 }

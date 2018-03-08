@@ -81,7 +81,8 @@
         "name": "state",
         "parameters": {
           "posx": 0,
-          "posy": 0
+          "posy": 0,
+          "inventory": []
         },
         "lifespan": 4
       },
@@ -97,15 +98,6 @@
       "webhookForSlotFillingUsed": "false",
       "nluResponseTime": 5,
       "intentName": "LookIntent"
-    },
-    "fulfillment": {
-      "speech": "",
-      "messages": [
-        {
-          "type": 0,
-          "speech": ""
-        }
-      ]
     },
     "score": 1
   },

@@ -1,8 +1,6 @@
 package nl.cinqict.handler;
 
-import com.google.gson.JsonObject;
-import nl.cinqict.Request;
-import nl.cinqict.State;
+import nl.cinqict.message.Request;
 
 public abstract class Handler {
 

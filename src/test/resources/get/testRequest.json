@@ -1,0 +1,51 @@
+{
+  "id": "0173e9ac-9092-411f-8087-39e4913df63d",
+  "timestamp": "2018-03-08T18:22:29.087Z",
+  "lang": "en",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "get handle",
+    "action": "",
+    "actionIncomplete": false,
+    "parameters": {
+      "object": "HANDLE"
+    },
+    "contexts": [
+      {
+        "name": "state",
+        "parameters": {
+          "posx": 1,
+          "posy": 0,
+          "inventory": [],
+          "direction.original": "east",
+          "object.original": "handle",
+          "object": "handle",
+          "direction": "E"
+        },
+        "lifespan": 4
+      }
+    ],
+    "metadata": {
+      "intentId": "76ff3b89-277f-421c-9732-4b34c25bd25a",
+      "webhookUsed": "false",
+      "webhookForSlotFillingUsed": "false",
+      "intentName": "GetIntent"
+    },
+    "fulfillment": {
+      "speech": "",
+      "messages": [
+        {
+          "type": 0,
+          "speech": ""
+        }
+      ]
+    },
+    "score": 1
+  },
+  "status": {
+    "code": 200,
+    "errorType": "success",
+    "webhookTimedOut": false
+  },
+  "sessionId": "7d52dd64-ad42-48c7-a027-0833fca3b9a3"
+}

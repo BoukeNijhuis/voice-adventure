@@ -16,6 +16,7 @@
         "parameters": {
           "posx": 0,
           "posy": 0,
+          "inventory": [],
           "direction.original": "North",
           "direction": "N"
         },
@@ -27,15 +28,6 @@
       "webhookUsed": "false",
       "webhookForSlotFillingUsed": "false",
       "intentName": "MoveIntent"
-    },
-    "fulfillment": {
-      "speech": "",
-      "messages": [
-        {
-          "type": 0,
-          "speech": ""
-        }
-      ]
     },
     "score": 1
   },

@@ -8,14 +8,15 @@
     "action": "",
     "actionIncomplete": false,
     "parameters": {
-      "object": "well"
+      "object": "WELL"
     },
     "contexts": [
       {
         "name": "state",
         "parameters": {
-          "posx": 0,
-          "posy": 0
+          "posx": -1,
+          "posy": 0,
+          "inventory": []
         },
         "lifespan": 5
       }
@@ -26,18 +27,6 @@
       "webhookForSlotFillingUsed": "false",
       "webhookResponseTime": 1390,
       "intentName": "LookIntent"
-    },
-    "fulfillment": {
-      "speech": "You are Center.",
-      "source": "source",
-      "displayText": "You are Center.",
-      "messages": [
-        {
-          "type": 0,
-          "speech": "You are Center."
-        }
-      ],
-      "data": "data"
     },
     "score": 1
   },

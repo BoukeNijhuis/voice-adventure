@@ -5,6 +5,7 @@ import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import nl.cinqict.handler.*;
+import nl.cinqict.message.Request;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -54,6 +55,8 @@ public class VoiceAdventure implements RequestStreamHandler {
                 return new LookHandler();
             case "MoveIntent":
                 return new MoveHandler();
+            case "GetIntent":
+                return new GetHandler();
             default:
                 return new DefaultHandler();
         }
