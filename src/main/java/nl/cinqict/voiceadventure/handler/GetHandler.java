@@ -1,9 +1,9 @@
-package nl.cinqict.handler;
+package nl.cinqict.voiceadventure.handler;
 
-import nl.cinqict.message.Parameters;
-import nl.cinqict.message.Request;
-import nl.cinqict.message.State;
-import nl.cinqict.world.Item;
+import nl.cinqict.voiceadventure.message.Parameters;
+import nl.cinqict.voiceadventure.message.Request;
+import nl.cinqict.voiceadventure.message.State;
+import nl.cinqict.voiceadventure.world.Item;
 
 public class GetHandler extends Handler {
 

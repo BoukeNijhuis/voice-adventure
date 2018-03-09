@@ -1,4 +1,4 @@
-package nl.cinqict.world;
+package nl.cinqict.voiceadventure.world;
 
 import java.awt.*;
 

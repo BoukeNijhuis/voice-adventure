@@ -1,7 +1,7 @@
-package nl.cinqict;
+package nl.cinqict.voiceadventure;
 
 import com.google.gson.*;
-import nl.cinqict.world.Item;
+import nl.cinqict.voiceadventure.world.Item;
 
 import java.util.HashSet;
 import java.util.Set;

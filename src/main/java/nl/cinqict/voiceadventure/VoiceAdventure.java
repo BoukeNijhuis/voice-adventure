@@ -1,19 +1,17 @@
-package nl.cinqict;
+package nl.cinqict.voiceadventure;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import nl.cinqict.handler.*;
-import nl.cinqict.message.Request;
+import nl.cinqict.voiceadventure.handler.*;
+import nl.cinqict.voiceadventure.message.Request;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
-
-import static nl.cinqict.DialogflowConstants.*;
 
 public class VoiceAdventure implements RequestStreamHandler {
 
@@ -85,14 +83,14 @@ public class VoiceAdventure implements RequestStreamHandler {
     private String createReply(String input, JsonObject context0) {
         JsonObject reply = new JsonObject();
 
-        reply.addProperty(SPEECH, input);
-        reply.addProperty(DISPLAY_TEXT, input);
-        reply.addProperty(DATA, "data");
+        reply.addProperty(DialogflowConstants.SPEECH, input);
+        reply.addProperty(DialogflowConstants.DISPLAY_TEXT, input);
+        reply.addProperty(DialogflowConstants.DATA, "data");
 
         JsonArray contextOut = new JsonArray();
         contextOut.add(context0);
-        reply.add(CONTEXT_OUT, contextOut);
-        reply.addProperty(SOURCE, "source");
+        reply.add(DialogflowConstants.CONTEXT_OUT, contextOut);
+        reply.addProperty(DialogflowConstants.SOURCE, "source");
         return reply.toString();
     }
 }

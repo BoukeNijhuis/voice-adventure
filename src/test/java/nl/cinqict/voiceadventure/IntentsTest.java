@@ -1,9 +1,10 @@
-package nl.cinqict;
+package nl.cinqict.voiceadventure;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.google.gson.JsonObject;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

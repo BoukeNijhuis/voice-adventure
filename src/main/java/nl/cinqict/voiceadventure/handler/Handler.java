@@ -1,6 +1,6 @@
-package nl.cinqict.handler;
+package nl.cinqict.voiceadventure.handler;
 
-import nl.cinqict.message.Request;
+import nl.cinqict.voiceadventure.message.Request;
 
 public abstract class Handler {
 

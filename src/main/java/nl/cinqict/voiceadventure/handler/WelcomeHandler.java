@@ -1,4 +1,4 @@
-package nl.cinqict.handler;
+package nl.cinqict.voiceadventure.handler;
 
 public class WelcomeHandler extends Handler {
 

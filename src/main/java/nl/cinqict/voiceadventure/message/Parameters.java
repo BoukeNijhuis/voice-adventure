@@ -1,10 +1,9 @@
-package nl.cinqict.message;
+package nl.cinqict.voiceadventure.message;
 
 import com.google.gson.JsonObject;
+import nl.cinqict.voiceadventure.DialogflowConstants;
 
 import java.awt.*;
-
-import static nl.cinqict.DialogflowConstants.*;
 
 public class Parameters {
 
@@ -15,19 +14,19 @@ public class Parameters {
     }
 
     public Point getDirection() {
-        String direction = getValue(DIRECTION);
+        String direction = getValue(DialogflowConstants.DIRECTION);
         return directionToPoint(direction);
     }
 
     private Point directionToPoint(String direction) {
         switch (direction) {
-            case NORTH:
+            case DialogflowConstants.NORTH:
                 return new Point(0, 1);
-            case EAST:
+            case DialogflowConstants.EAST:
                 return new Point(1, 0);
-            case SOUTH:
+            case DialogflowConstants.SOUTH:
                 return new Point(0, -1);
-            case WEST:
+            case DialogflowConstants.WEST:
                 return new Point(-1, 0);
             default:
                 return new Point(0, 0);
@@ -35,7 +34,7 @@ public class Parameters {
     }
 
     public String getObject() {
-        return getValue(OBJECT);
+        return getValue(DialogflowConstants.OBJECT);
     }
 
     private String getValue(String name) {

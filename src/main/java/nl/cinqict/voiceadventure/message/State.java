@@ -1,17 +1,14 @@
-package nl.cinqict.message;
+package nl.cinqict.voiceadventure.message;
 
 import com.google.gson.JsonObject;
-import nl.cinqict.JsonUtil;
-import nl.cinqict.world.Item;
-import nl.cinqict.world.Location;
+import nl.cinqict.voiceadventure.JsonUtil;
+import nl.cinqict.voiceadventure.DialogflowConstants;
+import nl.cinqict.voiceadventure.world.Location;
+import nl.cinqict.voiceadventure.world.Item;
 
 import java.awt.Point;
 import java.util.HashSet;
 import java.util.Set;
-
-import static nl.cinqict.DialogflowConstants.INVENTORY;
-import static nl.cinqict.DialogflowConstants.POSX;
-import static nl.cinqict.DialogflowConstants.POSY;
 
 public class State {
 
@@ -28,9 +25,9 @@ public class State {
      * @param stateParameters the json object that represents the state
      */
     State(JsonObject stateParameters) {
-        posx = stateParameters.get(POSX).getAsInt();
-        posy = stateParameters.get(POSY).getAsInt();
-        inventory = JsonUtil.getItemSet(stateParameters.get(INVENTORY).getAsJsonArray());
+        posx = stateParameters.get(DialogflowConstants.POSX).getAsInt();
+        posy = stateParameters.get(DialogflowConstants.POSY).getAsInt();
+        inventory = JsonUtil.getItemSet(stateParameters.get(DialogflowConstants.INVENTORY).getAsJsonArray());
     }
 
     /**
@@ -39,9 +36,9 @@ public class State {
      */
     public JsonObject toJsonObject() {
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty(POSX, posx);
-        jsonObject.addProperty(POSY, posy);
-        jsonObject.add(INVENTORY, JsonUtil.getJsonArray(inventory));
+        jsonObject.addProperty(DialogflowConstants.POSX, posx);
+        jsonObject.addProperty(DialogflowConstants.POSY, posy);
+        jsonObject.add(DialogflowConstants.INVENTORY, JsonUtil.getJsonArray(inventory));
         return jsonObject;
     }
 

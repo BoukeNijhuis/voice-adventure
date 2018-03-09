@@ -1,4 +1,4 @@
-package nl.cinqict;
+package nl.cinqict.voiceadventure;
 
 public class DialogflowConstants {
 

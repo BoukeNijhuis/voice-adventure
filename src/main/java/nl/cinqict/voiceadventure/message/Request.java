@@ -1,11 +1,10 @@
-package nl.cinqict.message;
+package nl.cinqict.voiceadventure.message;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import nl.cinqict.JsonUtil;
-
-import static nl.cinqict.DialogflowConstants.*;
+import nl.cinqict.voiceadventure.JsonUtil;
+import nl.cinqict.voiceadventure.DialogflowConstants;
 
 public class Request {
 
@@ -19,19 +18,19 @@ public class Request {
         JsonObject jsonObject = JsonUtil.getJsonObject(request);
 
         // get the intentName
-        result = jsonObject.getAsJsonObject(RESULT);
+        result = jsonObject.getAsJsonObject(DialogflowConstants.RESULT);
 
         // get the parameters
-        JsonObject parameters = result.getAsJsonObject(PARAMETERS);
+        JsonObject parameters = result.getAsJsonObject(DialogflowConstants.PARAMETERS);
 
-        JsonArray contexts = result.getAsJsonArray(CONTEXTS);
+        JsonArray contexts = result.getAsJsonArray(DialogflowConstants.CONTEXTS);
 
         // get the stateContext
         for (JsonElement o : contexts) {
             final JsonObject context = o.getAsJsonObject();
-            final JsonElement name = context.get(NAME);
-            if (STATE.equals(name.getAsString())) {
-                state = new State(context.get(PARAMETERS).getAsJsonObject());
+            final JsonElement name = context.get(DialogflowConstants.NAME);
+            if (DialogflowConstants.STATE.equals(name.getAsString())) {
+                state = new State(context.get(DialogflowConstants.PARAMETERS).getAsJsonObject());
             }
         }
 
@@ -42,15 +41,15 @@ public class Request {
     }
 
     public String getIntentName() {
-        JsonObject metadata = result.getAsJsonObject(METADATA);
-        return metadata.get(INTENT_NAME).getAsString();
+        JsonObject metadata = result.getAsJsonObject(DialogflowConstants.METADATA);
+        return metadata.get(DialogflowConstants.INTENT_NAME).getAsString();
     }
 
     public JsonObject getStateContext() {
         JsonObject stateContext = new JsonObject();
-        stateContext.addProperty(NAME, STATE);
-        stateContext.add(PARAMETERS, state.toJsonObject());
-        stateContext.addProperty(LIFESPAN, 5);
+        stateContext.addProperty(DialogflowConstants.NAME, DialogflowConstants.STATE);
+        stateContext.add(DialogflowConstants.PARAMETERS, state.toJsonObject());
+        stateContext.addProperty(DialogflowConstants.LIFESPAN, 5);
 
         return stateContext;
     }
