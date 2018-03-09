@@ -8,7 +8,8 @@
       "parameters": {
         "posx": 0,
         "posy": 1,
-        "inventory": []
+        "inventory": [],
+        "removedItems": []
       },
       "lifespan": 5
     }

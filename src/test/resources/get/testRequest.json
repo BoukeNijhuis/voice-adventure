@@ -17,6 +17,7 @@
           "posx": 1,
           "posy": 0,
           "inventory": [],
+          "removedItems": [],
           "direction.original": "east",
           "object.original": "handle",
           "object": "handle",

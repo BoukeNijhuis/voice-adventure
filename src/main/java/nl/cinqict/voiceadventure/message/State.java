@@ -15,6 +15,7 @@ public class State {
     private int posx = 0;
     private int posy = 0;
     private Set<Item> inventory = new HashSet<>();
+    private Set<Item> removedItems = new HashSet<>();
 
     State() {
     }
@@ -28,6 +29,7 @@ public class State {
         posx = stateParameters.get(DialogflowConstants.POSX).getAsInt();
         posy = stateParameters.get(DialogflowConstants.POSY).getAsInt();
         inventory = JsonUtil.getItemSet(stateParameters.get(DialogflowConstants.INVENTORY).getAsJsonArray());
+        removedItems = JsonUtil.getItemSet(stateParameters.get(DialogflowConstants.REMOVED_ITEMS).getAsJsonArray());
     }
 
     /**
@@ -39,6 +41,7 @@ public class State {
         jsonObject.addProperty(DialogflowConstants.POSX, posx);
         jsonObject.addProperty(DialogflowConstants.POSY, posy);
         jsonObject.add(DialogflowConstants.INVENTORY, JsonUtil.getJsonArray(inventory));
+        jsonObject.add(DialogflowConstants.REMOVED_ITEMS, JsonUtil.getJsonArray(removedItems));
         return jsonObject;
     }
 
@@ -61,11 +64,20 @@ public class State {
 
     public void removeItem(Item item) {
         inventory.remove(item);
+        removedItems.add(item);
     }
 
     public boolean hasItem(Item item) {
         return inventory.contains(item);
     }
 
-
+    /**
+     * Checks if an item is untouched. Technically it should not be in the inventory or removed items.
+     *
+     * @param item to check
+     * @return true when untouched, false when in inventory or used
+     */
+    public boolean isPristine(Item item) {
+        return !inventory.contains(item) && !removedItems.contains(item);
+    }
 }

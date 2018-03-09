@@ -9,6 +9,8 @@ import java.awt.*;
 
 public class MoveHandler extends Handler {
 
+    static final String CANNOT_MOVE_THERE = "You cannot move there.";
+
     @Override
     public void updateState(Request request) {
         State state = request.getState();
@@ -24,7 +26,7 @@ public class MoveHandler extends Handler {
             state.setPosition(newPosition);
         } else {
             // this move is not valid
-            reply = "You cannot move there.";
+            this.reply = CANNOT_MOVE_THERE;
             // do not change the location
         }
     }

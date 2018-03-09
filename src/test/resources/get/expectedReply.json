@@ -10,7 +10,8 @@
         "posy": 0,
         "inventory": [
           "HANDLE"
-        ]
+        ],
+        "removedItems": []
       },
       "lifespan": 5
     }

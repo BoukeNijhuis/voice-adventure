@@ -82,7 +82,8 @@
         "parameters": {
           "posx": 0,
           "posy": 0,
-          "inventory": []
+          "inventory": [],
+          "removedItems": []
         },
         "lifespan": 4
       },

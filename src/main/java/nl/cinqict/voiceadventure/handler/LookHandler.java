@@ -7,6 +7,8 @@ import nl.cinqict.voiceadventure.world.Item;
 
 public class LookHandler extends Handler {
 
+    static final String NOT_FOUND = "I do not see a %s";
+
     @Override
     public void updateState(Request request) {
         State state = request.getState();
@@ -20,7 +22,7 @@ public class LookHandler extends Handler {
                 reply = item.getDescription();
             } else {
                 // TODO: differentiate between a and an?
-                reply = String.format("I do not see a %s", item.name().toLowerCase());
+                reply = String.format(NOT_FOUND, item.name().toLowerCase());
             }
         }
         // looking at an location

@@ -5,7 +5,6 @@ import com.google.gson.JsonObject;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -16,33 +15,33 @@ import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class IntentsTest {
+class IntentsTest {
 
 
     // TODO: unittest for error paths (such as looking at object that is not there)
 
     @Test
-    public void welcome() {
+    void welcome() {
         test("welcome");
     }
 
     @Test
-    public void lookLocation() {
+    void lookLocation() {
         test("look-location");
     }
 
     @Test
-    public void lookObject() {
+    void lookObject() {
         test("look-object");
     }
 
     @Test
-    public void move() {
+    void move() {
         test("move");
     }
 
     @Test
-    public void get() {
+    void get() {
         test("get");
     }
 
