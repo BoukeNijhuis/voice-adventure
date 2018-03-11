@@ -8,15 +8,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-class GetHandlerTest extends HandlerTest {
+class PickupHandlerTest extends HandlerTest {
 
-    private GetHandler getHandler;
+    private PickupHandler pickupHandler;
 
     @BeforeEach
     void setup() {
         super.setup();
         when(state.getLocation()).thenReturn(Location.CLEARING);
-        getHandler = new GetHandler();
+        pickupHandler = new PickupHandler();
     }
 
     @Test
@@ -24,8 +24,8 @@ class GetHandlerTest extends HandlerTest {
         when(parameters.getObject()).thenReturn(Item.HANDLE.name());
         when(state.isPristine(Item.HANDLE)).thenReturn(true);
 
-        getHandler.updateState(request);
-        assertEquals(String.format(GetHandler.HAPPY_REPLY, "handle"), getHandler.reply);
+        pickupHandler.updateState(request);
+        assertEquals(String.format(PickupHandler.HAPPY_REPLY, "handle"), pickupHandler.reply);
     }
 
     /*
@@ -39,8 +39,8 @@ class GetHandlerTest extends HandlerTest {
     void theItemIsNotPortable() {
         when(parameters.getObject()).thenReturn(Item.CASTLE.name());
 
-        getHandler.updateState(request);
-        assertEquals(GetHandler.UNHAPPY_REPLY, getHandler.reply);
+        pickupHandler.updateState(request);
+        assertEquals(PickupHandler.UNHAPPY_REPLY, pickupHandler.reply);
     }
 
     @Test
@@ -48,15 +48,15 @@ class GetHandlerTest extends HandlerTest {
         when(parameters.getObject()).thenReturn(Item.HANDLE.name());
         when(state.isPristine(Item.HANDLE)).thenReturn(false);
 
-        getHandler.updateState(request);
-        assertEquals(GetHandler.UNHAPPY_REPLY, getHandler.reply);
+        pickupHandler.updateState(request);
+        assertEquals(PickupHandler.UNHAPPY_REPLY, pickupHandler.reply);
     }
 
     @Test
     void theItemIsNotInThisLocation() {
         when(parameters.getObject()).thenReturn(Item.KEY.name());
 
-        getHandler.updateState(request);
-        assertEquals(GetHandler.UNHAPPY_REPLY, getHandler.reply);
+        pickupHandler.updateState(request);
+        assertEquals(PickupHandler.UNHAPPY_REPLY, pickupHandler.reply);
     }
 }

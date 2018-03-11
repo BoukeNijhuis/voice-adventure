@@ -20,6 +20,7 @@ public class DialogflowConstants {
     public static final String WEST = "W";
 
     public static final String OBJECT = "object";
+    public static final String OBJECT1 = "object1";
 
     public static final String POSX = "posx";
     public static final String POSY = "posy";

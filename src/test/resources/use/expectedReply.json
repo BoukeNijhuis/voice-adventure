@@ -1,0 +1,20 @@
+{
+  "speech": "Where should I use the handle on?",
+  "displayText": "Where should I use the handle on?",
+  "data": "data",
+  "contextOut": [
+    {
+      "name": "state",
+      "parameters": {
+        "posx": -1,
+        "posy": 0,
+        "inventory": [
+          "HANDLE"
+        ],
+        "removedItems": []
+      },
+      "lifespan": 5
+    }
+  ],
+  "source": "source"
+}

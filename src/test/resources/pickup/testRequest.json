@@ -30,7 +30,7 @@
       "intentId": "76ff3b89-277f-421c-9732-4b34c25bd25a",
       "webhookUsed": "false",
       "webhookForSlotFillingUsed": "false",
-      "intentName": "GetIntent"
+      "intentName": "PickupIntent"
     },
     "fulfillment": {
       "speech": "",

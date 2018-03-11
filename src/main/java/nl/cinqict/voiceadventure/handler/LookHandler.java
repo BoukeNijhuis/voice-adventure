@@ -22,7 +22,7 @@ public class LookHandler extends Handler {
                 reply = item.getDescription();
             } else {
                 // TODO: differentiate between a and an?
-                reply = String.format(NOT_FOUND, item.name().toLowerCase());
+                reply = String.format(NOT_FOUND, item.getName());
             }
         }
         // looking at an location

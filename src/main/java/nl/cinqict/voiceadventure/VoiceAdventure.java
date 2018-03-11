@@ -21,24 +21,17 @@ public class VoiceAdventure implements RequestStreamHandler {
         // get the requestString from the input stream
         final String requestString = readInputStream(inputStream);
 
-        //System.out.print("REQUEST: " + requestString);
-
         // create request object
         final Request request = new Request(requestString);
 
         // get the intentName
         final String intentName = request.getIntentName();
 
-        // get the parameter object
-        //final JsonObject stateParameters = request.getStateParameters();
-
         Handler handler = getHandler(intentName);
         handler.updateState(request);
 
         // write the reply on the output stream
         final String reply = createReply(handler.getReply(), request.getStateContext());
-
-        //System.out.println("REPLY: " + reply);
 
         outputStream.write(reply.getBytes());
     }
@@ -53,8 +46,10 @@ public class VoiceAdventure implements RequestStreamHandler {
                 return new LookHandler();
             case "MoveIntent":
                 return new MoveHandler();
-            case "GetIntent":
-                return new GetHandler();
+            case "PickupIntent":
+                return new PickupHandler();
+            case "UseIntent":
+                return new UseHandler();
             default:
                 return new DefaultHandler();
         }

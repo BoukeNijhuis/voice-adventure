@@ -37,9 +37,13 @@ public class Parameters {
         return getValue(DialogflowConstants.OBJECT);
     }
 
+    public String getSecondObject() {
+        return getValue(DialogflowConstants.OBJECT1);
+    }
+
     private String getValue(String name) {
-        if (parameters != null && parameters.get(name) != null) {
-            return parameters.get(name).getAsString();
+        if (parameters != null && parameters.get(name) != null && !parameters.get(name).getAsString().equals("")) {
+            return parameters.get(name).getAsString().toUpperCase();
         } else {
             return null;
         }
