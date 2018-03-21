@@ -1,5 +1,6 @@
 package nl.cinqict.voiceadventure.message;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import nl.cinqict.voiceadventure.DialogflowConstants;
 
@@ -42,10 +43,24 @@ public class Parameters {
     }
 
     private String getValue(String name) {
-        if (parameters != null && parameters.get(name) != null && !parameters.get(name).getAsString().equals("")) {
-            return parameters.get(name).getAsString().toUpperCase();
-        } else {
-            return null;
+
+        if (parameters != null) {
+            final JsonElement jsonElement = parameters.get(name);
+            if (jsonElement != null) {
+                // happens when an unknown object is used
+                if (jsonElement.isJsonArray()) {
+                    return null;
+                }
+
+                final String value = jsonElement.getAsString();
+                if (!"".equals(value)) {
+                    return value.toUpperCase();
+                }
+            }
+
+
         }
+
+        return null;
     }
 }

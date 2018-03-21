@@ -47,6 +47,11 @@ class IntentsTest {
         test("use");
     }
 
+    @Test
+    void useUnknownObject() {
+        test("use-unknown-object");
+    }
+
     private void test(String folderName) {
         test(folderName + "/testRequest.json", folderName + "/expectedReply.json");
     }

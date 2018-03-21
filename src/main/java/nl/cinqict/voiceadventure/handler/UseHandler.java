@@ -7,6 +7,7 @@ import nl.cinqict.voiceadventure.world.Item;
 
 public class UseHandler extends Handler {
 
+    static final String UNKNOWN_ITEM = "I do not know how to do this.";
     static final String CANNOT_BE_USED_ON_EACH_OTHER = "Cannot use %s on %s.";
     static final String CANNOT_USE_ONE_ITEM = "Where should I use the %s on?";
     static final String NOT_IN_INVENTORY = "There is no object called %s in your inventory.";
@@ -16,10 +17,20 @@ public class UseHandler extends Handler {
     public void updateState(Request request) {
         State state = request.getState();
         Parameters parameters = request.getParameters();
-        Item itemA = Item.valueOf(parameters.getObject());
+
+        Item itemA;
+        final String object = parameters.getObject();
+        if (object != null) {
+            itemA = Item.valueOf(object);
+        } else {
+            reply = String.format(UNKNOWN_ITEM);
+            return;
+        }
+
         Item itemB;
-        if (parameters.getSecondObject() != null) {
-            itemB = Item.valueOf(parameters.getSecondObject());
+        final String secondObject = parameters.getSecondObject();
+        if (secondObject != null) {
+            itemB = Item.valueOf(secondObject);
         } else {
             reply = String.format(CANNOT_USE_ONE_ITEM, itemA.getName());
             return;

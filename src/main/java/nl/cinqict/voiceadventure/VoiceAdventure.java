@@ -39,6 +39,8 @@ public class VoiceAdventure implements RequestStreamHandler {
 
     private Handler getHandler(String command) {
 
+        // TODO: what is in my inventory handler?
+
         switch (command) {
             case "Default Welcome Intent":
                 return new WelcomeHandler();

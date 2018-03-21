@@ -1,0 +1,39 @@
+{
+  "id": "993e63e1-5dd6-4b9d-bcc7-0d9bcb14cea9",
+  "timestamp": "2018-03-21T18:59:13.588Z",
+  "lang": "en",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "use box",
+    "action": "",
+    "actionIncomplete": false,
+    "parameters": {
+      "object": [],
+      "object1": ""
+    },
+    "contexts": [],
+    "metadata": {
+      "intentId": "96d22928-d793-478d-af58-5da77297ba81",
+      "webhookUsed": "true",
+      "webhookForSlotFillingUsed": "false",
+      "webhookResponseTime": 3200,
+      "intentName": "UseIntent"
+    },
+    "fulfillment": {
+      "messages": [
+        {
+          "type": 0,
+          "speech": ""
+        }
+      ]
+    },
+    "score": 0.7799999713897705
+  },
+  "status": {
+    "code": 200,
+    "errorType": "success",
+    "webhookTimedOut": false
+  },
+  "sessionId": "8993e238-616f-44ec-b733-e8bf0be9f84e",
+  "alternativeResultsFromKnowledgeService": {}
+}
