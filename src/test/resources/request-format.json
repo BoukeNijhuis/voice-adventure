@@ -8,9 +8,7 @@
     "speech": "",
     "action": "",
     "actionIncomplete": false,
-    "parameters":
-    %
-    s,
+    "parameters": %s,
     "contexts": [],
     "metadata": {
       "intentId": "af782936-4ea2-4c51-99f9-8da4d974f35f",
