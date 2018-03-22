@@ -36,11 +36,12 @@ public class UseHandler extends Handler {
             return;
         }
 
-        final BooleanAndString bas = canBeUsed(itemA, itemB, state);
-        if (bas.canBeUsed) {
+        final UseResult useResult = canBeUsed(itemA, itemB, state);
+        if (useResult.canBeUsed) {
             state.removeItem(itemA);
+            state.addItem(useResult.reward);
         }
-        reply = bas.reply;
+        reply = useResult.reply;
     }
 
     /**
@@ -49,29 +50,31 @@ public class UseHandler extends Handler {
      * - item B is in the current location
      * - it makes sense to us item A on B
      */
-    private BooleanAndString canBeUsed(Item itemA, Item itemB, State state) {
+    private UseResult canBeUsed(Item itemA, Item itemB, State state) {
         boolean inInventory = state.hasItem(itemA);
         boolean correctLocation = itemB.getLocation().equals(state.getLocation());
         boolean makesSense = itemA.canBeUsedOn(itemB);
 
-        BooleanAndString bas = new BooleanAndString();
+        UseResult useResult = new UseResult();
 
         if (!inInventory) {
-            bas.reply = String.format(NOT_IN_INVENTORY, itemA.getName());
+            useResult.reply = String.format(NOT_IN_INVENTORY, itemA.getName());
         } else if (!correctLocation) {
-            bas.reply = String.format(INCORRECT_LOCATION, itemB.getName());
+            useResult.reply = String.format(INCORRECT_LOCATION, itemB.getName());
         } else if (!makesSense) {
-            bas.reply = String.format(CANNOT_BE_USED_ON_EACH_OTHER, itemA.getName(), itemB.getName());
+            useResult.reply = String.format(CANNOT_BE_USED_ON_EACH_OTHER, itemA.getName(), itemB.getName());
         } else {
-            bas.canBeUsed = true;
-            bas.reply = itemA.getUseReply();
+            useResult.canBeUsed = true;
+            useResult.reply = itemA.getUseReply();
+            useResult.reward = itemA.getUseReward();
         }
 
-        return bas;
+        return useResult;
     }
 
-    private class BooleanAndString {
+    private class UseResult {
         boolean canBeUsed = false;
         String reply;
+        Item reward;
     }
 }

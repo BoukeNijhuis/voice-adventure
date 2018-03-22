@@ -8,7 +8,7 @@ public enum Item {
     KEY("The key looks used.", Location.CAVE, true, DOOR, "The key fits in the lock of the door. You unlock the door. You need all your strength to open the door. You finished the game.", WINNER),
     TROLL("The troll is a big, lumbering beast. It looks hungry.", Location.CAVE, false),
     SWORD("The sword is rusty and pointy.", Location.WELL, true, TROLL, "You attack the troll with your sword. It fights back but it is no match for you swordfighting skills. You kill the troll swiftly and take the key", KEY),
-    WELL("In the well lies a wooden bucket with a rusty, pointy sword inside. The bucket is still attached to the lifting mechanism.", Location.WELL, false),
+    WELL("In the well lies a wooden bucket with a rusty, pointy sword inside. The bucket is still attached to the lift mechanism.", Location.WELL, false),
     HANDLE("The handle is made of iron.", Location.CLEARING, true, WELL, "The handle seems to be part of the well. You use the handle to lift the bucket and you pickup the sword.", SWORD),
     BUSH("Under the bush lies an old, iron handle.", Location.CLEARING, false),
     CASTLE("The castle build with grey bricks and sports a number of yellow flags.", Location.CASTLE, false);
@@ -18,19 +18,19 @@ public enum Item {
     boolean portable;
     Item canBeUsedOn;
     String useReply;
-    Item useBenefit;
+    Item useReward;
 
     Item(String description, Location location, boolean portable) {
         this(description, location, portable, null, null, null);
     }
 
-    Item(String description, Location location, boolean portable, Item canBeUsedOn, String useReply, Item useBenefit) {
+    Item(String description, Location location, boolean portable, Item canBeUsedOn, String useReply, Item useReward) {
         this.description = description;
         this.location = location;
         this.portable = portable;
         this.canBeUsedOn = canBeUsedOn;
         this.useReply = useReply;
-        this.useBenefit = useBenefit;
+        this.useReward = useReward;
     }
 
     public String getName() {
@@ -55,5 +55,9 @@ public enum Item {
 
     public String getUseReply() {
         return useReply;
+    }
+
+    public Item getUseReward() {
+        return useReward;
     }
 }

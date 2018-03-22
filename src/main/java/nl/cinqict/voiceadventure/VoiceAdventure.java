@@ -41,20 +41,22 @@ public class VoiceAdventure implements RequestStreamHandler {
 
         // TODO: what is in my inventory handler?
 
-        switch (command) {
-            case "Default Welcome Intent":
-                return new WelcomeHandler();
-            case "LookIntent":
-                return new LookHandler();
-            case "MoveIntent":
-                return new MoveHandler();
-            case "PickupIntent":
-                return new PickupHandler();
-            case "UseIntent":
-                return new UseHandler();
-            default:
-                return new DefaultHandler();
-        }
+//        switch (command) {
+//            case "Default Welcome Intent":
+//                return new WelcomeHandler();
+//            case "LookIntent":
+//                return new LookHandler();
+//            case "MoveIntent":
+//                return new MoveHandler();
+//            case "PickupIntent":
+//                return new PickupHandler();
+//            case "UseIntent":
+//                return new UseHandler();
+//            default:
+//                return new DefaultHandler();
+//        }
+
+        return Intent.getIntent(command).getHandler();
     }
 
     /**

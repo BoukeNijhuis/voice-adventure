@@ -60,7 +60,7 @@ class IntentsTest {
     private void test(String requestFileName, String expectedReplyFileName) {
         try {
             // read the request from a file
-            final String request = readFile(requestFileName);
+            final String request = TestUtils.readFile(requestFileName);
             final InputStream inputStream = new ByteArrayInputStream(request.getBytes());
             final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             final Context context = Mockito.mock(Context.class);
@@ -71,7 +71,7 @@ class IntentsTest {
 
             // fetch the reply
             final String actualReply = new String(outputStream.toByteArray());
-            final String expectedReply = readFile(expectedReplyFileName);
+            final String expectedReply = TestUtils.readFile(expectedReplyFileName);
 
             final JsonObject actualResultReply = JsonUtil.getJsonObject(actualReply);
             final JsonObject expectedResultReply = JsonUtil.getJsonObject(expectedReply);
@@ -81,13 +81,4 @@ class IntentsTest {
         }
     }
 
-    /**
-     * Simple method to read a file.
-     *
-     * @return the contents of the file
-     * @throws IOException when the file cannot be read
-     */
-    private String readFile(String fileName) throws IOException, URISyntaxException {
-        return new String(Files.readAllBytes((Paths.get(ClassLoader.getSystemResource(fileName).toURI()))));
-    }
 }
