@@ -32,4 +32,9 @@ public class DialogflowConstants {
     public static final String DATA = "data";
     public static final String CONTEXT_OUT = "contextOut";
     public static final String SOURCE = "source";
+    public static final String VOICE_ADVENTURE = "VoiceAdventure";
+
+    public static final String FOLLOWUP_EVENT = "followupEvent";
+
+    public static final String END_EVENT = "END_EVENT";
 }

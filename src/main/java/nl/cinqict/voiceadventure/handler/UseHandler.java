@@ -23,7 +23,7 @@ public class UseHandler extends Handler {
         if (object != null) {
             itemA = Item.valueOf(object);
         } else {
-            reply = String.format(UNKNOWN_ITEM);
+            reply = UNKNOWN_ITEM;
             return;
         }
 
@@ -42,6 +42,11 @@ public class UseHandler extends Handler {
             state.addItem(useResult.reward);
         }
         reply = useResult.reply;
+
+        // check if the game is over
+        if (useResult.reward == Item.WINNER) {
+            gameOver = true;
+        }
     }
 
     /**

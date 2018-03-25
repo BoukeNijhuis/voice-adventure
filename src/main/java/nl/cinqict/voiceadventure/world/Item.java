@@ -5,7 +5,7 @@ public enum Item {
 
     DOOR("The door made of sturdy wood.", Location.CASTLE, false),
     WINNER("Not a real item, but this item enabled me to delete a constructor :-)", Location.CASTLE, false),
-    KEY("The key looks used.", Location.CAVE, true, DOOR, "The key fits in the lock of the door. You unlock the door. You need all your strength to open the door. You finished the game.", WINNER),
+    KEY("The key looks used.", Location.CAVE, true, DOOR, "this text is in DialogFlow", WINNER),
     TROLL("The troll is a big, lumbering beast. It looks hungry.", Location.CAVE, false),
     SWORD("The sword is rusty and pointy.", Location.WELL, true, TROLL, "You attack the troll with your sword. It fights back but it is no match for you swordfighting skills. You kill the troll swiftly and take the key.", KEY),
     WELL("In the well lies a wooden bucket with a rusty, pointy sword inside. The bucket is still attached to the lift mechanism.", Location.WELL, false),

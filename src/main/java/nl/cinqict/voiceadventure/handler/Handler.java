@@ -4,7 +4,8 @@ import nl.cinqict.voiceadventure.message.Request;
 
 public abstract class Handler {
 
-    protected String reply;
+    String reply;
+    boolean gameOver = false;
 
     public void updateState(Request request) {
         // do nothing
@@ -12,5 +13,9 @@ public abstract class Handler {
 
     public String getReply() {
         return reply;
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
     }
 }

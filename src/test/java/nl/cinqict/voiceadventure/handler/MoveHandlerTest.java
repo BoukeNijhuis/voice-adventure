@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 
+import static nl.cinqict.voiceadventure.world.Location.CASTLE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -25,7 +26,7 @@ class MoveHandlerTest extends HandlerTest {
         when(parameters.getDirection()).thenReturn(new Point(0, 1));
 
         moveHandler.updateState(request);
-        assertEquals(Location.CASTLE.getDescription(), moveHandler.reply);
+        assertEquals(CASTLE.getDescription(), moveHandler.reply);
     }
 
     @Test

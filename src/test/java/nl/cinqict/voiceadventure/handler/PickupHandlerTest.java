@@ -5,6 +5,9 @@ import nl.cinqict.voiceadventure.world.Location;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static nl.cinqict.voiceadventure.world.Item.CASTLE;
+import static nl.cinqict.voiceadventure.world.Item.HANDLE;
+import static nl.cinqict.voiceadventure.world.Item.KEY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -21,8 +24,8 @@ class PickupHandlerTest extends HandlerTest {
 
     @Test
     void theItemCanBePickedUp() {
-        when(parameters.getObject()).thenReturn(Item.HANDLE.name());
-        when(state.isPristine(Item.HANDLE)).thenReturn(true);
+        when(parameters.getObject()).thenReturn(HANDLE.name());
+        when(state.isPristine(HANDLE)).thenReturn(true);
 
         pickupHandler.updateState(request);
         assertEquals(String.format(PickupHandler.HAPPY_REPLY, "handle"), pickupHandler.reply);
@@ -37,7 +40,7 @@ class PickupHandlerTest extends HandlerTest {
 
     @Test
     void theItemIsNotPortable() {
-        when(parameters.getObject()).thenReturn(Item.CASTLE.name());
+        when(parameters.getObject()).thenReturn(CASTLE.name());
 
         pickupHandler.updateState(request);
         assertEquals(PickupHandler.UNHAPPY_REPLY, pickupHandler.reply);
@@ -45,8 +48,8 @@ class PickupHandlerTest extends HandlerTest {
 
     @Test
     void theItemIsNotPristine() {
-        when(parameters.getObject()).thenReturn(Item.HANDLE.name());
-        when(state.isPristine(Item.HANDLE)).thenReturn(false);
+        when(parameters.getObject()).thenReturn(HANDLE.name());
+        when(state.isPristine(HANDLE)).thenReturn(false);
 
         pickupHandler.updateState(request);
         assertEquals(PickupHandler.UNHAPPY_REPLY, pickupHandler.reply);
@@ -54,7 +57,7 @@ class PickupHandlerTest extends HandlerTest {
 
     @Test
     void theItemIsNotInThisLocation() {
-        when(parameters.getObject()).thenReturn(Item.KEY.name());
+        when(parameters.getObject()).thenReturn(KEY.name());
 
         pickupHandler.updateState(request);
         assertEquals(PickupHandler.UNHAPPY_REPLY, pickupHandler.reply);

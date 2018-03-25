@@ -36,7 +36,7 @@
       "webhookUsed": "true",
       "webhookForSlotFillingUsed": "false",
       "nluResponseTime": 0,
-      "intentName": "Default Welcome Intent"
+      "intentName": "WelcomeIntent"
     },
     "score": 1
   },

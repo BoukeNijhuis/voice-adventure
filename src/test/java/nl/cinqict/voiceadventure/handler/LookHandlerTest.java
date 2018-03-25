@@ -5,6 +5,8 @@ import nl.cinqict.voiceadventure.world.Location;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static nl.cinqict.voiceadventure.world.Item.KEY;
+import static nl.cinqict.voiceadventure.world.Location.WELL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -20,14 +22,14 @@ class LookHandlerTest extends HandlerTest {
 
     @Test
     void lookAtLocation() {
-        when(state.getLocation()).thenReturn(Location.WELL);
+        when(state.getLocation()).thenReturn(WELL);
         lookHandler.updateState(request);
-        assertEquals(Location.WELL.getDescription(), lookHandler.reply);
+        assertEquals(WELL.getDescription(), lookHandler.reply);
     }
 
     @Test
     void itemNotInThisLocation() {
-        when(parameters.getObject()).thenReturn(Item.KEY.name());
+        when(parameters.getObject()).thenReturn(KEY.name());
 
         lookHandler.updateState(request);
         assertEquals(String.format(LookHandler.NOT_FOUND, "key"), lookHandler.reply);
@@ -35,20 +37,20 @@ class LookHandlerTest extends HandlerTest {
 
     @Test
     void itemInThisLocation() {
-        when(parameters.getObject()).thenReturn(Item.KEY.name());
+        when(parameters.getObject()).thenReturn(KEY.name());
         when(state.getLocation()).thenReturn(Location.CAVE);
 
         lookHandler.updateState(request);
-        assertEquals(Item.KEY.getDescription(), lookHandler.reply);
+        assertEquals(KEY.getDescription(), lookHandler.reply);
     }
 
     @Test
     void itemInInventory() {
-        when(parameters.getObject()).thenReturn(Item.KEY.name());
-        when(state.getLocation()).thenReturn(Location.WELL);
-        when(state.hasItem(Item.KEY)).thenReturn(true);
+        when(parameters.getObject()).thenReturn(KEY.name());
+        when(state.getLocation()).thenReturn(WELL);
+        when(state.hasItem(KEY)).thenReturn(true);
 
         lookHandler.updateState(request);
-        assertEquals(Item.KEY.getDescription(), lookHandler.reply);
+        assertEquals(KEY.getDescription(), lookHandler.reply);
     }
 }

@@ -1,9 +1,9 @@
 package nl.cinqict.voiceadventure.handler;
 
 
-public class DefaultHandler extends Handler {
+class DefaultHandler extends Handler {
 
-    public DefaultHandler() {
+    DefaultHandler() {
         reply = "Default reply!";
     }
 }

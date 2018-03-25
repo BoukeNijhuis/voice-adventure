@@ -4,7 +4,8 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import nl.cinqict.voiceadventure.handler.*;
+import nl.cinqict.voiceadventure.handler.Handler;
+import nl.cinqict.voiceadventure.handler.Intent;
 import nl.cinqict.voiceadventure.message.Request;
 
 import java.io.IOException;
@@ -12,6 +13,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
+
+import static nl.cinqict.voiceadventure.DialogflowConstants.*;
 
 public class VoiceAdventure implements RequestStreamHandler {
 
@@ -31,7 +34,7 @@ public class VoiceAdventure implements RequestStreamHandler {
         handler.updateState(request);
 
         // write the reply on the output stream
-        final String reply = createReply(handler.getReply(), request.getStateContext());
+        final String reply = createReply(handler.getReply(), request.getStateContext(), handler.isGameOver());
 
         outputStream.write(reply.getBytes());
     }
@@ -40,21 +43,6 @@ public class VoiceAdventure implements RequestStreamHandler {
     private Handler getHandler(String command) {
 
         // TODO: what is in my inventory handler?
-
-//        switch (command) {
-//            case "Default Welcome Intent":
-//                return new WelcomeHandler();
-//            case "LookIntent":
-//                return new LookHandler();
-//            case "MoveIntent":
-//                return new MoveHandler();
-//            case "PickupIntent":
-//                return new PickupHandler();
-//            case "UseIntent":
-//                return new UseHandler();
-//            default:
-//                return new DefaultHandler();
-//        }
 
         return Intent.getIntent(command).getHandler();
     }
@@ -79,17 +67,24 @@ public class VoiceAdventure implements RequestStreamHandler {
         return stringBuilder.toString();
     }
 
-    private String createReply(String input, JsonObject context0) {
+    private String createReply(String input, JsonObject contextObject, boolean isGameOver) {
         JsonObject reply = new JsonObject();
 
-        reply.addProperty(DialogflowConstants.SPEECH, input);
-        reply.addProperty(DialogflowConstants.DISPLAY_TEXT, input);
-        reply.addProperty(DialogflowConstants.DATA, "data");
+        reply.addProperty(SPEECH, input);
+        reply.addProperty(DISPLAY_TEXT, input);
+        reply.addProperty(DATA, DATA);
 
         JsonArray contextOut = new JsonArray();
-        contextOut.add(context0);
-        reply.add(DialogflowConstants.CONTEXT_OUT, contextOut);
-        reply.addProperty(DialogflowConstants.SOURCE, "source");
+        contextOut.add(contextObject);
+        reply.add(CONTEXT_OUT, contextOut);
+        reply.addProperty(SOURCE, VOICE_ADVENTURE);
+
+        if (isGameOver) {
+            JsonObject followUpEvent = new JsonObject();
+            followUpEvent.addProperty(NAME, END_EVENT);
+            reply.add(FOLLOWUP_EVENT, followUpEvent);
+        }
+
         return reply.toString();
     }
 }

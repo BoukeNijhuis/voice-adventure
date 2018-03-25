@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import static nl.cinqict.voiceadventure.DialogflowConstants.*;
 import static nl.cinqict.voiceadventure.handler.Intent.*;
 import static nl.cinqict.voiceadventure.world.Item.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class SolutionTest {
 
@@ -45,7 +46,7 @@ class SolutionTest {
 
         String requestFormat = TestUtils.readFile("request-format.json");
         JsonArray contextOut = null;
-        String speech = null;
+        JsonObject responseObject = null;
 
         for (Action action : solution) {
             System.out.println(action.intent.toString() + ", " + action.parameter);
@@ -70,10 +71,10 @@ class SolutionTest {
 
             // fetch the reply
             final String response = new String(outputStream.toByteArray());
-            final JsonObject responseObject = JsonUtil.getJsonObject(response);
+            responseObject = JsonUtil.getJsonObject(response);
 
             // print the reply
-            speech = responseObject.get(SPEECH).getAsString();
+            final String speech = responseObject.get(SPEECH).getAsString();
             System.out.println(speech);
 
             // create next request format (by adding the contextOut as context in the request)
@@ -81,7 +82,7 @@ class SolutionTest {
         }
 
         // assert that the last reply finishes the game
-        assertEquals(Item.KEY.getUseReply(), speech);
+        assertNotNull(responseObject.get("followupEvent"));
     }
 
     private class Action {

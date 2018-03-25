@@ -4,7 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public enum Intent {
 
-    WELCOME_INTENT("Default Welcome Intent", WelcomeHandler.class),
+    WELCOME_INTENT("WelcomeIntent", WelcomeHandler.class),
     LOOK_INTENT("LookIntent", LookHandler.class),
     MOVE_INTENT("MoveIntent", MoveHandler.class),
     PICKUP_INTENT("PickupIntent", PickupHandler.class),
