@@ -8,7 +8,8 @@ public enum Intent {
     LOOK_INTENT("LookIntent", LookHandler.class),
     MOVE_INTENT("MoveIntent", MoveHandler.class),
     PICKUP_INTENT("PickupIntent", PickupHandler.class),
-    USE_INTENT("UseIntent", UseHandler.class);
+    USE_INTENT("UseIntent", UseHandler.class),
+    INVENTORY_INTENT("InventoryIntent", InventoryHandler.class);
 
     private String intentName;
     private Class<Handler> handler;

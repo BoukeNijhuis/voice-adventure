@@ -80,4 +80,8 @@ public class State {
     public boolean isPristine(Item item) {
         return !inventory.contains(item) && !removedItems.contains(item);
     }
+
+    public Set<Item> getInventory() {
+        return inventory;
+    }
 }
