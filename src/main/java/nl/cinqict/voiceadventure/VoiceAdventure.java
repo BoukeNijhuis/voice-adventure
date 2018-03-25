@@ -2,10 +2,9 @@ package nl.cinqict.voiceadventure;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import nl.cinqict.voiceadventure.handler.Handler;
 import nl.cinqict.voiceadventure.handler.Intent;
+import nl.cinqict.voiceadventure.message.Reply;
 import nl.cinqict.voiceadventure.message.Request;
 
 import java.io.IOException;
@@ -13,8 +12,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
-
-import static nl.cinqict.voiceadventure.DialogflowConstants.*;
 
 public class VoiceAdventure implements RequestStreamHandler {
 
@@ -34,9 +31,10 @@ public class VoiceAdventure implements RequestStreamHandler {
         handler.updateState(request);
 
         // write the reply on the output stream
-        final String reply = createReply(handler.getReply(), request.getStateContext(), handler.isGameOver());
+        final Reply reply = new Reply(handler.getReply(), request.getStateContext(), handler.isGameOver());
+        final String replyAsString = reply.createReply();
 
-        outputStream.write(reply.getBytes());
+        outputStream.write(replyAsString.getBytes());
     }
 
 
@@ -67,24 +65,5 @@ public class VoiceAdventure implements RequestStreamHandler {
         return stringBuilder.toString();
     }
 
-    private String createReply(String input, JsonObject contextObject, boolean isGameOver) {
-        JsonObject reply = new JsonObject();
 
-        reply.addProperty(SPEECH, input);
-        reply.addProperty(DISPLAY_TEXT, input);
-        reply.addProperty(DATA, DATA);
-
-        JsonArray contextOut = new JsonArray();
-        contextOut.add(contextObject);
-        reply.add(CONTEXT_OUT, contextOut);
-        reply.addProperty(SOURCE, VOICE_ADVENTURE);
-
-        if (isGameOver) {
-            JsonObject followUpEvent = new JsonObject();
-            followUpEvent.addProperty(NAME, END_EVENT);
-            reply.add(FOLLOWUP_EVENT, followUpEvent);
-        }
-
-        return reply.toString();
-    }
 }
