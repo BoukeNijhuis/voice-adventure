@@ -1,17 +1,16 @@
 {
-  "speech": "You are standing in front of a big castle. There is a door, but it is locked.",
-  "displayText": "You are standing in front of a big castle. There is a door, but it is locked.",
-  "data": "data",
-  "contextOut": [
+  "fulfillmentText": "You are standing next to a dry well. The handle of the well is missing.",
+  "payload": {},
+  "outputContexts": [
     {
-      "name": "state",
+      "name": "projects/voiceadventure-3cf8a/agent/sessions/861bb609-e436-3c30-b395-43610eb091f5/contexts/state",
       "parameters": {
-        "posx": 0,
-        "posy": 1,
+        "posx": -1,
+        "posy": 0,
         "inventory": [],
         "removedItems": []
       },
-      "lifespan": 5
+      "lifespanCount": 5
     }
   ],
   "source": "VoiceAdventure"

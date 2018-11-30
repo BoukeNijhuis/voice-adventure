@@ -1,39 +1,50 @@
 {
-  "id": "993e63e1-5dd6-4b9d-bcc7-0d9bcb14cea9",
-  "timestamp": "2018-03-21T18:59:13.588Z",
-  "lang": "en",
-  "result": {
-    "source": "agent",
-    "resolvedQuery": "use box",
-    "action": "",
-    "actionIncomplete": false,
+  "responseId": "78fba242-e8e3-4303-8a1d-025651f0e804",
+  "queryResult": {
+    "queryText": "use box",
     "parameters": {
-      "object": [],
+      "object": "",
       "object1": ""
     },
-    "contexts": [],
-    "metadata": {
-      "intentId": "96d22928-d793-478d-af58-5da77297ba81",
-      "webhookUsed": "true",
-      "webhookForSlotFillingUsed": "false",
-      "webhookResponseTime": 3200,
-      "intentName": "UseIntent"
-    },
-    "fulfillment": {
-      "messages": [
-        {
-          "type": 0,
-          "speech": ""
+    "allRequiredParamsPresent": true,
+    "fulfillmentMessages": [
+      {
+        "text": {
+          "text": [
+            ""
+          ]
         }
-      ]
+      }
+    ],
+    "outputContexts": [
+      {
+        "name": "projects/voiceadventure-3cf8a/agent/sessions/861bb609-e436-3c30-b395-43610eb091f5/contexts/state",
+        "lifespanCount": 4,
+        "parameters": {
+          "posx": 1,
+          "object1": "",
+          "posy": 0,
+          "direction.original": "right",
+          "removedItems": [],
+          "object.original": "",
+          "object1.original": "",
+          "inventory": [
+            "HANDLE"
+          ],
+          "object": "",
+          "direction": "E"
+        }
+      }
+    ],
+    "intent": {
+      "name": "projects/voiceadventure-3cf8a/agent/intents/96d22928-d793-478d-af58-5da77297ba81",
+      "displayName": "UseIntent"
     },
-    "score": 0.7799999713897705
+    "intentDetectionConfidence": 0.78,
+    "languageCode": "en"
   },
-  "status": {
-    "code": 200,
-    "errorType": "success",
-    "webhookTimedOut": false
+  "originalDetectIntentRequest": {
+    "payload": {}
   },
-  "sessionId": "8993e238-616f-44ec-b733-e8bf0be9f84e",
-  "alternativeResultsFromKnowledgeService": {}
+  "session": "projects/voiceadventure-3cf8a/agent/sessions/861bb609-e436-3c30-b395-43610eb091f5"
 }

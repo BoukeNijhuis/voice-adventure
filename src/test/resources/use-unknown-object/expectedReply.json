@@ -1,17 +1,18 @@
 {
-  "speech": "I do not know how to do this.",
-  "displayText": "I do not know how to do this.",
-  "data": "data",
-  "contextOut": [
+  "fulfillmentText": "I do not know how to do this.",
+  "payload": {},
+  "outputContexts": [
     {
-      "name": "state",
+      "name": "projects/voiceadventure-3cf8a/agent/sessions/861bb609-e436-3c30-b395-43610eb091f5/contexts/state",
       "parameters": {
-        "posx": 0,
+        "posx": 1,
         "posy": 0,
-        "inventory": [],
+        "inventory": [
+          "HANDLE"
+        ],
         "removedItems": []
       },
-      "lifespan": 5
+      "lifespanCount": 5
     }
   ],
   "source": "VoiceAdventure"

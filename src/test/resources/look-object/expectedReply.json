@@ -1,17 +1,16 @@
 {
-  "speech": "In the well lies a wooden bucket with a rusty, pointy sword inside. The bucket is still attached to the lift mechanism.",
-  "displayText": "In the well lies a wooden bucket with a rusty, pointy sword inside. The bucket is still attached to the lift mechanism.",
-  "data": "data",
-  "contextOut": [
+  "fulfillmentText": "In the well lies a wooden bucket with a rusty, pointy sword inside. The bucket is still attached to the lift mechanism.",
+  "payload": {},
+  "outputContexts": [
     {
-      "name": "state",
+      "name": "projects/voiceadventure-3cf8a/agent/sessions/861bb609-e436-3c30-b395-43610eb091f5/contexts/state",
       "parameters": {
         "posx": -1,
         "posy": 0,
         "inventory": [],
         "removedItems": []
       },
-      "lifespan": 5
+      "lifespanCount": 5
     }
   ],
   "source": "VoiceAdventure"

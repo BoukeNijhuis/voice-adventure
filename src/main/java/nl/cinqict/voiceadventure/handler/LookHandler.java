@@ -26,6 +26,7 @@ public class LookHandler extends Handler {
             }
         }
         // looking at an location
+        // TODO: items can already be picked up! (so need different descriptions)
         else {
             reply = state.getLocation().getDescription();
         }

@@ -1,57 +1,45 @@
 {
-  "id": "485cfc0e-5380-4743-aba7-493054397d56",
-  "timestamp": "2018-03-11T20:06:56.927Z",
-  "lang": "en",
-  "result": {
-    "source": "agent",
-    "resolvedQuery": "use handle",
-    "action": "",
-    "actionIncomplete": false,
+  "responseId": "4d353b01-2254-4d3c-96bb-e5e68897ce69",
+  "queryResult": {
+    "queryText": "get handle",
     "parameters": {
-      "object": "handle",
-      "object1": ""
+      "object": "handle"
     },
-    "contexts": [
+    "allRequiredParamsPresent": true,
+    "fulfillmentMessages": [
       {
-        "name": "state",
-        "parameters": {
-          "posx": -1,
-          "object1": "",
-          "posy": 0,
-          "direction.original": "west",
-          "removedItems": [],
-          "object.original": "handle",
-          "object1.original": "",
-          "inventory": [
-            "HANDLE"
-          ],
-          "object": "handle",
-          "direction": "W"
-        },
-        "lifespan": 4
+        "text": {
+          "text": [
+            ""
+          ]
+        }
       }
     ],
-    "metadata": {
-      "intentId": "96d22928-d793-478d-af58-5da77297ba81",
-      "webhookUsed": "true",
-      "webhookForSlotFillingUsed": "false",
-      "webhookResponseTime": 3095,
-      "intentName": "UseIntent"
-    },
-    "fulfillment": {
-      "messages": [
-        {
-          "type": 0,
-          "speech": ""
+    "outputContexts": [
+      {
+        "name": "projects/voiceadventure-3cf8a/agent/sessions/861bb609-e436-3c30-b395-43610eb091f5/contexts/state",
+        "lifespanCount": 4,
+        "parameters": {
+          "posx": 1,
+          "posy": 0,
+          "direction.original": "right",
+          "removedItems": [],
+          "object.original": "handle",
+          "inventory": [],
+          "object": "handle",
+          "direction": "E"
         }
-      ]
+      }
+    ],
+    "intent": {
+      "name": "projects/voiceadventure-3cf8a/agent/intents/76ff3b89-277f-421c-9732-4b34c25bd25a",
+      "displayName": "PickupIntent"
     },
-    "score": 1
+    "intentDetectionConfidence": 1,
+    "languageCode": "en"
   },
-  "status": {
-    "code": 200,
-    "errorType": "success",
-    "webhookTimedOut": false
+  "originalDetectIntentRequest": {
+    "payload": {}
   },
-  "sessionId": "7d52dd64-ad42-48c7-a027-0833fca3b9a3"
+  "session": "projects/voiceadventure-3cf8a/agent/sessions/861bb609-e436-3c30-b395-43610eb091f5"
 }

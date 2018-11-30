@@ -1,10 +1,9 @@
 {
-  "speech": "Added the handle to the inventory",
-  "displayText": "Added the handle to the inventory",
-  "data": "data",
-  "contextOut": [
+  "fulfillmentText": "Added the handle to the inventory",
+  "payload": {},
+  "outputContexts": [
     {
-      "name": "state",
+      "name": "projects/voiceadventure-3cf8a/agent/sessions/2df94e7a-c59f-2b57-a6c2-8113a6ce0eb7/contexts/state",
       "parameters": {
         "posx": 1,
         "posy": 0,
@@ -13,7 +12,7 @@
         ],
         "removedItems": []
       },
-      "lifespan": 5
+      "lifespanCount": 5
     }
   ],
   "source": "VoiceAdventure"

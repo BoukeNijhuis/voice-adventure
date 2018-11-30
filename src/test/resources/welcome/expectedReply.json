@@ -1,17 +1,16 @@
 {
-  "speech": "Hi! Welcome to Voice Adventure. You can directly start with issuing commands or ask for help about commands.",
-  "displayText": "Hi! Welcome to Voice Adventure. You can directly start with issuing commands or ask for help about commands.",
-  "data": "data",
-  "contextOut": [
+  "fulfillmentText": "Hi! Welcome to Voice Adventure. You play this game like an text adventure, but instead of text, you use your voice. You can directly start with issuing commands or ask for more help.",
+  "payload": {},
+  "outputContexts": [
     {
-      "name": "state",
+      "name": "projects/voiceadventure-3cf8a/agent/sessions/861bb609-e436-3c30-b395-43610eb091f5/contexts/state",
       "parameters": {
         "posx": 0,
         "posy": 0,
         "inventory": [],
         "removedItems": []
       },
-      "lifespan": 5
+      "lifespanCount": 5
     }
   ],
   "source": "VoiceAdventure"

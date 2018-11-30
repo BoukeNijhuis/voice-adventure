@@ -1,40 +1,45 @@
 {
-  "id": "c6f2c1bb-8214-477c-9b60-3de09c8172a1",
-  "timestamp": "2018-02-19T20:04:56.785Z",
-  "lang": "en",
-  "result": {
-    "source": "agent",
-    "resolvedQuery": "look well",
-    "action": "",
-    "actionIncomplete": false,
+  "responseId": "aacecc32-6e12-424f-afb6-5af8efd9181c",
+  "queryResult": {
+    "queryText": "look well",
     "parameters": {
-      "object": "WELL"
+      "object": "well"
     },
-    "contexts": [
+    "allRequiredParamsPresent": true,
+    "fulfillmentMessages": [
       {
-        "name": "state",
+        "text": {
+          "text": [
+            ""
+          ]
+        }
+      }
+    ],
+    "outputContexts": [
+      {
+        "name": "projects/voiceadventure-3cf8a/agent/sessions/861bb609-e436-3c30-b395-43610eb091f5/contexts/state",
+        "lifespanCount": 4,
         "parameters": {
           "posx": -1,
           "posy": 0,
+          "direction.original": "left",
+          "removedItems": [],
+          "object.original": "well",
           "inventory": [],
-          "removedItems": []
-        },
-        "lifespan": 5
+          "object": "well",
+          "direction": "W"
+        }
       }
     ],
-    "metadata": {
-      "intentId": "f76c505e-c495-417f-9178-2e7481460112",
-      "webhookUsed": "true",
-      "webhookForSlotFillingUsed": "false",
-      "webhookResponseTime": 1390,
-      "intentName": "LookIntent"
+    "intent": {
+      "name": "projects/voiceadventure-3cf8a/agent/intents/f76c505e-c495-417f-9178-2e7481460112",
+      "displayName": "LookIntent"
     },
-    "score": 1
+    "intentDetectionConfidence": 1,
+    "languageCode": "en"
   },
-  "status": {
-    "code": 200,
-    "errorType": "success",
-    "webhookTimedOut": false
+  "originalDetectIntentRequest": {
+    "payload": {}
   },
-  "sessionId": "f3b7fd53-3db0-4e00-a7b1-2803a0dab7af"
+  "session": "projects/voiceadventure-3cf8a/agent/sessions/861bb609-e436-3c30-b395-43610eb091f5"
 }

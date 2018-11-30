@@ -2,16 +2,15 @@ package nl.cinqict.voiceadventure;
 
 public class DialogflowConstants {
 
-    public static final String RESULT = "result";
+    public static final String QUERY_RESULT = "queryResult";
     public static final String PARAMETERS = "parameters";
-    public static final String CONTEXTS = "contexts";
+    public static final String CONTEXTS = "outputContexts";
     public static final String NAME = "name";
     public static final String STATE = "state";
-
-    public static final String METADATA = "metadata";
-    public static final String INTENT_NAME = "intentName";
-
-    public static final String LIFESPAN = "lifespan";
+    public static final String INTENT = "intent";
+    public static final String DISPLAY_NAME = "displayName";
+    public static final String LIFESPAN = "lifespanCount";
+    public static final String SESSION = "session";
 
     public static final String DIRECTION = "direction";
     public static final String NORTH = "N";
@@ -27,14 +26,13 @@ public class DialogflowConstants {
     public static final String INVENTORY = "inventory";
     public static final String REMOVED_ITEMS = "removedItems";
 
-    public static final String SPEECH = "speech";
-    public static final String DISPLAY_TEXT = "displayText";
-    public static final String DATA = "data";
-    public static final String CONTEXT_OUT = "contextOut";
+    public static final String FULFILLMENT_TEXT = "fulfillmentText";
+    public static final String PAYLOAD = "payload";
+    public static final String CONTEXT_OUT = "outputContexts";
     public static final String SOURCE = "source";
     public static final String VOICE_ADVENTURE = "VoiceAdventure";
 
-    public static final String FOLLOWUP_EVENT = "followupEvent";
+    public static final String FOLLOWUP_EVENT = "followupEventInput";
 
     public static final String END_EVENT = "END_EVENT";
 }

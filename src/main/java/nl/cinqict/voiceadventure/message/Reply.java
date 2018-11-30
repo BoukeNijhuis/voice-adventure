@@ -7,12 +7,12 @@ import static nl.cinqict.voiceadventure.DialogflowConstants.*;
 
 public class Reply {
 
-    private String speech;
+    private String fullfillmentText;
     private JsonObject contextObject;
     private boolean isGameOver;
 
-    public Reply(String speech, JsonObject contextObject, boolean isGameOver) {
-        this.speech = speech;
+    public Reply(String fullfillmentText, JsonObject contextObject, boolean isGameOver) {
+        this.fullfillmentText = fullfillmentText;
         this.contextObject = contextObject;
         this.isGameOver = isGameOver;
     }
@@ -20,12 +20,14 @@ public class Reply {
     public String createReply() {
         JsonObject reply = new JsonObject();
 
-        reply.addProperty(SPEECH, speech);
-        reply.addProperty(DISPLAY_TEXT, speech);
-        reply.addProperty(DATA, DATA);
+        reply.addProperty(FULFILLMENT_TEXT, fullfillmentText);
+        reply.add(PAYLOAD, new JsonObject());
 
         JsonArray contextOut = new JsonArray();
+
+        // todo: fix the name of context name
         contextOut.add(contextObject);
+
         reply.add(CONTEXT_OUT, contextOut);
         reply.addProperty(SOURCE, VOICE_ADVENTURE);
 

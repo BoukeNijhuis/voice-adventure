@@ -1,17 +1,16 @@
 {
-  "speech": "You are at a crossing. In the north you see a castle. In the east is a clearing in the woods. In the south is a cave. In the west is a well.",
-  "displayText": "You are at a crossing. In the north you see a castle. In the east is a clearing in the woods. In the south is a cave. In the west is a well.",
-  "data": "data",
-  "contextOut": [
+  "fulfillmentText": "You are at a crossing. In the north you see a castle. In the east is a clearing in the woods. In the south is a cave. In the west is a well.",
+  "payload": {},
+  "outputContexts": [
     {
-      "name": "state",
+      "name": "projects/voiceadventure-3cf8a/agent/sessions/861bb609-e436-3c30-b395-43610eb091f5/contexts/state",
       "parameters": {
         "posx": 0,
         "posy": 0,
         "inventory": [],
         "removedItems": []
       },
-      "lifespan": 5
+      "lifespanCount": 5
     }
   ],
   "source": "VoiceAdventure"

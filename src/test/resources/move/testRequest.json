@@ -1,41 +1,43 @@
 {
-  "id": "9b73e47c-37ca-457f-97ce-2e18ca3e9b5b",
-  "timestamp": "2018-02-16T13:22:58.846Z",
-  "lang": "en",
-  "result": {
-    "source": "agent",
-    "resolvedQuery": "Move North",
-    "action": "",
-    "actionIncomplete": false,
+  "responseId": "4962416d-6bba-4960-80d7-750eac732384",
+  "queryResult": {
+    "queryText": "go left",
     "parameters": {
-      "direction": "N"
+      "direction": "W"
     },
-    "contexts": [
+    "allRequiredParamsPresent": true,
+    "fulfillmentMessages": [
       {
-        "name": "state",
+        "text": {
+          "text": [
+            ""
+          ]
+        }
+      }
+    ],
+    "outputContexts": [
+      {
+        "name": "projects/voiceadventure-3cf8a/agent/sessions/861bb609-e436-3c30-b395-43610eb091f5/contexts/state",
+        "lifespanCount": 4,
         "parameters": {
           "posx": 0,
           "posy": 0,
-          "inventory": [],
+          "direction.original": "left",
           "removedItems": [],
-          "direction.original": "North",
-          "direction": "N"
-        },
-        "lifespan": 4
+          "inventory": [],
+          "direction": "W"
+        }
       }
     ],
-    "metadata": {
-      "intentId": "59a0f5c4-d155-4655-847f-8d52fe03651c",
-      "webhookUsed": "false",
-      "webhookForSlotFillingUsed": "false",
-      "intentName": "MoveIntent"
+    "intent": {
+      "name": "projects/voiceadventure-3cf8a/agent/intents/59a0f5c4-d155-4655-847f-8d52fe03651c",
+      "displayName": "MoveIntent"
     },
-    "score": 1
+    "intentDetectionConfidence": 1,
+    "languageCode": "en"
   },
-  "status": {
-    "code": 200,
-    "errorType": "success",
-    "webhookTimedOut": false
+  "originalDetectIntentRequest": {
+    "payload": {}
   },
-  "sessionId": "10cb4830-b03a-426a-8ab8-c6da7c683a31"
+  "session": "projects/voiceadventure-3cf8a/agent/sessions/861bb609-e436-3c30-b395-43610eb091f5"
 }

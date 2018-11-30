@@ -1,52 +1,45 @@
 {
-  "id": "0173e9ac-9092-411f-8087-39e4913df63d",
-  "timestamp": "2018-03-08T18:22:29.087Z",
-  "lang": "en",
-  "result": {
-    "source": "agent",
-    "resolvedQuery": "get handle",
-    "action": "",
-    "actionIncomplete": false,
+  "responseId": "97a67425-240b-4509-804d-09f19d263543",
+  "queryResult": {
+    "queryText": "pick up handle",
     "parameters": {
-      "object": "HANDLE"
+      "object": "handle"
     },
-    "contexts": [
+    "allRequiredParamsPresent": true,
+    "fulfillmentMessages": [
       {
-        "name": "state",
+        "text": {
+          "text": [
+            ""
+          ]
+        }
+      }
+    ],
+    "outputContexts": [
+      {
+        "name": "projects/voiceadventure-3cf8a/agent/sessions/2df94e7a-c59f-2b57-a6c2-8113a6ce0eb7/contexts/state",
+        "lifespanCount": 4,
         "parameters": {
           "posx": 1,
           "posy": 0,
-          "inventory": [],
-          "removedItems": [],
           "direction.original": "east",
+          "removedItems": [],
           "object.original": "handle",
-          "object": "handle",
-          "direction": "E"
-        },
-        "lifespan": 4
+          "inventory": [],
+          "direction": "E",
+          "object": "handle"
+        }
       }
     ],
-    "metadata": {
-      "intentId": "76ff3b89-277f-421c-9732-4b34c25bd25a",
-      "webhookUsed": "false",
-      "webhookForSlotFillingUsed": "false",
-      "intentName": "PickupIntent"
+    "intent": {
+      "name": "projects/voiceadventure-3cf8a/agent/intents/76ff3b89-277f-421c-9732-4b34c25bd25a",
+      "displayName": "PickupIntent"
     },
-    "fulfillment": {
-      "speech": "",
-      "messages": [
-        {
-          "type": 0,
-          "speech": ""
-        }
-      ]
-    },
-    "score": 1
+    "intentDetectionConfidence": 1,
+    "languageCode": "en"
   },
-  "status": {
-    "code": 200,
-    "errorType": "success",
-    "webhookTimedOut": false
+  "originalDetectIntentRequest": {
+    "payload": {}
   },
-  "sessionId": "7d52dd64-ad42-48c7-a027-0833fca3b9a3"
+  "session": "projects/voiceadventure-3cf8a/agent/sessions/2df94e7a-c59f-2b57-a6c2-8113a6ce0eb7"
 }

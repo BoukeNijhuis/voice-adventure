@@ -1,28 +1,28 @@
 {
-  "id": "134c0fe2-ef8e-4521-b440-f3adbf097ada",
-  "timestamp": "2018-02-11T09:51:59.963Z",
-  "lang": "en-us",
-  "result": {
-    "source": "agent",
-    "resolvedQuery": "resolvedQuery",
-    "speech": "",
-    "action": "",
-    "actionIncomplete": false,
+  "responseId": "97a67425-240b-4509-804d-09f19d263543",
+  "queryResult": {
+    "queryText": "",
     "parameters": %s,
-    "contexts": [],
-    "metadata": {
-      "intentId": "af782936-4ea2-4c51-99f9-8da4d974f35f",
-      "webhookUsed": "true",
-      "webhookForSlotFillingUsed": "false",
-      "nluResponseTime": 0,
-      "intentName": "%s"
+    "allRequiredParamsPresent": true,
+    "fulfillmentMessages": [
+      {
+        "text": {
+          "text": [
+            ""
+          ]
+        }
+      }
+    ],
+    "outputContexts": [],
+    "intent": {
+      "name": "projects/voiceadventure-3cf8a/agent/intents/76ff3b89-277f-421c-9732-4b34c25bd25a",
+      "displayName": "%s"
     },
-    "score": 1
+    "intentDetectionConfidence": 1,
+    "languageCode": "en"
   },
-  "status": {
-    "code": 200,
-    "errorType": "success",
-    "webhookTimedOut": false
+  "originalDetectIntentRequest": {
+    "payload": {}
   },
-  "sessionId": "1518342719716"
+  "session": "projects/voiceadventure-3cf8a/agent/sessions/2df94e7a-c59f-2b57-a6c2-8113a6ce0eb7"
 }

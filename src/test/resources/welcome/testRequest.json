@@ -1,49 +1,29 @@
 {
-  "id": "134c0fe2-ef8e-4521-b440-f3adbf097ada",
-  "timestamp": "2018-02-11T09:51:59.963Z",
-  "lang": "en-us",
-  "result": {
-    "source": "agent",
-    "resolvedQuery": "GOOGLE_ASSISTANT_WELCOME",
-    "speech": "",
-    "action": "input.welcome",
-    "actionIncomplete": false,
-    "parameters": {},
-    "contexts": [
+  "responseId": "aa18663f-351a-4edc-bffa-9b722282cc72",
+  "queryResult": {
+    "queryText": "look",
+    "parameters": {
+      "object": ""
+    },
+    "allRequiredParamsPresent": true,
+    "fulfillmentMessages": [
       {
-        "name": "google_assistant_welcome",
-        "parameters": {},
-        "lifespan": 0
-      },
-      {
-        "name": "actions_capability_audio_output",
-        "parameters": {},
-        "lifespan": 0
-      },
-      {
-        "name": "google_assistant_input_type_voice",
-        "parameters": {},
-        "lifespan": 0
-      },
-      {
-        "name": "actions_capability_media_response_audio",
-        "parameters": {},
-        "lifespan": 0
+        "text": {
+          "text": [
+            ""
+          ]
+        }
       }
     ],
-    "metadata": {
-      "intentId": "af782936-4ea2-4c51-99f9-8da4d974f35f",
-      "webhookUsed": "true",
-      "webhookForSlotFillingUsed": "false",
-      "nluResponseTime": 0,
-      "intentName": "WelcomeIntent"
+    "intent": {
+      "name": "projects/voiceadventure-3cf8a/agent/intents/f76c505e-c495-417f-9178-2e7481460112",
+      "displayName": "WelcomeIntent"
     },
-    "score": 1
+    "intentDetectionConfidence": 0.77,
+    "languageCode": "en"
   },
-  "status": {
-    "code": 200,
-    "errorType": "success",
-    "webhookTimedOut": false
+  "originalDetectIntentRequest": {
+    "payload": {}
   },
-  "sessionId": "1518342719716"
+  "session": "projects/voiceadventure-3cf8a/agent/sessions/861bb609-e436-3c30-b395-43610eb091f5"
 }

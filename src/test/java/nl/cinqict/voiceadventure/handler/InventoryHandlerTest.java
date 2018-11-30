@@ -8,6 +8,7 @@ import java.util.HashSet;
 
 import static nl.cinqict.voiceadventure.world.Item.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 class InventoryHandlerTest extends HandlerTest {
@@ -46,6 +47,8 @@ class InventoryHandlerTest extends HandlerTest {
         inventory.add(HANDLE);
         when(state.getInventory()).thenReturn(inventory);
         inventoryHandler.updateState(request);
-        assertEquals("The following items are in your inventory: key sword handle ", inventoryHandler.reply);
+        assertTrue(inventoryHandler.getReply().contains(KEY.getName()));
+        assertTrue(inventoryHandler.getReply().contains(SWORD.getName()));
+        assertTrue(inventoryHandler.getReply().contains(HANDLE.getName()));
     }
 }

@@ -5,7 +5,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import nl.cinqict.voiceadventure.handler.Intent;
-import nl.cinqict.voiceadventure.world.Item;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -56,7 +55,7 @@ class SolutionTest {
             // add contextOut (if any)
             if (contextOut != null) {
                 final JsonObject requestWithoutContext = JsonUtil.getJsonObject(request);
-                final JsonElement contexts = requestWithoutContext.get(RESULT).getAsJsonObject().get(CONTEXTS);
+                final JsonElement contexts = requestWithoutContext.get(QUERY_RESULT).getAsJsonObject().get(CONTEXTS);
                 contexts.getAsJsonArray().addAll(contextOut);
                 request = requestWithoutContext.toString();
             }
@@ -74,7 +73,7 @@ class SolutionTest {
             responseObject = JsonUtil.getJsonObject(response);
 
             // print the reply
-            final String speech = responseObject.get(SPEECH).getAsString();
+            final String speech = responseObject.get(FULFILLMENT_TEXT).getAsString();
             System.out.println(speech);
 
             // create next request format (by adding the contextOut as context in the request)
@@ -82,7 +81,7 @@ class SolutionTest {
         }
 
         // assert that the last reply finishes the game
-        assertNotNull(responseObject.get("followupEvent"));
+        assertNotNull(responseObject.get(FOLLOWUP_EVENT));
     }
 
     private class Action {

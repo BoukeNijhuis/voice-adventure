@@ -1,13 +1,10 @@
 package nl.cinqict.voiceadventure.handler;
 
-import nl.cinqict.voiceadventure.world.Item;
 import nl.cinqict.voiceadventure.world.Location;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static nl.cinqict.voiceadventure.world.Item.CASTLE;
-import static nl.cinqict.voiceadventure.world.Item.HANDLE;
-import static nl.cinqict.voiceadventure.world.Item.KEY;
+import static nl.cinqict.voiceadventure.world.Item.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
