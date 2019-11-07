@@ -36,7 +36,5 @@ public enum Location {
     public String getDescription() {
         return description;
     }
-
-
 }
 
