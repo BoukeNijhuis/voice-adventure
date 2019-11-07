@@ -8,6 +8,11 @@
     <artifactId>voice-adventure</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <!-- prevents warning about platform dependent build -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -53,7 +58,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>RELEASE</version>
+            <version>5.5.2</version>
         </dependency>
 
         <dependency>
