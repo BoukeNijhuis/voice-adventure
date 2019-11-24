@@ -1,44 +1,46 @@
 package nl.cinqict.voiceadventure.handler;
 
-import java.lang.reflect.InvocationTargetException;
-
 public enum Intent {
 
-    WELCOME_INTENT("WelcomeIntent", WelcomeHandler.class),
-    LOOK_INTENT("LookIntent", LookHandler.class),
-    MOVE_INTENT("MoveIntent", MoveHandler.class),
-    PICKUP_INTENT("PickupIntent", PickupHandler.class),
-    USE_INTENT("UseIntent", UseHandler.class),
-    INVENTORY_INTENT("InventoryIntent", InventoryHandler.class);
+    WELCOME_INTENT("WelcomeIntent", new WelcomeHandler()),
+    LOOK_INTENT("LookIntent", new LookHandler()),
+    MOVE_INTENT("MoveIntent", new MoveHandler()),
+    PICKUP_INTENT("PickupIntent", new PickupHandler()),
+    USE_INTENT("UseIntent", new UseHandler()),
+    INVENTORY_INTENT("InventoryIntent", new InventoryHandler());
 
     private String intentName;
-    private Class<Handler> handler;
+    private Handler handler;
 
-    Intent(String intentName, Class handler) {
+    Intent(String intentName, Handler handler) {
         this.intentName = intentName;
         this.handler = handler;
     }
 
     public static Intent getIntent(String intentName) {
-        final Intent[] intents = Intent.values();
+        return Intent.valueOf(toScreamingSnakeCase(intentName));
+    }
 
-        // TODO: inefficient
-        for (Intent intent : intents) {
-            if (intent.intentName.equals(intentName)) {
-                return intent;
-            }
+    private static String toScreamingSnakeCase(String s) {
+        if (s == null) {
+            return null;
         }
 
-        return null;
+        StringBuffer result = new StringBuffer();
+
+        for (Character c : s.toCharArray()) {
+            // add an underscore when there is a capital (but not for the first character)
+            if (result.length() != 0 && Character.isUpperCase(c)) {
+                result.append("_");
+            }
+            result.append(c.toString().toUpperCase());
+        }
+
+        return result.toString();
     }
 
     public Handler getHandler() {
-        try {
-            return handler.getConstructor().newInstance();
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-            e.printStackTrace();
-            return new DefaultHandler();
-        }
+        return handler;
     }
 
     public String getIntentName() {

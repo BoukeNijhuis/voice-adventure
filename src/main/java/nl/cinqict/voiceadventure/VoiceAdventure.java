@@ -37,11 +37,7 @@ public class VoiceAdventure implements RequestStreamHandler {
         outputStream.write(replyAsString.getBytes());
     }
 
-
     private Handler getHandler(String command) {
-
-        // TODO: what is in my inventory handler?
-
         return Intent.getIntent(command).getHandler();
     }
 
