@@ -6,7 +6,7 @@ import static nl.cinqict.voiceadventure.world.Item.HANDLE
 import static nl.cinqict.voiceadventure.world.Item.SWORD
 import static nl.cinqict.voiceadventure.world.Item.WELL
 
-class UseHandlerSpec extends HandlerSpec {
+class UseHandlerTest extends HandlerTest {
 
     private UseHandler useHandler
 

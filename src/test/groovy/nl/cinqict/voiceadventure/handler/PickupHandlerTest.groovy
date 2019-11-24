@@ -6,7 +6,7 @@ import static nl.cinqict.voiceadventure.world.Item.CASTLE
 import static nl.cinqict.voiceadventure.world.Item.HANDLE
 import static nl.cinqict.voiceadventure.world.Item.KEY
 
-class PickupHandlerSpec extends HandlerSpec {
+class PickupHandlerTest extends HandlerTest {
 
     private PickupHandler pickupHandler
 

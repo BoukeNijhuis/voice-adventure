@@ -1,35 +1,23 @@
-package nl.cinqict.voiceadventure;
+package nl.cinqict.voiceadventure
 
-import com.amazonaws.services.lambda.runtime.Context;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import nl.cinqict.voiceadventure.handler.Intent;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import com.amazonaws.services.lambda.runtime.Context
+import com.google.gson.JsonArray
+import com.google.gson.JsonElement
+import com.google.gson.JsonObject
+import nl.cinqict.voiceadventure.handler.Intent
+import spock.lang.Specification
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
+import static nl.cinqict.voiceadventure.DialogflowConstants.*
+import static nl.cinqict.voiceadventure.handler.Intent.*
+import static nl.cinqict.voiceadventure.world.Item.*
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-
-import static nl.cinqict.voiceadventure.DialogflowConstants.*;
-import static nl.cinqict.voiceadventure.handler.Intent.*;
-import static nl.cinqict.voiceadventure.world.Item.*;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-class SolutionTest {
+class SolutionTest extends Specification {
 
     private ArrayList<Action> solution = new ArrayList<>();
 
-    @Test
     void solution() throws IOException, URISyntaxException {
 
+        // create the list of actions that is the solution
         //solution.add(new Action("?", WELCOME_INTENT));
         solution.add(new Action(MOVE_INTENT, DIRECTION, EAST));
         solution.add(new Action(PICKUP_INTENT, OBJECT, HANDLE.getName()));
@@ -62,7 +50,7 @@ class SolutionTest {
 
             final InputStream inputStream = new ByteArrayInputStream(request.getBytes());
             final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            final Context context = Mockito.mock(Context.class);
+            final Context context = Mock()
 
             // handle the request
             final VoiceAdventure voiceAdventure = new VoiceAdventure();
@@ -81,7 +69,8 @@ class SolutionTest {
         }
 
         // assert that the last reply finishes the game
-        assertNotNull(responseObject.get(FOLLOWUP_EVENT));
+        expect:
+        responseObject.get(FOLLOWUP_EVENT) != null;
     }
 
     private class Action {

@@ -1,12 +1,12 @@
 package nl.cinqict.voiceadventure.handler
 
-import nl.cinqict.voiceadventure.handler.LookHandler
+
 import nl.cinqict.voiceadventure.world.Location
 
 import static nl.cinqict.voiceadventure.world.Item.KEY
 import static nl.cinqict.voiceadventure.world.Location.WELL
 
-class LookHandlerSpec extends HandlerSpec {
+class LookHandlerTest extends HandlerTest {
 
     private LookHandler lookHandler = new LookHandler()
 

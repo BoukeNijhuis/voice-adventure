@@ -4,7 +4,7 @@ import java.awt.*
 
 import static nl.cinqict.voiceadventure.world.Location.CASTLE
 
-class MoveHandlerSpec extends HandlerSpec {
+class MoveHandlerTest extends HandlerTest {
 
     private MoveHandler moveHandler
 

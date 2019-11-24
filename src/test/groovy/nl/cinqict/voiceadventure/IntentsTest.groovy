@@ -1,54 +1,49 @@
-package nl.cinqict.voiceadventure;
+package nl.cinqict.voiceadventure
 
-import com.amazonaws.services.lambda.runtime.Context;
-import com.google.gson.JsonObject;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import com.amazonaws.services.lambda.runtime.Context
+import com.google.gson.JsonObject
+import spock.lang.Specification
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+class IntentsTest extends Specification {
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-class IntentsTest {
-
-    @Test
     void welcome() {
+        expect:
         test("welcome");
     }
 
-    @Test
+
     void lookLocation() {
+        expect:
         test("look-location");
     }
 
-    @Test
+
     void lookObject() {
+        expect:
         test("look-object");
     }
 
-    @Test
+
     void move() {
+        expect:
         test("move");
     }
 
-    @Test
+
     void pickup() {
+        expect:
         test("pickup");
     }
 
-    @Test
+
     void use() {
+        expect:
         test("use");
     }
 
-    @Test
+
     void useUnknownObject() {
+        expect:
         test("use-unknown-object");
     }
 
@@ -57,13 +52,13 @@ class IntentsTest {
     }
 
 
-    private void test(String requestFileName, String expectedReplyFileName) {
+    private boolean test(String requestFileName, String expectedReplyFileName) {
         try {
             // read the request from a file
             final String request = TestUtils.readFile(requestFileName);
             final InputStream inputStream = new ByteArrayInputStream(request.getBytes());
             final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            final Context context = Mockito.mock(Context.class);
+            final Context context = Mock()
 
             // getReply the request
             final VoiceAdventure voiceAdventure = new VoiceAdventure();
@@ -75,7 +70,7 @@ class IntentsTest {
 
             final JsonObject actualResultReply = JsonUtil.getJsonObject(actualReply);
             final JsonObject expectedResultReply = JsonUtil.getJsonObject(expectedReply);
-            assertEquals(expectedResultReply, actualResultReply);
+            return expectedResultReply == actualResultReply;
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }

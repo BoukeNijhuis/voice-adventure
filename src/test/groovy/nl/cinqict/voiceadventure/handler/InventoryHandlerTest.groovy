@@ -6,7 +6,7 @@ import static nl.cinqict.voiceadventure.world.Item.HANDLE
 import static nl.cinqict.voiceadventure.world.Item.KEY
 import static nl.cinqict.voiceadventure.world.Item.SWORD
 
-class InventoryHandlerSpec extends HandlerSpec {
+class InventoryHandlerTest extends HandlerTest {
 
     private InventoryHandler inventoryHandler
 
