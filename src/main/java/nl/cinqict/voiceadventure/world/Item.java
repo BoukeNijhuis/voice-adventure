@@ -24,6 +24,7 @@ public enum Item {
         this(description, location, portable, null, null, null);
     }
 
+    // TODO: should be used everywhere
     public static Item valueOfNullSafe(String s) {
         try {
             if (s != null && !s.isEmpty()) {

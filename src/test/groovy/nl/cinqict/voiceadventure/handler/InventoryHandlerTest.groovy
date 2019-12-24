@@ -17,9 +17,9 @@ class InventoryHandlerTest extends HandlerTest {
     void emptyInventory() {
         state.getInventory() >> new HashSet<>()
         when:
-        inventoryHandler.updateState(request)
+        def reply = inventoryHandler.updateState(request)
         then:
-        InventoryHandler.EMPTY_INVENTORY == inventoryHandler.reply
+        InventoryHandler.EMPTY_INVENTORY == reply
     }
 
     void inventoryWithOneItem() {
@@ -27,9 +27,9 @@ class InventoryHandlerTest extends HandlerTest {
         inventory.add(KEY)
         state.getInventory() >> inventory
         when:
-        inventoryHandler.updateState(request)
+        def reply = inventoryHandler.updateState(request)
         then:
-        String.format(InventoryHandler.ONE_ITEM, KEY.getName()) == inventoryHandler.reply
+        String.format(InventoryHandler.ONE_ITEM, KEY.getName()) == reply
     }
 
     void inventoryWithThreeItems() {
@@ -39,10 +39,10 @@ class InventoryHandlerTest extends HandlerTest {
         inventory.add(HANDLE)
         state.getInventory() >> inventory
         when:
-        inventoryHandler.updateState(request)
+        def reply = inventoryHandler.updateState(request)
         then:
-        inventoryHandler.getReply().contains(KEY.getName())
-        inventoryHandler.getReply().contains(SWORD.getName())
-        inventoryHandler.getReply().contains(HANDLE.getName())
+        reply.contains(KEY.getName())
+        reply.contains(SWORD.getName())
+        reply.contains(HANDLE.getName())
     }
 }

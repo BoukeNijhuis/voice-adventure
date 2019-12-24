@@ -20,9 +20,9 @@ class UseHandlerTest extends HandlerTest {
 
     void theItemsCanBeUsedOnEachOther() {
         when:
-        useHandler.updateState(request)
+        def reply = useHandler.updateState(request)
         then:
-        HANDLE.getUseReply() == useHandler.reply
+        HANDLE.getUseReply() == reply
     }
 
     /**
@@ -33,41 +33,41 @@ class UseHandlerTest extends HandlerTest {
      */
     void theFirstItemIsNotInTheInventory() {
         when:
-        useHandler.updateState(request)
+        def reply = useHandler.updateState(request)
         then:
         state.hasItem(HANDLE) >> false
-        String.format(UseHandler.NOT_IN_INVENTORY, HANDLE.getName()) == useHandler.reply
+        String.format(UseHandler.NOT_IN_INVENTORY, HANDLE.getName()) == reply
     }
 
     void unknownItem() {
         when:
-        useHandler.updateState(request)
+        def reply = useHandler.updateState(request)
         then:
         parameters.getObject() >> null
-        UseHandler.UNKNOWN_ITEM == useHandler.reply
+        UseHandler.UNKNOWN_ITEM == reply
     }
 
     void thereIsNoSecondItem() {
         when:
-        useHandler.updateState(request)
+        def reply = useHandler.updateState(request)
         then:
         parameters.getSecondObject() >> null
-        String.format(UseHandler.CANNOT_USE_ONE_ITEM, HANDLE.getName()) == useHandler.reply
+        String.format(UseHandler.CANNOT_USE_ONE_ITEM, HANDLE.getName()) == reply
     }
 
     void theSecondItemIsNotInThisLocation() {
         when:
-        useHandler.updateState(request)
+        def reply = useHandler.updateState(request)
         then:
         state.getLocation() >> Location.CASTLE
-        String.format(UseHandler.INCORRECT_LOCATION, WELL.getName()) == useHandler.reply
+        String.format(UseHandler.INCORRECT_LOCATION, WELL.getName()) == reply
     }
 
     void theObjectsCannotBeUsedOnEachOther() {
         when:
-        useHandler.updateState(request)
+        def reply = useHandler.updateState(request)
         then:
         parameters.getSecondObject() >> SWORD.name()
-        String.format(UseHandler.CANNOT_BE_USED_ON_EACH_OTHER, HANDLE.getName(), SWORD.getName()) == useHandler.reply
+        String.format(UseHandler.CANNOT_BE_USED_ON_EACH_OTHER, HANDLE.getName(), SWORD.getName()) == reply
     }
 }

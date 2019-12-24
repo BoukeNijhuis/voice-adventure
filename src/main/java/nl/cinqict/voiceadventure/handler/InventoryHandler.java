@@ -13,14 +13,14 @@ public class InventoryHandler extends Handler {
     static final String MULTIPLE_ITEMS_START = "The following items are in your inventory: ";
 
     @Override
-    public void updateState(Request request) {
+    public String updateState(Request request) {
         State state = request.getState();
         Set<Item> inventory = state.getInventory();
 
         if (inventory.size() == 0) {
-            reply = EMPTY_INVENTORY;
+            return EMPTY_INVENTORY;
         } else if (inventory.size() == 1) {
-            reply = String.format(ONE_ITEM, inventory.iterator().next().getName());
+            return String.format(ONE_ITEM, inventory.iterator().next().getName());
         } else {
 
             StringBuilder stringBuilder = new StringBuilder();
@@ -31,7 +31,7 @@ public class InventoryHandler extends Handler {
                 stringBuilder.append(" ");
             }
 
-            reply = stringBuilder.toString();
+            return stringBuilder.toString();
         }
     }
 

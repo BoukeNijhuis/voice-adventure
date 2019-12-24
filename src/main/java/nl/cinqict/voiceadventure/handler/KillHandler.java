@@ -13,22 +13,21 @@ public class KillHandler extends Handler {
     static final String UNSPECIFIED_UNHAPPY_REPLY = "I cannot find and therefore not kill it.";
 
     @Override
-    public void updateState(Request request) {
+    public String updateState(Request request) {
         State state = request.getState();
         Parameters parameters = request.getParameters();
         Item item = Item.valueOfNullSafe(parameters.getObject());
 
         if (Item.UNKNOWN.equals(item)) {
-            reply = UNSPECIFIED_UNHAPPY_REPLY;
-            return;
+            return UNSPECIFIED_UNHAPPY_REPLY;
         }
 
         Location location = state.getLocation();
 
         if (itemOnLocation(item, location)) {
-            reply = HAPPY_REPLY;
+            return HAPPY_REPLY;
         } else {
-            reply = String.format(SPECIFIED_UNHAPPY_REPLY, item.getName());
+            return String.format(SPECIFIED_UNHAPPY_REPLY, item.getName());
         }
     }
 

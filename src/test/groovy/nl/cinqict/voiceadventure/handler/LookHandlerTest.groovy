@@ -13,26 +13,26 @@ class LookHandlerTest extends HandlerTest {
     void lookAtLocation() {
         state.getLocation() >> WELL
         when:
-        lookHandler.updateState(request)
+        def reply = lookHandler.updateState(request)
         then:
-        WELL.getDescription() == lookHandler.reply
+        WELL.getDescription() == reply
     }
 
     void itemNotInThisLocation() {
         parameters.getObject() >> KEY.name()
         when:
-        lookHandler.updateState(request)
+        def reply = lookHandler.updateState(request)
         then:
-        String.format(LookHandler.NOT_FOUND, "key") == lookHandler.reply
+        String.format(LookHandler.NOT_FOUND, "key") == reply
     }
 
     void itemInThisLocation() {
         parameters.getObject() >> (KEY.name())
         state.getLocation() >> Location.CAVE
         when:
-        lookHandler.updateState(request)
+        def reply = lookHandler.updateState(request)
         then:
-        KEY.getDescription() == lookHandler.reply
+        KEY.getDescription() == reply
     }
 
     void itemInInventory() {
@@ -40,8 +40,8 @@ class LookHandlerTest extends HandlerTest {
         state.getLocation() >> WELL
         state.hasItem(KEY) >> true
         when:
-        lookHandler.updateState(request)
+        def reply = lookHandler.updateState(request)
         then:
-        KEY.getDescription() == lookHandler.reply
+        KEY.getDescription() == reply
     }
 }

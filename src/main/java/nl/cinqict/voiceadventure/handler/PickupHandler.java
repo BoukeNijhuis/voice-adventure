@@ -11,17 +11,16 @@ public class PickupHandler extends Handler {
     static final String UNHAPPY_REPLY = "Cannot pick this up.";
 
     @Override
-    public void updateState(Request request) {
+    public String updateState(Request request) {
         State state = request.getState();
         Parameters parameters = request.getParameters();
         Item item = Item.valueOf(parameters.getObject());
 
-
         if (canBePickedUp(item, state)) {
             state.addItem(item);
-            reply = String.format(HAPPY_REPLY, item.getName());
+            return String.format(HAPPY_REPLY, item.getName());
         } else {
-            reply = UNHAPPY_REPLY;
+            return UNHAPPY_REPLY;
         }
     }
 

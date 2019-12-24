@@ -16,17 +16,17 @@ class MoveHandlerTest extends HandlerTest {
         state.getPosition() >> new Point(0, 0)
         parameters.getDirection() >> new Point(0, 1)
         when:
-        moveHandler.updateState(request)
+        def reply = moveHandler.updateState(request)
         then:
-        CASTLE.getDescription() == moveHandler.reply
+        CASTLE.getDescription() == reply
     }
 
     void moveSomewhereThatIsImpossible() {
         state.getPosition() >> new Point(0, 1)
         parameters.getDirection() >> new Point(0, 1)
         when:
-        moveHandler.updateState(request)
+        def reply = moveHandler.updateState(request)
         then:
-        MoveHandler.CANNOT_MOVE_THERE == moveHandler.reply
+        MoveHandler.CANNOT_MOVE_THERE == reply
     }
 }

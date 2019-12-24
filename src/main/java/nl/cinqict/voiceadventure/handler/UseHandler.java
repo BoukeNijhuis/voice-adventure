@@ -14,7 +14,7 @@ public class UseHandler extends Handler {
     static final String INCORRECT_LOCATION = "There is no %s here.";
 
     @Override
-    public void updateState(Request request) {
+    public String updateState(Request request) {
         State state = request.getState();
         Parameters parameters = request.getParameters();
 
@@ -23,8 +23,7 @@ public class UseHandler extends Handler {
         if (object != null && !object.isEmpty()) {
             itemA = Item.valueOf(object);
         } else {
-            reply = UNKNOWN_ITEM;
-            return;
+            return UNKNOWN_ITEM;
         }
 
         Item itemB;
@@ -32,8 +31,7 @@ public class UseHandler extends Handler {
         if (secondObject != null) {
             itemB = Item.valueOf(secondObject);
         } else {
-            reply = String.format(CANNOT_USE_ONE_ITEM, itemA.getName());
-            return;
+            return String.format(CANNOT_USE_ONE_ITEM, itemA.getName());
         }
 
         final UseResult useResult = canBeUsed(itemA, itemB, state);
@@ -41,12 +39,13 @@ public class UseHandler extends Handler {
             state.removeItem(itemA);
             state.addItem(useResult.reward);
         }
-        reply = useResult.reply;
 
         // check if the game is over
         if (useResult.reward == Item.WINNER) {
             gameOver = true;
         }
+
+        return useResult.reply;
     }
 
     /**

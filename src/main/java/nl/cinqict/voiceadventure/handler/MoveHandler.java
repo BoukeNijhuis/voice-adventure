@@ -12,7 +12,7 @@ public class MoveHandler extends Handler {
     static final String CANNOT_MOVE_THERE = "You cannot move there.";
 
     @Override
-    public void updateState(Request request) {
+    public String updateState(Request request) {
         State state = request.getState();
         Parameters parameters = request.getParameters();
         Point delta = parameters.getDirection();
@@ -21,13 +21,13 @@ public class MoveHandler extends Handler {
 
         // check if the move is possible
         if (isValidPosition(newPosition)) {
-            reply = Location.valueOf(newPosition).getDescription();
             // change the location
             state.setPosition(newPosition);
+
+            return Location.valueOf(newPosition).getDescription();
         } else {
             // this move is not valid
-            this.reply = CANNOT_MOVE_THERE;
-            // do not change the location
+            return CANNOT_MOVE_THERE;
         }
     }
 

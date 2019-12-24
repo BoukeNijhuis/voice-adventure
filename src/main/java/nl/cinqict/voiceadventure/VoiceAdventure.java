@@ -28,10 +28,10 @@ public class VoiceAdventure implements RequestStreamHandler {
         final String intentName = request.getIntentName();
 
         Handler handler = getHandler(intentName);
-        handler.updateState(request);
+        String replyString = handler.updateState(request);
 
         // write the reply on the output stream
-        final Reply reply = new Reply(handler.getReply(), request.getStateContext(), handler.isGameOver());
+        final Reply reply = new Reply(replyString, request.getStateContext(), handler.isGameOver());
         final String replyAsString = reply.createReply();
 
         outputStream.write(replyAsString.getBytes());

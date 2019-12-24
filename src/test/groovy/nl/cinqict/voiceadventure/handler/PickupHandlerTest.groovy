@@ -19,9 +19,9 @@ class PickupHandlerTest extends HandlerTest {
         parameters.getObject() >> HANDLE.name()
         state.isPristine(HANDLE) >> true
         when:
-        pickupHandler.updateState(request)
+        def reply = pickupHandler.updateState(request)
         then:
-        String.format(PickupHandler.HAPPY_REPLY, "handle") == pickupHandler.reply
+        String.format(PickupHandler.HAPPY_REPLY, "handle") == reply
     }
 
     /*
@@ -34,25 +34,25 @@ class PickupHandlerTest extends HandlerTest {
     void theItemIsNotPortable() {
         parameters.getObject() >> CASTLE.name()
         when:
-        pickupHandler.updateState(request)
+        def reply = pickupHandler.updateState(request)
         then:
-        PickupHandler.UNHAPPY_REPLY == pickupHandler.reply
+        PickupHandler.UNHAPPY_REPLY == reply
     }
 
     void theItemIsNotPristine() {
         parameters.getObject() >> HANDLE.name()
         state.isPristine(HANDLE) >> false
         when:
-        pickupHandler.updateState(request)
+        def reply = pickupHandler.updateState(request)
         then:
-        PickupHandler.UNHAPPY_REPLY == pickupHandler.reply
+        PickupHandler.UNHAPPY_REPLY == reply
     }
 
     void theItemIsNotInThisLocation() {
         parameters.getObject() >> KEY.name()
         when:
-        pickupHandler.updateState(request)
+        def reply = pickupHandler.updateState(request)
         then:
-        PickupHandler.UNHAPPY_REPLY == pickupHandler.reply
+        PickupHandler.UNHAPPY_REPLY == reply
     }
 }
