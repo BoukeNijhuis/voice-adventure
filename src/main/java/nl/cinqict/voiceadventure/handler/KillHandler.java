@@ -16,8 +16,8 @@ public class KillHandler extends Handler {
     public String updateState(Request request) {
         State state = request.getState();
         Parameters parameters = request.getParameters();
-        Item item = Item.valueOfNullSafe(parameters.getObject());
 
+        Item item = Item.valueOfNullSafe(parameters.getObject());
         if (Item.UNKNOWN.equals(item)) {
             return UNSPECIFIED_UNHAPPY_REPLY;
         }

@@ -26,6 +26,7 @@ public class InventoryHandler extends Handler {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(MULTIPLE_ITEMS_START);
 
+            // TODO: replace with stream?
             for (Item item : inventory) {
                 stringBuilder.append(item.getName());
                 stringBuilder.append(" ");

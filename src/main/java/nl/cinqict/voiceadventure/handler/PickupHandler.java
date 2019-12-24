@@ -8,13 +8,17 @@ import nl.cinqict.voiceadventure.world.Item;
 public class PickupHandler extends Handler {
 
     static final String HAPPY_REPLY = "Added the %s to the inventory";
-    static final String UNHAPPY_REPLY = "Cannot pick this up.";
+    static final String UNHAPPY_REPLY = "Cannot pick that up.";
 
     @Override
     public String updateState(Request request) {
         State state = request.getState();
         Parameters parameters = request.getParameters();
-        Item item = Item.valueOf(parameters.getObject());
+
+        Item item = Item.valueOfNullSafe(parameters.getObject());
+        if (Item.UNKNOWN.equals(item)) {
+            return UNHAPPY_REPLY;
+        }
 
         if (canBePickedUp(item, state)) {
             state.addItem(item);

@@ -18,19 +18,13 @@ public class UseHandler extends Handler {
         State state = request.getState();
         Parameters parameters = request.getParameters();
 
-        Item itemA;
-        final String object = parameters.getObject();
-        if (object != null && !object.isEmpty()) {
-            itemA = Item.valueOf(object);
-        } else {
+        Item itemA = Item.valueOfNullSafe(parameters.getObject());
+        if (Item.UNKNOWN.equals(itemA)) {
             return UNKNOWN_ITEM;
         }
 
-        Item itemB;
-        final String secondObject = parameters.getSecondObject();
-        if (secondObject != null) {
-            itemB = Item.valueOf(secondObject);
-        } else {
+        Item itemB = Item.valueOfNullSafe(parameters.getSecondObject());
+        if (Item.UNKNOWN.equals(itemB)) {
             return String.format(CANNOT_USE_ONE_ITEM, itemA.getName());
         }
 
