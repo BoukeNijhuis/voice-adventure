@@ -10,8 +10,8 @@ public class UseHandler extends Handler {
     static final String UNKNOWN_ITEM = "I do not know how to do this.";
     static final String CANNOT_BE_USED_ON_EACH_OTHER = "Cannot use %s on %s.";
     static final String CANNOT_USE_ONE_ITEM = "Where should I use the %s on?";
-    static final String NOT_IN_INVENTORY = "There is no object called %s in your inventory.";
-    static final String INCORRECT_LOCATION = "There is no object called %s in this location";
+    static final String NOT_IN_INVENTORY = "There is no %s in your inventory.";
+    static final String INCORRECT_LOCATION = "There is no %s here.";
 
     @Override
     public void updateState(Request request) {
@@ -20,7 +20,7 @@ public class UseHandler extends Handler {
 
         Item itemA;
         final String object = parameters.getObject();
-        if (object != null) {
+        if (object != null && !object.isEmpty()) {
             itemA = Item.valueOf(object);
         } else {
             reply = UNKNOWN_ITEM;

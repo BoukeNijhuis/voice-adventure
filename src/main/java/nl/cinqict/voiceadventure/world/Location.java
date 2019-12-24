@@ -1,6 +1,6 @@
 package nl.cinqict.voiceadventure.world;
 
-import java.awt.*;
+import java.awt.Point;
 
 public enum Location {
 
@@ -10,8 +10,8 @@ public enum Location {
     CAVE(0, -1, "You entered the cave and there is a big troll coming your way."),
     CLEARING(1, 0, "You are standing in a clearing in the woods. There is a bush on your right-hand side.");
 
-    private int x, y;
-    private String description;
+    private final int x, y;
+    private final String description;
 
     Location(int x, int y, String description) {
         this.x = x;

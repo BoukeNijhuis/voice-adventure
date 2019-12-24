@@ -2,7 +2,7 @@ package nl.cinqict.voiceadventure.world;
 
 public enum Item {
 
-
+    UNKNOWN("This is special item that used when the specified item does not exist", null, false),
     DOOR("The door made of sturdy wood.", Location.CASTLE, false),
     WINNER("Not a real item, but this item enabled me to delete a constructor :-)", Location.CASTLE, false),
     KEY("The key looks used.", Location.CAVE, true, DOOR, "this text is in DialogFlow", WINNER),
@@ -22,6 +22,18 @@ public enum Item {
 
     Item(String description, Location location, boolean portable) {
         this(description, location, portable, null, null, null);
+    }
+
+    public static Item valueOfNullSafe(String s) {
+        try {
+            if (s != null && !s.isEmpty()) {
+                return Item.valueOf(s);
+            } else {
+                return Item.UNKNOWN;
+            }
+        } catch (IllegalArgumentException e) {
+            return Item.UNKNOWN;
+        }
     }
 
     Item(String description, Location location, boolean portable, Item canBeUsedOn, String useReply, Item useReward) {

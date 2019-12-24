@@ -7,6 +7,7 @@ public enum Intent {
     MOVE_INTENT("MoveIntent", new MoveHandler()),
     PICKUP_INTENT("PickupIntent", new PickupHandler()),
     USE_INTENT("UseIntent", new UseHandler()),
+    KILL_INTENT("KillIntent", new KillHandler()),
     INVENTORY_INTENT("InventoryIntent", new InventoryHandler());
 
     private String intentName;
