@@ -24,7 +24,15 @@ public enum Item {
         this(description, location, portable, null, null, null);
     }
 
-    // TODO: should be used everywhere
+    Item(String description, Location location, boolean portable, Item canBeUsedOn, String useReply, Item useReward) {
+        this.description = description;
+        this.location = location;
+        this.portable = portable;
+        this.canBeUsedOn = canBeUsedOn;
+        this.useReply = useReply;
+        this.useReward = useReward;
+    }
+
     public static Item valueOfNullSafe(String s) {
         try {
             if (s != null && !s.isEmpty()) {
@@ -35,15 +43,6 @@ public enum Item {
         } catch (IllegalArgumentException e) {
             return Item.UNKNOWN;
         }
-    }
-
-    Item(String description, Location location, boolean portable, Item canBeUsedOn, String useReply, Item useReward) {
-        this.description = description;
-        this.location = location;
-        this.portable = portable;
-        this.canBeUsedOn = canBeUsedOn;
-        this.useReply = useReply;
-        this.useReward = useReward;
     }
 
     public String getName() {
