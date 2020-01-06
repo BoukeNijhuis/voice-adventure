@@ -23,7 +23,7 @@ public class MoveHandler extends Handler {
         if (newLocation != location) {
             // change the location
             state.setLocation(newLocation);
-            return newLocation.getDescription();
+            return newLocation.getLongDescription();
         } else {
             // this move is not valid
             return CANNOT_MOVE_THERE;

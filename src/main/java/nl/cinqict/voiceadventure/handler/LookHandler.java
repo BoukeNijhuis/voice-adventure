@@ -9,8 +9,7 @@ import nl.cinqict.voiceadventure.world.Location;
 public class LookHandler extends Handler {
 
     static final String ITEM_NOT_FOUND = "I do not see a %s.";
-    static final String UNSPECIFIED_NOT_FOUND = "I do not see that.";
-    static final String LOCATION_NOT_VALID = "There is nothing to see.";
+    static final String LOCATION_NOT_VALID = "You see impenetrable mountains.";
 
     @Override
     public String updateState(Request request) {
@@ -36,7 +35,7 @@ public class LookHandler extends Handler {
                 Location location = state.getLocation();
                 Location newLocation = location.move(direction);
                 if (newLocation != location) {
-                    return newLocation.getDescription();
+                    return newLocation.getShortDescription();
                 } else {
                     return LOCATION_NOT_VALID;
                 }
@@ -44,7 +43,7 @@ public class LookHandler extends Handler {
 
             // TODO: items can already be picked up! (so need different descriptions)
             else {
-                return state.getLocation().getDescription();
+                return state.getLocation().getLongDescription();
             }
         }
     }

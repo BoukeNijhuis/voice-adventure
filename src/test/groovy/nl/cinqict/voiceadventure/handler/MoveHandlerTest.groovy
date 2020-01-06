@@ -2,8 +2,6 @@ package nl.cinqict.voiceadventure.handler
 
 import nl.cinqict.voiceadventure.message.Parameters
 
-import java.awt.*
-
 import static nl.cinqict.voiceadventure.world.Location.CASTLE
 import static nl.cinqict.voiceadventure.world.Location.CLEARING
 import static nl.cinqict.voiceadventure.world.Location.CROSSING
@@ -22,7 +20,7 @@ class MoveHandlerTest extends HandlerTest {
         when:
         def reply = moveHandler.updateState(request)
         then:
-        CASTLE.getDescription() == reply
+        CASTLE.getLongDescription() == reply
     }
 
     void moveSomewhereThatIsImpossible() {

@@ -19,7 +19,7 @@ class LookHandlerTest extends HandlerTest {
         when:
         def reply = lookHandler.updateState(request)
         then:
-        WELL.getDescription() == reply
+        WELL.getLongDescription() == reply
     }
 
     void itemNotInThisLocation() {
@@ -55,7 +55,7 @@ class LookHandlerTest extends HandlerTest {
         def reply = lookHandler.updateState(request)
         then:
         parameters.getDirection() >> Parameters.Direction.NORTH
-        CASTLE.getDescription() == reply
+        CASTLE.getShortDescription() == reply
     }
 
     void lookAtDirectionUnhappyFlow() {
