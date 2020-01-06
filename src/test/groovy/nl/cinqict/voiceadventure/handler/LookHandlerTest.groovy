@@ -1,14 +1,18 @@
 package nl.cinqict.voiceadventure.handler
 
-
+import nl.cinqict.voiceadventure.message.Parameters
 import nl.cinqict.voiceadventure.world.Location
 
 import static nl.cinqict.voiceadventure.world.Item.KEY
-import static nl.cinqict.voiceadventure.world.Location.WELL
+import static nl.cinqict.voiceadventure.world.Location.*
 
 class LookHandlerTest extends HandlerTest {
 
     private LookHandler lookHandler = new LookHandler()
+
+    protected void setup() {
+        parameters.getDirection() >> Parameters.Direction.NONE;
+    }
 
     void lookAtLocation() {
         state.getLocation() >> WELL
@@ -23,7 +27,7 @@ class LookHandlerTest extends HandlerTest {
         when:
         def reply = lookHandler.updateState(request)
         then:
-        String.format(LookHandler.NOT_FOUND, "key") == reply
+        String.format(LookHandler.ITEM_NOT_FOUND, "key") == reply
     }
 
     void itemInThisLocation() {
@@ -43,5 +47,24 @@ class LookHandlerTest extends HandlerTest {
         def reply = lookHandler.updateState(request)
         then:
         KEY.getDescription() == reply
+    }
+
+    void lookAtDirectionHappyFlow() {
+        state.getLocation() >> CROSSING
+        when:
+        def reply = lookHandler.updateState(request)
+        then:
+        parameters.getDirection() >> Parameters.Direction.NORTH
+        CASTLE.getDescription() == reply
+    }
+
+    void lookAtDirectionUnhappyFlow() {
+        state.getLocation() >> CASTLE
+
+        when:
+        def reply = lookHandler.updateState(request)
+        then:
+        parameters.getDirection() >> Parameters.Direction.NORTH
+        lookHandler.LOCATION_NOT_VALID == reply
     }
 }

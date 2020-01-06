@@ -45,17 +45,15 @@ public class State {
         return jsonObject;
     }
 
-    public Point getPosition() {
-        return new Point(this.posx, this.posy);
-    }
-
     public Location getLocation() {
-        return Location.valueOf(getPosition());
+        return Location.valueOf(posx, posy);
     }
 
-    public void setPosition(Point point) {
-        this.posx = point.x;
-        this.posy = point.y;
+    // todo: probably position should be a string as well
+    public void setPosition(Location location) {
+        Point position = location.getPosition();
+        this.posx = position.x;
+        this.posy = position.y;
     }
 
     public void addItem(Item item) {

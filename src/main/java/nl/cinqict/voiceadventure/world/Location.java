@@ -1,5 +1,7 @@
 package nl.cinqict.voiceadventure.world;
 
+import nl.cinqict.voiceadventure.message.Parameters;
+
 import java.awt.Point;
 
 public enum Location {
@@ -20,17 +22,39 @@ public enum Location {
 
     }
 
-    public static Location valueOf(Point point) {
+    public static Location valueOf(int x, int y) {
         final Location[] locations = Location.values();
 
         // TODO: inefficient
         for (Location location : locations) {
-            if (location.x == point.x && location.y == point.y) {
+            if (location.x == x && location.y == y) {
                 return location;
             }
         }
 
         return null;
+    }
+
+    public Point getPosition() {
+        return new Point(x, y);
+    }
+
+    public Location move(Parameters.Direction direction) {
+        if (isValidMove(direction)) {
+            return newLocation(x, y, direction);
+        } else return this;
+    }
+
+    private boolean isValidMove(Parameters.Direction direction) {
+        int absCoordinateSum = Math.abs(this.x + direction.x) + Math.abs(this.y + direction.y);
+        // the sum of the absolute of x and y should never be higher than 1
+        return absCoordinateSum <= 1;
+    }
+
+    private Location newLocation(int x, int y, Parameters.Direction direction) {
+        final int newX = x + direction.x;
+        final int newY = y + direction.y;
+        return valueOf(newX, newY);
     }
 
     public String getDescription() {

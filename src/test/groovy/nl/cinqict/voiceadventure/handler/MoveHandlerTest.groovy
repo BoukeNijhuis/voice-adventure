@@ -1,8 +1,12 @@
 package nl.cinqict.voiceadventure.handler
 
+import nl.cinqict.voiceadventure.message.Parameters
+
 import java.awt.*
 
 import static nl.cinqict.voiceadventure.world.Location.CASTLE
+import static nl.cinqict.voiceadventure.world.Location.CLEARING
+import static nl.cinqict.voiceadventure.world.Location.CROSSING
 
 class MoveHandlerTest extends HandlerTest {
 
@@ -13,8 +17,8 @@ class MoveHandlerTest extends HandlerTest {
     }
 
     void moveSomewhereThatIsPossible() {
-        state.getPosition() >> new Point(0, 0)
-        parameters.getDirection() >> new Point(0, 1)
+        state.getLocation() >> CROSSING
+        parameters.getDirection() >> Parameters.Direction.NORTH
         when:
         def reply = moveHandler.updateState(request)
         then:
@@ -22,8 +26,8 @@ class MoveHandlerTest extends HandlerTest {
     }
 
     void moveSomewhereThatIsImpossible() {
-        state.getPosition() >> new Point(0, 1)
-        parameters.getDirection() >> new Point(0, 1)
+        state.getLocation() >> CLEARING
+        parameters.getDirection() >> Parameters.Direction.EAST
         when:
         def reply = moveHandler.updateState(request)
         then:

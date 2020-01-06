@@ -10,27 +10,44 @@ public class Parameters {
 
     private final JsonObject parameters;
 
+    public static class Direction extends Point {
+
+        public static final Direction NORTH = new Direction(0, 1);
+        public static final Direction SOUTH = new Direction(0, -1);
+        public static final Direction EAST = new Direction(1, 0);
+        public static final Direction WEST = new Direction(-1, 0);
+        public static final Direction NONE = new Direction(0, 0);
+
+        Direction(int x, int y) {
+            super(x,y);
+        }
+    }
+
     Parameters(JsonObject parameters) {
         this.parameters = parameters;
     }
 
-    public Point getDirection() {
+    public Direction getDirection() {
         String direction = getValue(DialogflowConstants.DIRECTION);
-        return directionToPoint(direction);
+        if (direction != null) {
+            return directionToPoint(direction);
+        } else {
+            return Direction.NONE;
+        }
     }
 
-    private Point directionToPoint(String direction) {
+    private Direction directionToPoint(String direction) {
         switch (direction) {
             case DialogflowConstants.NORTH:
-                return new Point(0, 1);
+                return Direction.NORTH;
             case DialogflowConstants.EAST:
-                return new Point(1, 0);
+                return Direction.EAST;
             case DialogflowConstants.SOUTH:
-                return new Point(0, -1);
+                return Direction.SOUTH;
             case DialogflowConstants.WEST:
-                return new Point(-1, 0);
+                return Direction.WEST;
             default:
-                return new Point(0, 0);
+                return Direction.NONE;
         }
     }
 
