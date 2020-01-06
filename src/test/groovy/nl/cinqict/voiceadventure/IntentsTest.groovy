@@ -3,56 +3,33 @@ package nl.cinqict.voiceadventure
 import com.amazonaws.services.lambda.runtime.Context
 import com.google.gson.JsonObject
 import spock.lang.Specification
+import spock.lang.Unroll
 
 class IntentsTest extends Specification {
 
-    void welcome() {
+    @Unroll("#intent")
+    void testIntents() {
         expect:
-        test("welcome");
+        getActualReply(intent).toString() == getExpectedReply(intent).toString()
+        where:
+        intent               | _
+        "welcome"            | _
+        "look-location"      | _
+        "look-object"        | _
+        "move"               | _
+        "pickup"             | _
+        "use"                | _
+        "use-unknown-object" | _
     }
 
-
-    void lookLocation() {
-        expect:
-        test("look-location");
+    private JsonObject getExpectedReply(String folderName) {
+        String expectedReplyFileName = folderName + "/expectedReply.json";
+        return JsonUtil.getJsonObject(TestUtils.readFile(expectedReplyFileName));
     }
 
+    private JsonObject getActualReply(String folderName) {
 
-    void lookObject() {
-        expect:
-        test("look-object");
-    }
-
-
-    void move() {
-        expect:
-        test("move");
-    }
-
-
-    void pickup() {
-        expect:
-        test("pickup");
-    }
-
-
-    void use() {
-        expect:
-        test("use");
-    }
-
-
-    void useUnknownObject() {
-        expect:
-        test("use-unknown-object");
-    }
-
-    private void test(String folderName) {
-        test(folderName + "/testRequest.json", folderName + "/expectedReply.json");
-    }
-
-
-    private boolean test(String requestFileName, String expectedReplyFileName) {
+        String requestFileName = folderName + "/testRequest.json";
         try {
             // read the request from a file
             final String request = TestUtils.readFile(requestFileName);
@@ -66,14 +43,10 @@ class IntentsTest extends Specification {
 
             // fetch the reply
             final String actualReply = new String(outputStream.toByteArray());
-            final String expectedReply = TestUtils.readFile(expectedReplyFileName);
 
-            final JsonObject actualResultReply = JsonUtil.getJsonObject(actualReply);
-            final JsonObject expectedResultReply = JsonUtil.getJsonObject(expectedReply);
-            return expectedResultReply == actualResultReply;
+            return JsonUtil.getJsonObject(actualReply);
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
     }
-
 }

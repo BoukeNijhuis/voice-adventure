@@ -30,13 +30,13 @@ public class Parameters {
     public Direction getDirection() {
         String direction = getValue(DialogflowConstants.DIRECTION);
         if (direction != null) {
-            return directionToPoint(direction);
+            return translateStringToDirection(direction);
         } else {
             return Direction.NONE;
         }
     }
 
-    private Direction directionToPoint(String direction) {
+    private Direction translateStringToDirection(String direction) {
         switch (direction) {
             case DialogflowConstants.NORTH:
                 return Direction.NORTH;
@@ -74,8 +74,6 @@ public class Parameters {
                     return value.toUpperCase();
                 }
             }
-
-
         }
 
         return null;

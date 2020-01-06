@@ -2,8 +2,6 @@ package nl.cinqict.voiceadventure.world;
 
 import nl.cinqict.voiceadventure.message.Parameters;
 
-import java.awt.Point;
-
 public enum Location {
 
     WELL(-1, 0, "You are standing next to a dry well. The handle of the well is missing."),
@@ -33,10 +31,6 @@ public enum Location {
         }
 
         return null;
-    }
-
-    public Point getPosition() {
-        return new Point(x, y);
     }
 
     public Location move(Parameters.Direction direction) {

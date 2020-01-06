@@ -5,8 +5,7 @@
     {
       "name": "projects/voiceadventure-3cf8a/agent/sessions/861bb609-e436-3c30-b395-43610eb091f5/contexts/state",
       "parameters": {
-        "posx": 1,
-        "posy": 0,
+        "location": "CLEARING",
         "inventory": [
           "HANDLE"
         ],

@@ -20,8 +20,7 @@
         "name": "projects/voiceadventure-3cf8a/agent/sessions/2df94e7a-c59f-2b57-a6c2-8113a6ce0eb7/contexts/state",
         "lifespanCount": 4,
         "parameters": {
-          "posx": 1,
-          "posy": 0,
+          "location": "CLEARING",
           "direction.original": "east",
           "removedItems": [],
           "object.original": "handle",

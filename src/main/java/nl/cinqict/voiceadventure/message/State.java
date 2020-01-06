@@ -1,19 +1,18 @@
 package nl.cinqict.voiceadventure.message;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import nl.cinqict.voiceadventure.JsonUtil;
 import nl.cinqict.voiceadventure.DialogflowConstants;
-import nl.cinqict.voiceadventure.world.Location;
+import nl.cinqict.voiceadventure.JsonUtil;
 import nl.cinqict.voiceadventure.world.Item;
+import nl.cinqict.voiceadventure.world.Location;
 
-import java.awt.Point;
 import java.util.HashSet;
 import java.util.Set;
 
 public class State {
 
-    private int posx = 0;
-    private int posy = 0;
+    private Location location = Location.CROSSING;
     private Set<Item> inventory = new HashSet<>();
     private Set<Item> removedItems = new HashSet<>();
 
@@ -26,34 +25,33 @@ public class State {
      * @param stateParameters the json object that represents the state
      */
     State(JsonObject stateParameters) {
-        posx = stateParameters.get(DialogflowConstants.POSX).getAsInt();
-        posy = stateParameters.get(DialogflowConstants.POSY).getAsInt();
+        JsonElement jsonElement = stateParameters.get(DialogflowConstants.LOCATION);
+        if (jsonElement != null) {
+            location = Location.valueOf(jsonElement.getAsString());
+        }
         inventory = JsonUtil.getItemSet(stateParameters.get(DialogflowConstants.INVENTORY).getAsJsonArray());
         removedItems = JsonUtil.getItemSet(stateParameters.get(DialogflowConstants.REMOVED_ITEMS).getAsJsonArray());
     }
 
     /**
      * Converts a State object to a JsonObject.
+     *
      * @return a JSON representation of the state.
      */
     public JsonObject toJsonObject() {
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty(DialogflowConstants.POSX, posx);
-        jsonObject.addProperty(DialogflowConstants.POSY, posy);
+        jsonObject.addProperty(DialogflowConstants.LOCATION, location.toString());
         jsonObject.add(DialogflowConstants.INVENTORY, JsonUtil.getJsonArray(inventory));
         jsonObject.add(DialogflowConstants.REMOVED_ITEMS, JsonUtil.getJsonArray(removedItems));
         return jsonObject;
     }
 
     public Location getLocation() {
-        return Location.valueOf(posx, posy);
+        return location;
     }
 
-    // todo: probably position should be a string as well
-    public void setPosition(Location location) {
-        Point position = location.getPosition();
-        this.posx = position.x;
-        this.posy = position.y;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public void addItem(Item item) {

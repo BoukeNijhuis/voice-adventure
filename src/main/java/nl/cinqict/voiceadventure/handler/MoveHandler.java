@@ -5,8 +5,6 @@ import nl.cinqict.voiceadventure.message.Request;
 import nl.cinqict.voiceadventure.message.State;
 import nl.cinqict.voiceadventure.world.Location;
 
-import java.awt.*;
-
 public class MoveHandler extends Handler {
 
     static final String CANNOT_MOVE_THERE = "You cannot move there.";
@@ -24,7 +22,7 @@ public class MoveHandler extends Handler {
         // check if the move is executed
         if (newLocation != location) {
             // change the location
-            state.setPosition(newLocation);
+            state.setLocation(newLocation);
             return newLocation.getDescription();
         } else {
             // this move is not valid

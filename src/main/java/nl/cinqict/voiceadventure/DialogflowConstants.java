@@ -21,8 +21,7 @@ public class DialogflowConstants {
     public static final String OBJECT = "object";
     public static final String OBJECT1 = "object1";
 
-    public static final String POSX = "posx";
-    public static final String POSY = "posy";
+    public static final String LOCATION = "location";
     public static final String INVENTORY = "inventory";
     public static final String REMOVED_ITEMS = "removedItems";
 
