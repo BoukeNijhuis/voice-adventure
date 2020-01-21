@@ -1,9 +1,10 @@
 {
   "responseId": "4d353b01-2254-4d3c-96bb-e5e68897ce69",
   "queryResult": {
-    "queryText": "get handle",
+    "queryText": "use sword on troll",
     "parameters": {
-      "object": "handle"
+      "object": "SWORD",
+      "object1": "TROLL"
     },
     "allRequiredParamsPresent": true,
     "fulfillmentMessages": [
@@ -20,11 +21,11 @@
         "name": "projects/voiceadventure-3cf8a/agent/sessions/861bb609-e436-3c30-b395-43610eb091f5/contexts/state",
         "lifespanCount": 4,
         "parameters": {
-          "location": "CLEARING",
+          "location": "CAVE",
           "direction.original": "right",
           "removedItems": [],
           "object.original": "handle",
-          "inventory": [],
+          "inventory": ["SWORD"],
           "object": "handle",
           "direction": "E"
         }
@@ -32,7 +33,7 @@
     ],
     "intent": {
       "name": "projects/voiceadventure-3cf8a/agent/intents/76ff3b89-277f-421c-9732-4b34c25bd25a",
-      "displayName": "PickupIntent"
+      "displayName": "UseIntent"
     },
     "intentDetectionConfidence": 1,
     "languageCode": "en"

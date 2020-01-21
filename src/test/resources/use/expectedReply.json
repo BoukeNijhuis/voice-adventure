@@ -1,15 +1,17 @@
 {
-  "fulfillmentText": "Added the handle to the inventory",
+  "fulfillmentText": "You attack the troll with your sword. It fights back but it is no match for your sword fighting skills. You kill the troll swiftly and take the key.",
   "payload": {},
   "outputContexts": [
     {
       "name": "projects/voiceadventure-3cf8a/agent/sessions/861bb609-e436-3c30-b395-43610eb091f5/contexts/state",
       "parameters": {
-        "location": "CLEARING",
+        "location": "CAVE",
         "inventory": [
-          "HANDLE"
+          "KEY"
         ],
-        "removedItems": []
+        "removedItems": [
+          "SWORD"
+        ]
       },
       "lifespanCount": 5
     }
