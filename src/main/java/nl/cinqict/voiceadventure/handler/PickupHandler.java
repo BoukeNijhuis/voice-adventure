@@ -7,8 +7,8 @@ import nl.cinqict.voiceadventure.world.Item;
 
 public class PickupHandler extends Handler {
 
-    static final String HAPPY_REPLY = "Added the %s to the inventory.";
-    static final String UNHAPPY_REPLY = "Cannot pick that up.";
+    private static final String HAPPY_REPLY = "Added the %s to the inventory.";
+    private static final String UNHAPPY_REPLY = "Cannot pick that up.";
 
     @Override
     public String updateState(Request request) {

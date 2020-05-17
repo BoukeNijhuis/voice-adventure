@@ -4,7 +4,7 @@ import nl.cinqict.voiceadventure.message.Request;
 
 public abstract class Handler {
 
-    boolean gameOver = false;
+    protected boolean gameOver = false;
 
     public String updateState(Request request) {
         return "the defaultHandler updateState method should implemented!";

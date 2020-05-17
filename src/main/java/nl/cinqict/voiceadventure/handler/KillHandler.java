@@ -8,9 +8,9 @@ import nl.cinqict.voiceadventure.world.Location;
 
 public class KillHandler extends Handler {
 
-    static final String HAPPY_REPLY = "What should I USE to kill it?";
-    static final String SPECIFIED_UNHAPPY_REPLY = "There is no %s here.";
-    static final String UNSPECIFIED_UNHAPPY_REPLY = "I cannot find and therefore not kill it.";
+    private static final String HAPPY_REPLY = "What should I USE to kill it?";
+    private static final String SPECIFIED_UNHAPPY_REPLY = "There is no %s here.";
+    private static final String UNSPECIFIED_UNHAPPY_REPLY = "I cannot find and therefore not kill it.";
 
     @Override
     public String updateState(Request request) {

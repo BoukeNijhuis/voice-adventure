@@ -10,8 +10,8 @@ public enum Intent {
     KILL_INTENT("KillIntent", new KillHandler()),
     INVENTORY_INTENT("InventoryIntent", new InventoryHandler());
 
-    private String intentName;
-    private Handler handler;
+    private final String intentName;
+    private final Handler handler;
 
     Intent(String intentName, Handler handler) {
         this.intentName = intentName;
@@ -27,7 +27,7 @@ public enum Intent {
             return null;
         }
 
-        StringBuffer result = new StringBuffer();
+        StringBuilder result = new StringBuilder();
 
         for (Character c : s.toCharArray()) {
             // add an underscore when there is a capital (but not for the first character)

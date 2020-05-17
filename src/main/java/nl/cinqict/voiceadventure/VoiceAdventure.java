@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class VoiceAdventure implements RequestStreamHandler {
 
@@ -51,7 +51,7 @@ public class VoiceAdventure implements RequestStreamHandler {
     private String readInputStream(InputStream inputStream) throws IOException {
 
         StringBuilder stringBuilder = new StringBuilder();
-        InputStreamReader inputStreamReader = new InputStreamReader(inputStream, Charset.forName("UTF-8"));
+        InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
 
         int character;
         while ((character = inputStreamReader.read()) != -1) {

@@ -7,11 +7,11 @@ import nl.cinqict.voiceadventure.world.Item;
 
 public class UseHandler extends Handler {
 
-    static final String UNKNOWN_ITEM = "I do not know how to do this.";
-    static final String CANNOT_BE_USED_ON_EACH_OTHER = "Cannot use %s on %s.";
-    static final String CANNOT_USE_ONE_ITEM = "Where should I use the %s on?";
-    static final String NOT_IN_INVENTORY = "There is no %s in your inventory.";
-    static final String INCORRECT_LOCATION = "There is no %s here.";
+    private static final String UNKNOWN_ITEM = "I do not know how to do this.";
+    private static final String CANNOT_BE_USED_ON_EACH_OTHER = "Cannot use %s on %s.";
+    private static final String CANNOT_USE_ONE_ITEM = "Where should I use the %s on?";
+    private static final String NOT_IN_INVENTORY = "There is no %s in your inventory.";
+    private static final String INCORRECT_LOCATION = "There is no %s here.";
 
     @Override
     public String updateState(Request request) {

@@ -7,7 +7,7 @@ import nl.cinqict.voiceadventure.world.Location;
 
 public class MoveHandler extends Handler {
 
-    static final String CANNOT_MOVE_THERE = "You cannot move there.";
+    private static final String CANNOT_MOVE_THERE = "You cannot move there.";
 
     @Override
     public String updateState(Request request) {

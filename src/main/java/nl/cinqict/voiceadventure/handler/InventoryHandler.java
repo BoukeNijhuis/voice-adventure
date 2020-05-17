@@ -8,9 +8,9 @@ import java.util.Set;
 
 public class InventoryHandler extends Handler {
 
-    static final String EMPTY_INVENTORY = "There is nothing in your inventory.";
-    static final String ONE_ITEM = "You carry a %s.";
-    static final String MULTIPLE_ITEMS_START = "The following items are in your inventory: ";
+    private static final String EMPTY_INVENTORY = "There is nothing in your inventory.";
+    private static final String ONE_ITEM = "You carry a %s.";
+    private static final String MULTIPLE_ITEMS_START = "The following items are in your inventory: ";
 
     @Override
     public String updateState(Request request) {
