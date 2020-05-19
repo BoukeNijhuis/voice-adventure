@@ -34,6 +34,7 @@ public enum Location {
         return null;
     }
 
+    // Will return the new location if it exists. If it does not it will return the origin location (itself).
     public Location move(Parameters.Direction direction) {
         if (isValidMove(direction)) {
             return newLocation(x, y, direction);

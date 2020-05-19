@@ -14,13 +14,13 @@ public class MoveHandler extends Handler {
         State state = request.getState();
         Parameters parameters = request.getParameters();
         Parameters.Direction direction = parameters.getDirection();
-        Location location = state.getLocation();
+        Location currentLocation = state.getLocation();
 
         // what will be the new location
-        Location newLocation = location.move(direction);
+        Location newLocation = currentLocation.move(direction);
 
         // check if the move is executed
-        if (newLocation != location) {
+        if (newLocation != currentLocation) {
             // change the location
             state.setLocation(newLocation);
             return newLocation.getLongDescription();
