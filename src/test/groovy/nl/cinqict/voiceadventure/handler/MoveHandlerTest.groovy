@@ -1,11 +1,8 @@
 package nl.cinqict.voiceadventure.handler
 
 import nl.cinqict.voiceadventure.message.Parameters
-import nl.cinqict.voiceadventure.world.Location
 
-import static nl.cinqict.voiceadventure.world.Location.CASTLE
-import static nl.cinqict.voiceadventure.world.Location.CLEARING
-import static nl.cinqict.voiceadventure.world.Location.CROSSING
+import static nl.cinqict.voiceadventure.world.Location.*
 
 class MoveHandlerTest extends HandlerTest {
 
@@ -13,7 +10,7 @@ class MoveHandlerTest extends HandlerTest {
 
     protected void setup() {
         moveHandler = new MoveHandler()
-        state.getVisitedLocation() >> new HashSet<Location>()
+//        state.getVisitedLocation() >> new HashSet<Location>()
     }
 
     void moveSomewhereThatIsPossible() {
@@ -34,13 +31,13 @@ class MoveHandlerTest extends HandlerTest {
         MoveHandler.CANNOT_MOVE_THERE == reply
     }
 
-    void secondMoveShortDescription() {
-        state.getLocation() >> CROSSING
-        parameters.getDirection() >> Parameters.Direction.NORTH
-        when:
-        def reply = moveHandler.updateState(request)
-        then:
-        state.getVisitedLocation() >> Collections.singleton(CASTLE);
-        CASTLE.getShortDescription() == reply
-    }
+//    void secondMoveShortDescription() {
+//        state.getLocation() >> CROSSING
+//        parameters.getDirection() >> Parameters.Direction.NORTH
+//        when:
+//        def reply = moveHandler.updateState(request)
+//        then:
+//        state.getVisitedLocation() >> Collections.singleton(CASTLE);
+//        CASTLE.getShortDescription() == reply
+//    }
 }

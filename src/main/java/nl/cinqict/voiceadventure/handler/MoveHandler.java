@@ -26,14 +26,7 @@ public class MoveHandler extends Handler {
             // change the location
             state.setLocation(newLocation);
 
-            if (state.getVisitedLocation().contains(newLocation)) {
-                reply = newLocation.getShortDescription();
-            } else {
-                reply = newLocation.getLongDescription();
-            }
-
-            // update the visisted locations
-            state.addVisitedLocation(newLocation);
+            reply = newLocation.getLongDescription();
         }
 
         return reply;

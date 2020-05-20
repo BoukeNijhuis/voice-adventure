@@ -15,7 +15,6 @@ public class State {
     private Location location = Location.CROSSING;
     private Set<Item> inventory = new HashSet<>();
     private Set<Item> removedItems = new HashSet<>();
-    private Set<Location> visitedLocations = new HashSet<>();
 
     // for creating the default State object
     State() {
@@ -33,7 +32,6 @@ public class State {
         }
         inventory = JsonUtil.getSet(Item.class, stateParameters, DialogflowConstants.INVENTORY);
         removedItems = JsonUtil.getSet(Item.class, stateParameters, DialogflowConstants.REMOVED_ITEMS);
-        visitedLocations = JsonUtil.getSet(Location.class, stateParameters, DialogflowConstants.VISITED_LOCATIONS);
     }
 
     /**
@@ -46,7 +44,6 @@ public class State {
         jsonObject.addProperty(DialogflowConstants.LOCATION, location.toString());
         addIfNotNull(jsonObject, DialogflowConstants.INVENTORY, inventory);
         addIfNotNull(jsonObject, DialogflowConstants.REMOVED_ITEMS, removedItems);
-        addIfNotNull(jsonObject, DialogflowConstants.VISITED_LOCATIONS, visitedLocations);
 
         return jsonObject;
     }
@@ -90,13 +87,5 @@ public class State {
 
     public Set<Item> getInventory() {
         return inventory;
-    }
-
-    public Set<Location> getVisitedLocation() {
-        return visitedLocations;
-    }
-
-    public void addVisitedLocation(Location newLocation) {
-        visitedLocations.add(newLocation);
     }
 }
