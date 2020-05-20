@@ -45,7 +45,6 @@ public class State {
     public JsonObject toJsonObject() {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty(DialogflowConstants.LOCATION, location.toString());
-        // TODO: use addIfNotNull for next two lines
         addIfNotNull(jsonObject, DialogflowConstants.INVENTORY, inventory);
         addIfNotNull(jsonObject, DialogflowConstants.REMOVED_ITEMS, removedItems);
         addIfNotNull(jsonObject, DialogflowConstants.VISITED_LOCATIONS, visitedLocations);
@@ -53,13 +52,10 @@ public class State {
         return jsonObject;
     }
 
-    private <T extends Enum<T>> JsonObject addIfNotNull(JsonObject jsonObject, String key, Set<T> set) {
-        JsonArray jsonArray = JsonUtil.getJsonArray(set);
-
-        if (jsonArray.size() > 0) {
-            jsonObject.add(key, jsonArray);
+    private <T extends Enum<T>> void addIfNotNull(JsonObject jsonObject, String key, Set<T> set) {
+        if (set.size() > 0) {
+            jsonObject.add(key, JsonUtil.getJsonArray(set));
         }
-        return jsonObject;
     }
 
     public Location getLocation() {
@@ -95,5 +91,13 @@ public class State {
 
     public Set<Item> getInventory() {
         return inventory;
+    }
+
+    public Set<Location> getVisitedLocation() {
+        return visitedLocations;
+    }
+
+    public void addVisitedLocation(Location newLocation) {
+        visitedLocations.add(newLocation);
     }
 }

@@ -15,18 +15,27 @@ public class MoveHandler extends Handler {
         Parameters parameters = request.getParameters();
         Parameters.Direction direction = parameters.getDirection();
         Location currentLocation = state.getLocation();
+        String reply = CANNOT_MOVE_THERE;
 
         // what will be the new location
         Location newLocation = currentLocation.move(direction);
 
         // check if the move is executed
         if (newLocation != currentLocation) {
+
             // change the location
             state.setLocation(newLocation);
-            return newLocation.getLongDescription();
-        } else {
-            // this move is not valid
-            return CANNOT_MOVE_THERE;
+
+            if (state.getVisitedLocation().contains(newLocation)) {
+                reply = newLocation.getShortDescription();
+            } else {
+                reply = newLocation.getLongDescription();
+            }
+
+            // update the visisted locations
+            state.addVisitedLocation(newLocation);
         }
+
+        return reply;
     }
 }

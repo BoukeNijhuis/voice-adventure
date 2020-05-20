@@ -18,7 +18,6 @@ class SolutionTest extends Specification {
     void solution() throws IOException, URISyntaxException {
 
         // create the list of actions that is the solution
-        //solution.add(new Action("?", WELCOME_INTENT));
         solution.add(new Action(MOVE_INTENT, DIRECTION, EAST));
         solution.add(new Action(PICKUP_INTENT, OBJECT, HANDLE.getName()));
         solution.add(new Action(MOVE_INTENT, DIRECTION, WEST));
@@ -38,17 +37,17 @@ class SolutionTest extends Specification {
         for (Action action : solution) {
             System.out.println(action.intent.toString() + ", " + action.parameter);
             // create the request (by filling in the resolvedQuery)
-            String request = String.format(requestFormat, action.parameter, action.intent.getIntentName());
+            String requestAsString = String.format(requestFormat, action.parameter, action.intent.getIntentName());
 
             // add contextOut (if any)
             if (contextOut != null) {
-                final JsonObject requestWithoutContext = JsonUtil.getJsonObject(request);
-                final JsonElement contexts = requestWithoutContext.get(QUERY_RESULT).getAsJsonObject().get(CONTEXTS);
+                final JsonObject requestAsJson = JsonUtil.getJsonObject(requestAsString);
+                final JsonElement contexts = requestAsJson.get(QUERY_RESULT).getAsJsonObject().get(CONTEXTS);
                 contexts.getAsJsonArray().addAll(contextOut);
-                request = requestWithoutContext.toString();
+                requestAsString = requestAsJson.toString();
             }
 
-            final InputStream inputStream = new ByteArrayInputStream(request.getBytes());
+            final InputStream inputStream = new ByteArrayInputStream(requestAsString.getBytes());
             final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             final Context context = Mock()
 
