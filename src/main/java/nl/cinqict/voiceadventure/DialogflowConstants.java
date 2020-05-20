@@ -24,6 +24,7 @@ public class DialogflowConstants {
     public static final String LOCATION = "location";
     public static final String INVENTORY = "inventory";
     public static final String REMOVED_ITEMS = "removedItems";
+    public static final String VISITED_LOCATIONS = "visitedLocations";
 
     public static final String FULFILLMENT_TEXT = "fulfillmentText";
     public static final String PAYLOAD = "payload";

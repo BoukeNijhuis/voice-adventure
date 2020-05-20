@@ -1,5 +1,6 @@
 package nl.cinqict.voiceadventure.message;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import nl.cinqict.voiceadventure.DialogflowConstants;
@@ -15,6 +16,7 @@ public class State {
     private Location location = Location.CROSSING;
     private Set<Item> inventory = new HashSet<>();
     private Set<Item> removedItems = new HashSet<>();
+    private Set<Location> visitedLocations = new HashSet<>();
 
     State() {
     }
@@ -29,8 +31,9 @@ public class State {
         if (jsonElement != null) {
             location = Location.valueOf(jsonElement.getAsString());
         }
-        inventory = JsonUtil.getItemSet(stateParameters.get(DialogflowConstants.INVENTORY).getAsJsonArray());
-        removedItems = JsonUtil.getItemSet(stateParameters.get(DialogflowConstants.REMOVED_ITEMS).getAsJsonArray());
+        inventory = JsonUtil.getSet(Item.class, stateParameters, DialogflowConstants.INVENTORY);
+        removedItems = JsonUtil.getSet(Item.class, stateParameters, DialogflowConstants.REMOVED_ITEMS);
+        visitedLocations = JsonUtil.getSet(Location.class, stateParameters, DialogflowConstants.VISITED_LOCATIONS);
     }
 
     /**
@@ -41,8 +44,18 @@ public class State {
     public JsonObject toJsonObject() {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty(DialogflowConstants.LOCATION, location.toString());
+        // TODO: use addIfNotNull for next two lines
         jsonObject.add(DialogflowConstants.INVENTORY, JsonUtil.getJsonArray(inventory));
         jsonObject.add(DialogflowConstants.REMOVED_ITEMS, JsonUtil.getJsonArray(removedItems));
+        addIfNotNull(jsonObject, DialogflowConstants.VISITED_LOCATIONS, JsonUtil.getJsonArray(visitedLocations));
+
+        return jsonObject;
+    }
+
+    private JsonObject addIfNotNull(JsonObject jsonObject, String key, JsonArray jsonArray) {
+        if (jsonArray.size() > 0) {
+            jsonObject.add(key, jsonArray);
+        }
         return jsonObject;
     }
 
