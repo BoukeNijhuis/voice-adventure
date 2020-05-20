@@ -8,8 +8,7 @@
         "location": "CLEARING",
         "inventory": [
           "HANDLE"
-        ],
-        "removedItems": []
+        ]
       },
       "lifespanCount": 5
     }

@@ -3,6 +3,7 @@ package nl.cinqict.voiceadventure.message;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import jdk.security.jarsigner.JarSigner;
 import nl.cinqict.voiceadventure.DialogflowConstants;
 import nl.cinqict.voiceadventure.JsonUtil;
 import nl.cinqict.voiceadventure.world.Item;
@@ -45,14 +46,16 @@ public class State {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty(DialogflowConstants.LOCATION, location.toString());
         // TODO: use addIfNotNull for next two lines
-        jsonObject.add(DialogflowConstants.INVENTORY, JsonUtil.getJsonArray(inventory));
-        jsonObject.add(DialogflowConstants.REMOVED_ITEMS, JsonUtil.getJsonArray(removedItems));
-        addIfNotNull(jsonObject, DialogflowConstants.VISITED_LOCATIONS, JsonUtil.getJsonArray(visitedLocations));
+        addIfNotNull(jsonObject, DialogflowConstants.INVENTORY, inventory);
+        addIfNotNull(jsonObject, DialogflowConstants.REMOVED_ITEMS, removedItems);
+        addIfNotNull(jsonObject, DialogflowConstants.VISITED_LOCATIONS, visitedLocations);
 
         return jsonObject;
     }
 
-    private JsonObject addIfNotNull(JsonObject jsonObject, String key, JsonArray jsonArray) {
+    private <T extends Enum<T>> JsonObject addIfNotNull(JsonObject jsonObject, String key, Set<T> set) {
+        JsonArray jsonArray = JsonUtil.getJsonArray(set);
+
         if (jsonArray.size() > 0) {
             jsonObject.add(key, jsonArray);
         }
