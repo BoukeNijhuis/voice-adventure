@@ -10,7 +10,7 @@ class MoveHandlerTest extends HandlerTest {
 
     protected void setup() {
         moveHandler = new MoveHandler()
-//        state.getVisitedLocation() >> new HashSet<Location>()
+//        state.getVisitedLocations() >> new HashSet<Location>()
     }
 
     void moveSomewhereThatIsPossible() {
@@ -37,7 +37,7 @@ class MoveHandlerTest extends HandlerTest {
 //        when:
 //        def reply = moveHandler.updateState(request)
 //        then:
-//        state.getVisitedLocation() >> Collections.singleton(CASTLE);
+//        state.getVisitedLocations() >> Collections.singleton(CASTLE);
 //        CASTLE.getShortDescription() == reply
 //    }
 }
