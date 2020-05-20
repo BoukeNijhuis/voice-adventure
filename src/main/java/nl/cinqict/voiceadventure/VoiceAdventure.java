@@ -18,20 +18,17 @@ public class VoiceAdventure implements RequestStreamHandler {
     public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context)
             throws IOException {
 
-        // get the requestString from the input stream
-        final String requestString = readInputStream(inputStream);
+        // create a request object from the input stream
+        final Request request = new Request(readInputStream(inputStream));
 
-        // create request object
-        final Request request = new Request(requestString);
+        // get the handler for this intent
+        Handler handler = getHandler(request.getIntentName());
 
-        // get the intentName
-        final String intentName = request.getIntentName();
-
-        Handler handler = getHandler(intentName);
-        String replyString = handler.updateState(request);
+        // execute the handler
+        String fulfillmentText = handler.updateState(request);
 
         // write the reply on the output stream
-        final Reply reply = new Reply(replyString, request.getStateContext(), handler.isGameOver());
+        final Reply reply = new Reply(fulfillmentText, request.getStateContext(), handler.isGameOver());
         final String replyAsString = reply.createReply();
 
         outputStream.write(replyAsString.getBytes());

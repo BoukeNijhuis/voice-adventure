@@ -19,7 +19,7 @@ public class Parameters {
         public static final Direction NONE = new Direction(0, 0);
 
         Direction(int x, int y) {
-            super(x,y);
+            super(x, y);
         }
     }
 
@@ -75,7 +75,6 @@ public class Parameters {
                 }
             }
         }
-
         return null;
     }
 }

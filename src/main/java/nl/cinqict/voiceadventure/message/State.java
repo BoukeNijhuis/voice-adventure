@@ -1,9 +1,7 @@
 package nl.cinqict.voiceadventure.message;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import jdk.security.jarsigner.JarSigner;
 import nl.cinqict.voiceadventure.DialogflowConstants;
 import nl.cinqict.voiceadventure.JsonUtil;
 import nl.cinqict.voiceadventure.world.Item;
@@ -19,6 +17,7 @@ public class State {
     private Set<Item> removedItems = new HashSet<>();
     private Set<Location> visitedLocations = new HashSet<>();
 
+    // for creating the default State object
     State() {
     }
 

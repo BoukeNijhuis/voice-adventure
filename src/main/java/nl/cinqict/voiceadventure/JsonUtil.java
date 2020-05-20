@@ -61,4 +61,9 @@ public class JsonUtil {
             return set;
         }
     }
+
+    public static JsonArray getAsJsonArrayNullSafe(JsonObject jsonObject, String key) {
+        JsonArray jsonArray = jsonObject.getAsJsonArray(key);
+        return (jsonArray != null ? jsonArray : new JsonArray());
+    }
 }
