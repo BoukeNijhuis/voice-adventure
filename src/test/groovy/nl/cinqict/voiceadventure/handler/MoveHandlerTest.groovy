@@ -1,6 +1,7 @@
 package nl.cinqict.voiceadventure.handler
 
 import nl.cinqict.voiceadventure.message.Parameters
+import nl.cinqict.voiceadventure.world.Location
 
 import static nl.cinqict.voiceadventure.world.Location.*
 
@@ -38,6 +39,6 @@ class MoveHandlerTest extends HandlerTest {
 //        def reply = moveHandler.updateState(request)
 //        then:
 //        state.getVisitedLocations() >> Collections.singleton(CASTLE);
-//        CASTLE.getShortDescription() == reply
+//        reply == CASTLE.getShortDescription()
 //    }
 }
