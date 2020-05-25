@@ -16,7 +16,7 @@ class IntentsTest extends Specification {
         "welcome"            | _
         "look-location"      | _
         "look-object"        | _
-        "move"               | _
+//        "move"               | _
         "pickup"             | _
         "use"                | _
         "use-unknown-object" | _
