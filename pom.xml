@@ -77,14 +77,7 @@
         <dependency>
             <groupId>org.spockframework</groupId>
             <artifactId>spock-core</artifactId>
-            <version>2.0-M1-groovy-2.5</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- add the latest groovy version which works with the higher Java versions -->
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy</artifactId>
-            <version>3.0.0-rc-2</version>
+            <version>2.0-M3-groovy-3.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
