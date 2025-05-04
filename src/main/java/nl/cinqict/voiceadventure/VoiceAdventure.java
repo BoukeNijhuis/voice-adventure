@@ -155,7 +155,7 @@ public class VoiceAdventure {
     private static String parseIntent(String input) {
         if (input.startsWith("welcome")) return "WelcomeIntent";
         if (input.startsWith("look")) return "LookIntent";
-        if (input.startsWith("move")) return "MoveIntent";
+        if (input.startsWith("move") || input.startsWith("go")) return "MoveIntent";
         if (input.startsWith("pickup") || input.startsWith("pick up")) return "PickupIntent";
         if (input.startsWith("use")) return "UseIntent";
         if (input.startsWith("kill")) return "KillIntent";
@@ -176,7 +176,7 @@ public class VoiceAdventure {
 
         if (words.length < 2) return null;
 
-        if (input.startsWith("move")) {
+        if (input.startsWith("move") || input.startsWith("go")) {
             String direction = words[1];
             if (direction.equals("north") || direction.equals("n")) return "N";
             if (direction.equals("east") || direction.equals("e")) return "E";
@@ -185,8 +185,34 @@ public class VoiceAdventure {
             return null;
         }
 
-        // For other commands, the object is the second word
-        return words[1].toUpperCase();
+        // Skip the command word (first word)
+        int startIndex = 1;
+
+        // Handle "pick up" as a single command
+        if (input.startsWith("pick up") && words.length >= 3) {
+            startIndex = 2;
+        }
+
+        // Skip articles and other common filler words
+        for (int i = startIndex; i < words.length; i++) {
+            String word = words[i];
+
+            // Skip articles and other common filler words
+            if (word.equals("the") || word.equals("a") || word.equals("an") || 
+                word.equals("on") || word.equals("at") || word.equals("with")) {
+                continue;
+            }
+
+            // Return the word as the object
+            return word.toUpperCase();
+        }
+
+        // If we get here, we didn't find a valid object, so fall back to the original behavior
+        if (input.startsWith("pick up") && words.length >= 3) {
+            return words[2].toUpperCase();
+        } else {
+            return words[startIndex].toUpperCase();
+        }
     }
 
     /**
@@ -198,14 +224,68 @@ public class VoiceAdventure {
     public static String parseSecondObject(String input) {
         String[] words = input.split("\\s+");
 
-        if (words.length < 4) return null;
+        if (words.length < 3) return null;
 
-        // For "use X on Y" commands, the second object is the fourth word
-        if (input.startsWith("use") && words.length >= 4 && words[2].equals("on")) {
-            return words[3].toUpperCase();
+        // For "use X on Y" commands
+        if (input.startsWith("use")) {
+            // Find the index of "on" in the command
+            int onIndex = -1;
+            for (int i = 2; i < words.length; i++) {
+                if (words[i].equals("on")) {
+                    onIndex = i;
+                    break;
+                }
+            }
+
+            // If "on" is found, look for the object after it
+            if (onIndex != -1 && onIndex + 1 < words.length) {
+                // Skip articles and other common filler words
+                for (int i = onIndex + 1; i < words.length; i++) {
+                    String word = words[i];
+
+                    // Skip articles and other common filler words
+                    if (word.equals("the") || word.equals("a") || word.equals("an") || 
+                        word.equals("at") || word.equals("with")) {
+                        continue;
+                    }
+
+                    // Return the word as the object
+                    return word.toUpperCase();
+                }
+            }
         }
 
-        // For other commands, the second object is the third word
-        return words[2].toUpperCase();
+        // For other commands, find the second object after the first object
+        // First, find the index of the first object
+        String firstObject = parseObject(input);
+        if (firstObject == null) return null;
+
+        int firstObjectIndex = -1;
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].toUpperCase().equals(firstObject)) {
+                firstObjectIndex = i;
+                break;
+            }
+        }
+
+        // If the first object is found, look for the second object after it
+        if (firstObjectIndex != -1 && firstObjectIndex + 1 < words.length) {
+            // Skip articles and other common filler words
+            for (int i = firstObjectIndex + 1; i < words.length; i++) {
+                String word = words[i];
+
+                // Skip articles and other common filler words
+                if (word.equals("the") || word.equals("a") || word.equals("an") || 
+                    word.equals("on") || word.equals("at") || word.equals("with")) {
+                    continue;
+                }
+
+                // Return the word as the object
+                return word.toUpperCase();
+            }
+        }
+
+        // If we get here, we didn't find a valid second object
+        return null;
     }
 }
