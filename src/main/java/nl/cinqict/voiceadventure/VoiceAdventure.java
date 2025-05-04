@@ -32,13 +32,8 @@ public class VoiceAdventure {
         String session = "projects/voice-adventure/agent/sessions/123456789";
         boolean gameOver = false;
 
-        System.out.println("Welcome to Voice Adventure!");
-        System.out.println("Available commands: welcome, look, move [direction], pickup [object], use [object], kill [object], inventory");
-        System.out.println("Type 'exit' to quit the game.");
-        System.out.println();
-
         // Start with welcome intent
-        processCommand(voiceAdventure, "welcome", null, null, session);
+        processCommand(voiceAdventure, "welcomeIntent", null, null, session);
 
         while (!gameOver) {
             System.out.print("> ");

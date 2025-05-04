@@ -5,7 +5,7 @@ public enum Item {
     UNKNOWN("This is special item that used when the specified item does not exist", null, false),
     DOOR("The door made of sturdy wood.", Location.CASTLE, false),
     WINNER("Not a real item, but this item enabled me to delete a constructor :-)", Location.CASTLE, false),
-    KEY("The key looks used.", Location.CAVE, true, DOOR, "this text is in DialogFlow", WINNER),
+    KEY("The key looks used.", Location.CAVE, true, DOOR, "You finished the game!", WINNER),
     TROLL("The troll is a big, lumbering beast. It looks hungry.", Location.CAVE, false),
     SWORD("The sword is rusty and pointy.", Location.WELL, true, TROLL, "You attack the troll with your sword. It fights back but it is no match for your sword fighting skills. You kill the troll swiftly and take the key.", KEY),
     WELL("In the well lies a wooden bucket with a rusty, pointy sword inside. The bucket is still attached to the lift mechanism.", Location.WELL, false),
