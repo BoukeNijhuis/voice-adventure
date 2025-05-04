@@ -32,7 +32,7 @@ public class MoveHandler extends Handler {
                 reply = newLocation.getLongDescription();
             }
 
-            // update the visisted locations
+            // update the visited locations
             state.addVisitedLocation(newLocation);
         }
 
