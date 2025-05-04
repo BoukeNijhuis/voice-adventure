@@ -16,53 +16,10 @@ import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-public class VoiceAdventure implements RequestStreamHandler {
+public class VoiceAdventure {
 
     // Store the state context between commands
     private static JsonObject stateContext = null;
-
-    public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context)
-            throws IOException {
-
-        // create a request object from the input stream
-        final Request request = new Request(readInputStream(inputStream));
-
-        // get the handler for this intent
-        Handler handler = getHandler(request.getIntentName());
-
-        // execute the handler
-        String fulfillmentText = handler.updateState(request);
-
-        // write the reply on the output stream
-        final Reply reply = new Reply(fulfillmentText, request.getStateContext(), handler.isGameOver());
-        final String replyAsString = reply.createReply();
-
-        outputStream.write(replyAsString.getBytes());
-    }
-
-    private Handler getHandler(String command) {
-        return Intent.getIntent(command).getHandler();
-    }
-
-    /**
-     * Simple method to convert an InputStream to a String.
-     *
-     * @param inputStream the InputStream object to convert
-     * @return the inputStream as String
-     * @throws IOException when there is something wrong with the inputStream
-     */
-    private String readInputStream(InputStream inputStream) throws IOException {
-
-        StringBuilder stringBuilder = new StringBuilder();
-        InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-
-        int character;
-        while ((character = inputStreamReader.read()) != -1) {
-            stringBuilder.append((char) character);
-        }
-
-        return stringBuilder.toString();
-    }
 
     /**
      * Main method that allows users to input commands directly.
